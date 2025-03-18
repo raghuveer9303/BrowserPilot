@@ -15,6 +15,16 @@ const io = new Server(server);
 const sessions = {};
 const aiAgents = {};
 
+
+// API endpoints for Browser-Use functionality
+// - Session management
+// - Agent initialization and task execution
+// - Action handling
+// - LLM integration
+// - DOM state access
+// - Screenshot and visualization
+
+
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());

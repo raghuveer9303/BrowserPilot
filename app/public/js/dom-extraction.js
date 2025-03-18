@@ -1,66 +1,114 @@
 // Add to public/js/dom-extraction.js
+// Client-side DOM extraction
+// - buildDomTree() function to crawl page
+// - Element classification (interactive, visible)
+// - Element highlighting
+// - Tree construction with metadata
+
 function buildDomTree(options = {}) {
-    const {
-      highlightElements = true,
-      viewportExpansion = 300
-    } = options;
+  const {
+    highlightElements = true,
+    viewportExpansion = 300
+  } = options;
+
+  const elementMap = new Map();
+  let highlightIndex = 0;
+
+  function isInteractiveElement(element) {
+    const interactiveTags = ['a', 'button', 'input', 'select', 'textarea'];
+    const interactiveRoles = ['button', 'link', 'menuitem', 'tab'];
     
-    // Create element hash map
-    const elementMap = {};
-    let highlightIndex = 0;
-    
-    function isInteractiveElement(element) {
-      // Logic for determining if element is interactive
-      // Check tag name, role, attributes, etc.
-    }
-    
-    function isVisibleElement(element) {
-      // Visibility checks
-    }
-    
-    // Main DOM traversal function to extract interactive elements
-    function processNode(node, depth = 0) {
-      // Skip invalid nodes
-      if (!node) return null;
-      
-      // Process text nodes
-      if (node.nodeType === Node.TEXT_NODE) {
-        // Extract text content if relevant
-      }
-      
-      // Process element nodes
-      if (node.nodeType === Node.ELEMENT_NODE) {
-        // Check visibility and interactivity
-        const isVisible = isVisibleElement(node);
-        const isInteractive = isInteractiveElement(node);
-        
-        // Create node data
-        const nodeData = {
-          tagName: node.tagName.toLowerCase(),
-          attributes: {},
-          children: []
-        };
-        
-        // Add interactive element data
-        if (isVisible && isInteractive) {
-          nodeData.highlightIndex = highlightIndex++;
-          nodeData.isInteractive = true;
-          // Additional metadata
-        }
-        
-        // Process children
-        for (const child of node.childNodes) {
-          const childData = processNode(child, depth + 1);
-          if (childData) nodeData.children.push(childData);
-        }
-        
-        return nodeData;
-      }
-      
-      return null;
-    }
-    
-    // Start processing from body
-    const rootNode = processNode(document.body);
-    return { rootNode, elementMap };
+    return (
+      interactiveTags.includes(element.tagName.toLowerCase()) ||
+      element.hasAttribute('onclick') ||
+      element.hasAttribute('role') && interactiveRoles.includes(element.getAttribute('role'))
+    );
   }
+
+  function isVisibleElement(element) {
+    const style = window.getComputedStyle(element);
+    const rect = element.getBoundingClientRect();
+    
+    return !(
+      style.display === 'none' ||
+      style.visibility === 'hidden' ||
+      style.opacity === '0' ||
+      rect.width === 0 ||
+      rect.height === 0
+    );
+  }
+
+  function getElementMetadata(element) {
+    return {
+      tag: element.tagName.toLowerCase(),
+      id: element.id,
+      className: element.className,
+      textContent: element.textContent.trim(),
+      href: element.href,
+      value: element.value,
+      type: element.type,
+      rect: element.getBoundingClientRect(),
+      isInteractive: isInteractiveElement(element),
+      isVisible: isVisibleElement(element)
+    };
+  }
+
+  function processNode(node, depth = 0) {
+    if (!node) return null;
+
+    if (node.nodeType === Node.TEXT_NODE) {
+      const text = node.textContent.trim();
+      return text ? { type: 'text', content: text } : null;
+    }
+
+    if (node.nodeType === Node.ELEMENT_NODE) {
+      const metadata = getElementMetadata(node);
+      
+      if (metadata.isVisible && metadata.isInteractive) {
+        metadata.highlightIndex = highlightIndex++;
+        elementMap.set(metadata.highlightIndex, node);
+      }
+
+      const children = Array.from(node.childNodes)
+        .map(child => processNode(child, depth + 1))
+        .filter(Boolean);
+
+      return {
+        type: 'element',
+        ...metadata,
+        children
+      };
+    }
+
+    return null;
+  }
+
+  const tree = processNode(document.body);
+  return { tree, elementMap };
+}
+
+function highlightElement(element, index) {
+  const highlight = document.createElement('div');
+  highlight.className = 'element-highlight';
+  highlight.style.cssText = `
+    position: fixed;
+    border: 2px solid red;
+    background: rgba(255, 0, 0, 0.1);
+    z-index: 10000;
+    pointer-events: none;
+  `;
+  
+  const rect = element.getBoundingClientRect();
+  highlight.style.top = `${rect.top}px`;
+  highlight.style.left = `${rect.left}px`;
+  highlight.style.width = `${rect.width}px`;
+  highlight.style.height = `${rect.height}px`;
+  
+  highlight.setAttribute('data-highlight-index', index);
+  document.body.appendChild(highlight);
+}
+
+module.exports = {
+  buildDomTree,
+  highlightElement
+};

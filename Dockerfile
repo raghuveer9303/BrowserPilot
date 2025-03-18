@@ -23,6 +23,11 @@ ENV DISPLAY=:99
 ENV RESOLUTION=1280x720x24
 
 
+# Environment setup
+# - JavaScript dependencies
+# - Playwright installation
+# - Runtime configuration
+
 # Create directories
 RUN mkdir -p /opt/app /opt/scripts /opt/logs
 
