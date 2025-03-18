@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Browser Control</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+    
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    
+    .header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .split-view {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+    
+    .browser-panel {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid #ccc;
+    }
+    
+    .browser-toolbar {
+      background-color: #f0f0f0;
+      padding: 8px;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      gap: 10px;
+    }
+    
+    .browser-view {
+      flex: 1;
+      border: none;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .ai-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background-color: #f9f9f9;
+    }
+    
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px;
+    }
+    
+    .chat-input {
+      border-top: 1px solid #ccc;
+      padding: 10px;
+      display: flex;
+    }
+    
+    .chat-input input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    .chat-input button {
+      margin-left: 10px;
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .message {
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 4px;
+      max-width: 80%;
+    }
+    
+    .user-message {
+      background-color: #e1f5fe;
+      margin-left: auto;
+    }
+    
+    .ai-message {
+      background-color: #f0f0f0;
+      margin-right: auto;
+    }
+    
+    .session-id {
+      font-size: 14px;
+      color: #666;
+    }
+    
+    .status {
+      margin-left: auto;
+      font-size: 14px;
+      color: white;
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+    }
+    
+    button {
+      padding: 8px 12px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+    
+    button:hover {
+      background-color: #45a049;
+    }
+    
+    button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h2>AI Browser Control</h2>
+      <span class="session-id" id="sessionIdDisplay"></span>
+      <span class="status" id="statusText">Connecting...</span>
+    </div>
+    
+    <div class="split-view">
+      <div class="browser-panel">
+        <div class="browser-toolbar">
+          <div class="action-buttons">
+            <button id="backBtn">Back</button>
+            <button id="forwardBtn">Forward</button>
+            <button id="refreshBtn">Refresh</button>
+          </div>
+          <input type="text" id="urlInput" placeholder="Enter URL">
+          <button id="goBtn">Go</button>
+        </div>
+        <iframe id="browserView" class="browser-view" allowfullscreen></iframe>
+      </div>
+      
+      <div class="ai-panel">
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input">
+          <input type="text" id="messageInput" placeholder="Ask AI to control the browser...">
+          <button id="sendBtn">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    // Get elements
+    const sessionIdDisplay = document.getElementById('sessionIdDisplay');
+    const statusText = document.getElementById('statusText');
+    const browserView = document.getElementById('browserView');
+    const backBtn = document.getElementById('backBtn');
+    const forwardBtn = document.getElementById('forwardBtn');
+    const refreshBtn = document.getElementById('refreshBtn');
+    const urlInput = document.getElementById('urlInput');
+    const goBtn = document.getElementById('goBtn');
+    const chatMessages = document.getElementById('chatMessages');
+    const messageInput = document.getElementById('messageInput');
+    const sendBtn = document.getElementById('sendBtn');
+    
+    // Get session ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const sessionId = urlParams.get('sessionId');
+    
+    if (!sessionId) {
+      statusText.textContent = 'Error: No session ID provided';
+      // Redirect to index page after 3 seconds
+      setTimeout(() => {
+        window.location.href = '/';
+      }, 3000);
+    } else {
+      sessionIdDisplay.textContent = `Session ID: ${sessionId}`;
+      
+      // Load browser view
+      browserView.src = `/view/${sessionId}`;
+      
+      // Socket.io connection
+      const socket = io();
+      
+      // Join session room
+      socket.emit('join-session', sessionId);
+      
+      // Connect socket events
+      socket.on('connect', () => {
+        statusText.textContent = 'Connected';
+      });
+      
+      socket.on('disconnect', () => {
+        statusText.textContent = 'Disconnected';
+      });
+      
+      // Browser navigation
+      backBtn.addEventListener('click', () => {
+        socket.emit('browser-command', {
+          sessionId,
+          command: 'back'
+        });
+      });
+      
+      forwardBtn.addEventListener('click', () => {
+        socket.emit('browser-command', {
+          sessionId,
+          command: 'forward'
+        });
+      });
+      
+      refreshBtn.addEventListener('click', () => {
+        socket.emit('browser-command', {
+          sessionId,
+          command: 'refresh'
+        });
+      });
+      
+      goBtn.addEventListener('click', () => {
+        const url = urlInput.value;
+        if (url) {
+          socket.emit('browser-command', {
+            sessionId,
+            command: 'navigate',
+            params: { url }
+          });
+        }
+      });
+      
+      urlInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          const url = urlInput.value;
+          if (url) {
+            socket.emit('browser-command', {
+              sessionId,
+              command: 'navigate',
+              params: { url }
+            });
+          }
+        }
+      });
+      
+      // AI Chat
+      sendBtn.addEventListener('click', sendMessage);
+      messageInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          sendMessage();
+        }
+      });
+      
+      function sendMessage() {
+        const message = messageInput.value.trim();
+        if (!message) return;
+        
+        // Add user message to chat
+        addMessage(message, 'user');
+        messageInput.value = '';
+        
+        // Show thinking indicator
+        const thinkingId = addMessage('Thinking...', 'ai');
+        
+        // Send to AI
+        fetch('/api/ai/command', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            sessionId,
+            command: message
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          // Remove thinking message
+          document.getElementById(thinkingId).remove();
+          
+          if (data.error) {
+            addMessage(`Error: ${data.error}`, 'ai');
+          } else {
+            // Add explanation to chat
+            addMessage(data.result.explanation || 'Command executed successfully', 'ai');
+          }
+        })
+        .catch(error => {
+          // Remove thinking message
+          document.getElementById(thinkingId).remove();
+          
+          // Add error message
+          addMessage(`Error: ${error.message}`, 'ai');
+        });
+      }
+      
+      function addMessage(text, sender) {
+        const messageId = 'msg-' + Date.now();
+        const messageElement = document.createElement('div');
+        messageElement.id = messageId;
+        messageElement.className = `message ${sender}-message`;
+        messageElement.textContent = text;
+        
+        chatMessages.appendChild(messageElement);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        
+        return messageId;
+      }
+      
+      // Add welcome message
+      addMessage('Hello! I can help you control the browser. Try asking me to navigate to a website or click on elements.', 'ai');
+    }
+  </script>
+</body>
+</html>

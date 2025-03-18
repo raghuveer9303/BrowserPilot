@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browser Session Viewer</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+    
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    
+    .toolbar {
+      background-color: #f0f0f0;
+      padding: 10px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    
+    .viewer {
+      flex: 1;
+      border: none;
+      width: 100%;
+      height: 100%;
+    }
+    
+    button {
+      padding: 8px 12px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+    
+    button:hover {
+      background-color: #45a049;
+    }
+    
+    button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+    
+    .status {
+      margin-left: auto;
+      font-size: 14px;
+    }
+    
+    .controls {
+      display: flex;
+      gap: 10px;
+    }
+    
+    input {
+      padding: 8px;
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="toolbar">
+      <div class="controls">
+        <button id="controlToggle">Take Control</button>
+        <button id="backBtn" disabled>Back</button>
+        <button id="forwardBtn" disabled>Forward</button>
+        <button id="refreshBtn" disabled>Refresh</button>
+      </div>
+      <input type="text" id="urlInput" placeholder="Enter URL" disabled>
+      <button id="goBtn" disabled>Go</button>
+      <div class="status" id="statusText">Loading...</div>
+    </div>
+    <iframe id="noVNC" class="viewer" allowfullscreen></iframe>
+  </div>
+  
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get session ID from URL
+      const pathParts = window.location.pathname.split('/');
+      const sessionId = pathParts[pathParts.length - 1];
+      
+      // Elements
+      const controlToggle = document.getElementById('controlToggle');
+      const backBtn = document.getElementById('backBtn');
+      const forwardBtn = document.getElementById('forwardBtn');
+      const refreshBtn = document.getElementById('refreshBtn');
+      const urlInput = document.getElementById('urlInput');
+      const goBtn = document.getElementById('goBtn');
+      const statusText = document.getElementById('statusText');
+      const noVNC = document.getElementById('noVNC');
+      
+      // Set noVNC iframe src
+      noVNC.src = `http://${window.location.hostname}:6080/vnc.html?password=password&autoconnect=true&resize=remote`;
+      
+      // Connect to socket.io
+      const socket = io();
+      
+      // Join session room
+      socket.emit('join-session', sessionId);
+      
+      // Control mode state
+      let isControlling = false;
+      
+      // Initialize
+      statusText.textContent = 'Connected - View Only Mode';
+      
+      // Control toggle button
+      controlToggle.addEventListener('click', function() {
+        if (isControlling) {
+          // Disable control
+          fetch(`/api/session/${sessionId}/control`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ enable: false })
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.status === 'success') {
+              isControlling = false;
+              setControlState(false);
+              statusText.textContent = 'Connected - View Only Mode';
+              controlToggle.textContent = 'Take Control';
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            statusText.textContent = 'Error disabling control';
+          });
+        } else {
+          // Enable control
+          fetch(`/api/session/${sessionId}/control`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ enable: true })
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.status === 'success') {
+              isControlling = true;
+              setControlState(true);
+              statusText.textContent = 'Connected - Control Mode';
+              controlToggle.textContent = 'Release Control';
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            statusText.textContent = 'Error enabling control';
+          });
+        }
+      });
+      
+      // Navigation buttons
+      backBtn.addEventListener('click', function() {
+        sendBrowserCommand('back');
+      });
+      
+      forwardBtn.addEventListener('click', function() {
+        sendBrowserCommand('forward');
+      });
+      
+      refreshBtn.addEventListener('click', function() {
+        sendBrowserCommand('refresh');
+      });
+      
+      // URL navigation
+      goBtn.addEventListener('click', function() {
+        const url = urlInput.value;
+        if (url) {
+          sendBrowserCommand('navigate', { url });
+        }
+      });
+      
+      urlInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          const url = urlInput.value;
+          if (url) {
+            sendBrowserCommand('navigate', { url });
+          }
+        }
+      });
+      
+      // Socket events
+      socket.on('command-result', function(data) {
+        if (data.status === 'error') {
+          statusText.textContent = `Error: ${data.message}`;
+        } else {
+          statusText.textContent = 'Command executed successfully';
+        }
+      });
+      
+      socket.on('error', function(data) {
+        statusText.textContent = `Error: ${data.message}`;
+      });
+      
+      // Helper functions
+      function setControlState(enabled) {
+        backBtn.disabled = !enabled;
+        forwardBtn.disabled = !enabled;
+        refreshBtn.disabled = !enabled;
+        urlInput.disabled = !enabled;
+        goBtn.disabled = !enabled;
+      }
+      
+      function sendBrowserCommand(command, params = {}) {
+        socket.emit('browser-command', {
+          sessionId,
+          command,
+          params
+        });
+        statusText.textContent = 'Executing command...';
+      }
+      
+      // Window cleanup
+      window.addEventListener('beforeunload', function() {
+        if (isControlling) {
+          // Release control before closing
+          fetch(`/api/session/${sessionId}/control`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ enable: false })
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
