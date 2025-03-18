@@ -116,6 +116,25 @@ app.post('/api/ai/command', async (req, res) => {
   }
 });
 
+// Add this route with the other API endpoints
+app.get('/api/browser/:sessionId/elements', async (req, res) => {
+    try {
+        const { sessionId } = req.params;
+        
+        if (!sessions[sessionId]) {
+            return res.status(404).json({ error: 'Session not found' });
+        }
+        
+        const session = sessions[sessionId];
+        const browserContext = new BrowserContext(session.context);
+        const elements = await browserContext.get_clickable_elements();
+        
+        res.json(elements);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 // WebSocket connection handling
 io.on('connection', (socket) => {
   console.log('Client connected');

@@ -95,24 +95,36 @@ class BrowserContext {
   async get_clickable_elements() {
     const page = await this.get_current_page();
     return await page.evaluate(() => {
-      const elements = document.querySelectorAll('a, button, [role="button"], input[type="submit"]');
-      return Array.from(elements).map((el) => ({
-        tag: el.tagName.toLowerCase(),
-        text: el.innerText || el.value || '',
-        selector: generateUniqueSelector(el),
-        attributes: {
-          id: el.id,
-          class: el.className,
-          href: el.href,
-          type: el.type,
-        }
-      }));
+        const elements = document.querySelectorAll('a, button, [role="button"], input[type="submit"]');
+        return Array.from(elements).map((el) => {
+            const rect = el.getBoundingClientRect();
+            return {
+                tag: el.tagName.toLowerCase(),
+                text: el.innerText || el.value || '',
+                selector: generateUniqueSelector(el),
+                boundingBox: {
+                    x: rect.x,
+                    y: rect.y,
+                    width: rect.width,
+                    height: rect.height
+                },
+                attributes: {
+                    id: el.id,
+                    class: el.className,
+                    href: el.href,
+                    type: el.type,
+                }
+            };
+        });
 
-      function generateUniqueSelector(el) {
-        if (el.id) return `#${el.id}`;
-        if (el.className) return `.${el.className.split(' ')[0]}`;
-        return `${el.tagName.toLowerCase()}`;
-      }
+        function generateUniqueSelector(el) {
+            if (el.id) return `#${el.id}`;
+            if (el.className) {
+                const classes = el.className.split(' ').filter(Boolean);
+                if (classes.length) return `.${classes.join('.')}`;
+            }
+            return `${el.tagName.toLowerCase()}`;
+        }
     });
   }
 }

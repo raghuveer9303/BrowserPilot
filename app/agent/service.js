@@ -51,11 +51,13 @@ class Agent {
   async _getVisibleElements() {
     const elements = await this.browserContext.get_clickable_elements();
     return elements.map((el, index) => ({
-      index,
-      selector: el.selector,
-      tag: el.tag,
-      text: el.text,
-      isClickable: true
+        index,
+        selector: el.selector,
+        tag: el.tag,
+        text: el.text,
+        boundingBox: el.boundingBox,
+        isClickable: true,
+        isVisible: el.boundingBox.width > 0 && el.boundingBox.height > 0
     }));
   }
 
@@ -71,10 +73,25 @@ class Agent {
   async _executeActions(actions) {
     const results = [];
     for (const action of actions) {
-      const result = await this.browserContext.execute_action(action);
+      const result = await this._executeAction(action);
       results.push(result);
     }
     return results;
+  }
+
+  async _executeAction(action) {
+    if (action.type === 'click') {
+        // Use precise clicking with coordinates if available
+        if (action.boundingBox) {
+            await this.browserContext.page.mouse.click(
+                action.boundingBox.x + action.boundingBox.width / 2,
+                action.boundingBox.y + action.boundingBox.height / 2
+            );
+        } else {
+            await this.browserContext.click_element_node(action.selector);
+        }
+    }
+    // ... handle other action types
   }
 
   _parseActions(response) {
