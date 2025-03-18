@@ -80,18 +80,37 @@ class Agent {
   }
 
   async _executeAction(action) {
-    if (action.type === 'click') {
-        // Use precise clicking with coordinates if available
-        if (action.boundingBox) {
-            await this.browserContext.page.mouse.click(
-                action.boundingBox.x + action.boundingBox.width / 2,
-                action.boundingBox.y + action.boundingBox.height / 2
-            );
-        } else {
-            await this.browserContext.click_element_node(action.selector);
+    try {
+        switch (action.type) {
+            case 'click':
+                if (action.boundingBox) {
+                    await this.browserContext.page.mouse.click(
+                        action.boundingBox.x + action.boundingBox.width / 2,
+                        action.boundingBox.y + action.boundingBox.height / 2
+                    );
+                } else {
+                    await this.browserContext.click_element_node(action.selector);
+                }
+                return { success: true, action: 'click' };
+
+            case 'input':
+                await this.browserContext.input_text_element_node(action.selector, action.text);
+                return { success: true, action: 'input' };
+
+            case 'navigate':
+                await this.browserContext.navigate_to(action.url);
+                return { success: true, action: 'navigate' };
+
+            case 'extract':
+                const content = await this.browserContext.page.$eval(action.selector, el => el.textContent);
+                return { success: true, action: 'extract', content };
+
+            default:
+                throw new Error(`Unknown action type: ${action.type}`);
         }
+    } catch (error) {
+        return { success: false, error: error.message };
     }
-    // ... handle other action types
   }
 
   _parseActions(response) {

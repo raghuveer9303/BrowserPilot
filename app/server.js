@@ -33,6 +33,19 @@ setInterval(() => {
 // Routes
 app.use('/api/automation', automationController);
 
+// Add these routes before your API routes
+app.get('/ai-control', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'ai-control.html'));
+});
+
+app.get('/view/:sessionId', (req, res) => {
+    const { sessionId } = req.params;
+    if (!sessions[sessionId]) {
+        return res.status(404).send('Session not found');
+    }
+    res.sendFile(path.join(__dirname, 'public', 'viewer.html'));
+});
+
 // Session management routes
 app.post('/api/session/create', async (req, res) => {
   try {
@@ -130,6 +143,46 @@ app.get('/api/browser/:sessionId/elements', async (req, res) => {
         const elements = await browserContext.get_clickable_elements();
         
         res.json(elements);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Add these API endpoints
+app.post('/api/ai/analyze', async (req, res) => {
+    try {
+        const { sessionId } = req.body;
+        if (!sessions[sessionId]) {
+            return res.status(404).json({ error: 'Session not found' });
+        }
+
+        const session = sessions[sessionId];
+        const browserContext = new BrowserContext(session.context);
+        const elements = await browserContext.get_clickable_elements();
+
+        res.json({
+            success: true,
+            elements: elements,
+            url: await session.page.url(),
+            title: await session.page.title()
+        });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+app.post('/api/ai/highlight', async (req, res) => {
+    try {
+        const { sessionId, selector } = req.body;
+        if (!sessions[sessionId]) {
+            return res.status(404).json({ error: 'Session not found' });
+        }
+
+        const session = sessions[sessionId];
+        const browserContext = new BrowserContext(session.context);
+        await browserContext.highlightElement(selector);
+
+        res.json({ success: true });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
