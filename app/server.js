@@ -8,6 +8,12 @@ const { PlaywrightGemini } = require('./playwright-gemini');
 const { Agent } = require('./agent/service'); // Import the Agent class
 const { BrowserContext } = require('./browser/context'); // Import BrowserContext
 
+// Add environment variables check
+if (!process.env.GEMINI_API_KEY) {
+  console.error('GEMINI_API_KEY environment variable is required');
+  process.exit(1);
+}
+
 // Initialize express app
 const app = express();
 const server = http.createServer(app);
@@ -95,6 +101,54 @@ app.post('/api/session/create', async (req, res) => {
   }
 });
 
+// Update session creation
+app.post('/api/session/create', async (req, res) => {
+  try {
+    const sessionId = uuidv4();
+    const { startUrl } = req.body;
+    
+    // Launch browser with proper configuration
+    const browser = await chromium.launch({
+      headless: false,
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-gpu',
+        '--start-maximized',
+        `--display=:99`
+      ]
+    });
+    
+    const context = await browser.newContext({
+      viewport: { width: 1280, height: 720 },
+      recordVideo: { dir: 'videos/' }
+    });
+    
+    // Initialize the session
+    sessions[sessionId] = {
+      browser,
+      context,
+      page: await context.newPage(),
+      agent: new Agent(new BrowserContext(context)),
+      isUserControlled: false,
+      lastActivity: Date.now()
+    };
+
+    // Navigate to start URL
+    await sessions[sessionId].page.goto(startUrl || 'https://example.com');
+    
+    res.json({ 
+      sessionId,
+      viewUrl: `/view/${sessionId}`,
+      status: 'created'
+    });
+    
+  } catch (error) {
+    console.error('Session creation error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
 
 // AI control interface route
 app.get('/ai-control', (req, res) => {

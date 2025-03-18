@@ -11,6 +11,7 @@ class Agent {
   constructor(browserContext) {
     this.browserContext = browserContext;
     this.history = [];
+    this.messageManager = new MessageManager();
   }
 
   async run(task) {
@@ -45,8 +46,25 @@ class Agent {
   }
 
   async get_next_action(state, task) {
-    // Implementation will be provided by specific LLM integration
-    throw new Error('get_next_action must be implemented');
+    // Add context about the current page state
+    this.messageManager.add_state_message({
+      url: state.url,
+      title: state.title,
+      elements: await this.browserContext.get_clickable_elements()
+    });
+
+    // Add the user's task
+    this.messageManager.add_state_message({
+      task: task
+    });
+
+    // Get LLM response
+    const gemini = new PlaywrightGemini({
+      apiKey: process.env.GEMINI_API_KEY
+    });
+
+    const response = await gemini.chat(this.messageManager.get_messages());
+    return this._parse_llm_response(response);
   }
 
   async multi_act(actions) {
@@ -89,6 +107,16 @@ class Agent {
 
     // Add more command handling logic as needed
     throw new Error(`Unknown command type: ${command.type}`);
+  }
+
+  _parse_llm_response(response) {
+    try {
+      // Parse the LLM response into structured actions
+      const actions = JSON.parse(response);
+      return Array.isArray(actions) ? actions : [actions];
+    } catch (error) {
+      throw new Error(`Invalid LLM response format: ${error.message}`);
+    }
   }
 }
 

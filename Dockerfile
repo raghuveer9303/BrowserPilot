@@ -1,5 +1,6 @@
 FROM mcr.microsoft.com/playwright:v1.51.1-jammy
 
+# Remove hardcoded API key
 ENV DEBIAN_FRONTEND=noninteractive \
     TZ=UTC
 
@@ -14,33 +15,23 @@ RUN apt-get update && apt-get install -y \
     net-tools \
     curl \
     tzdata \
-    && ln -fs /usr/share/zoneinfo/UTC /etc/localtime \
-    && dpkg-reconfigure --frontend noninteractive tzdata \
     && rm -rf /var/lib/apt/lists/*
 
 # Set up environment
 ENV DISPLAY=:99
 ENV RESOLUTION=1280x720x24
 
-
-# Environment setup
-# - JavaScript dependencies
-# - Playwright installation
-# - Runtime configuration
-
-# Create directories
-RUN mkdir -p /opt/app /opt/scripts /opt/logs
+# Create required directories
+RUN mkdir -p /opt/app /opt/scripts /opt/logs /videos
 
 # Copy application files
 COPY app/ /opt/app/
 COPY scripts/ /opt/scripts/
+COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-# Install Node.js dependencies
+# Install dependencies
 WORKDIR /opt/app
 RUN npm install
-
-
-COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Make scripts executable
 RUN chmod +x /opt/scripts/*.sh
