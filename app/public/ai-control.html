@@ -1,155 +1,337 @@
-<!-- This HTML file provides a user interface for controlling the browser via AI commands. It includes a split view with a browser panel and an AI chat panel. The browser panel allows navigation, while the AI chat panel lets users send commands to the AI. -->
-<!--UI components for Browser-Use functionality
-// - Action selection interface
-// - DOM visualization
-// - Task input and monitoring
-// - Result display
-// - Operation controls --> 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Browser Control</title>
-    <style>
-        .container {
-            display: grid;
-            grid-template-columns: 1fr 300px;
-            height: 100vh;
-            margin: 0;
-        }
-        .browser-view {
-            position: relative;
-            background: #fff;
-            border-right: 1px solid #ccc;
-        }
-        .highlight-overlay {
-            position: absolute;
-            border: 2px solid red;
-            background: rgba(255, 0, 0, 0.1);
-            pointer-events: none;
-            z-index: 1000;
-        }
-        .control-panel {
-            padding: 20px;
-            background: #f5f5f5;
-        }
-        .element-list {
-            margin-top: 20px;
-            max-height: 300px;
-            overflow-y: auto;
-        }
-        .element-item {
-            padding: 8px;
-            margin: 4px 0;
-            background: white;
-            border: 1px solid #ddd;
-            cursor: pointer;
-        }
-        .element-item:hover {
-            background: #f0f0f0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Browser Control</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+    
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    
+    .header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .split-view {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+    
+    .browser-panel {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid #ccc;
+    }
+    
+    .browser-toolbar {
+      background-color: #f0f0f0;
+      padding: 8px;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      gap: 10px;
+    }
+    
+    .browser-view {
+      flex: 1;
+      border: none;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .ai-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background-color: #f9f9f9;
+    }
+    
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px;
+    }
+    
+    .chat-input {
+      border-top: 1px solid #ccc;
+      padding: 10px;
+      display: flex;
+    }
+    
+    .chat-input input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    .chat-input button {
+      margin-left: 10px;
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .message {
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 4px;
+      max-width: 80%;
+    }
+    
+    .user-message {
+      background-color: #e1f5fe;
+      margin-left: auto;
+    }
+    
+    .ai-message {
+      background-color: #f0f0f0;
+      margin-right: auto;
+    }
+    
+    .session-id {
+      font-size: 14px;
+      color: #666;
+    }
+    
+    .status {
+      margin-left: auto;
+      font-size: 14px;
+      color: white;
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+    }
+    
+    button {
+      padding: 8px 12px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+    
+    button:hover {
+      background-color: #45a049;
+    }
+    
+    button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="browser-view">
-            <iframe id="browserFrame" style="width: 100%; height: 100%; border: none;"></iframe>
-            <div id="highlightContainer"></div>
-        </div>
-        <div class="control-panel">
-            <h3>AI Control</h3>
-            <div>
-                <textarea id="aiCommand" rows="4" style="width: 100%" 
-                          placeholder="Enter command (e.g., 'Click the login button')"></textarea>
-                <button onclick="executeAICommand()">Execute</button>
-            </div>
-            <div class="element-list" id="elementList">
-                <h4>Clickable Elements</h4>
-                <!-- Elements will be listed here -->
-            </div>
-            <div id="status"></div>
-        </div>
+  <div class="container">
+    <div class="header">
+      <h2>AI Browser Control</h2>
+      <span class="session-id" id="sessionIdDisplay"></span>
+      <span class="status" id="statusText">Connecting...</span>
     </div>
-
-    <script>
-        const sessionId = new URLSearchParams(window.location.search).get('sessionId');
-        if (!sessionId) {
-            alert('No session ID provided');
-            window.location.href = '/';
+    
+    <div class="split-view">
+      <div class="browser-panel">
+        <div class="browser-toolbar">
+          <div class="action-buttons">
+            <button id="backBtn">Back</button>
+            <button id="forwardBtn">Forward</button>
+            <button id="refreshBtn">Refresh</button>
+          </div>
+          <input type="text" id="urlInput" placeholder="Enter URL">
+          <button id="goBtn">Go</button>
+        </div>
+        <iframe id="browserView" class="browser-view" allowfullscreen></iframe>
+      </div>
+      
+      <div class="ai-panel">
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input">
+          <input type="text" id="messageInput" placeholder="Ask AI to control the browser...">
+          <button id="sendBtn">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    // Get elements
+    const sessionIdDisplay = document.getElementById('sessionIdDisplay');
+    const statusText = document.getElementById('statusText');
+    const browserView = document.getElementById('browserView');
+    const backBtn = document.getElementById('backBtn');
+    const forwardBtn = document.getElementById('forwardBtn');
+    const refreshBtn = document.getElementById('refreshBtn');
+    const urlInput = document.getElementById('urlInput');
+    const goBtn = document.getElementById('goBtn');
+    const chatMessages = document.getElementById('chatMessages');
+    const messageInput = document.getElementById('messageInput');
+    const sendBtn = document.getElementById('sendBtn');
+    
+    // Get session ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const sessionId = urlParams.get('sessionId');
+    
+    if (!sessionId) {
+      statusText.textContent = 'Error: No session ID provided';
+      // Redirect to index page after 3 seconds
+      setTimeout(() => {
+        window.location.href = '/';
+      }, 3000);
+    } else {
+      sessionIdDisplay.textContent = `Session ID: ${sessionId}`;
+      
+      // Load browser view
+      browserView.src = `/view/${sessionId}`;
+      
+      // Socket.io connection
+      const socket = io();
+      
+      // Join session room
+      socket.emit('join-session', sessionId);
+      
+      // Connect socket events
+      socket.on('connect', () => {
+        statusText.textContent = 'Connected';
+      });
+      
+      socket.on('disconnect', () => {
+        statusText.textContent = 'Disconnected';
+      });
+      
+      // Browser navigation
+      backBtn.addEventListener('click', () => {
+        socket.emit('browser-command', {
+          sessionId,
+          command: 'back'
+        });
+      });
+      
+      forwardBtn.addEventListener('click', () => {
+        socket.emit('browser-command', {
+          sessionId,
+          command: 'forward'
+        });
+      });
+      
+      refreshBtn.addEventListener('click', () => {
+        socket.emit('browser-command', {
+          sessionId,
+          command: 'refresh'
+        });
+      });
+      
+      goBtn.addEventListener('click', () => {
+        const url = urlInput.value;
+        if (url) {
+          socket.emit('browser-command', {
+            sessionId,
+            command: 'navigate',
+            params: { url }
+          });
         }
-
-        // Initialize browser frame
-        document.getElementById('browserFrame').src = `/view/${sessionId}`;
-
-        async function updateElementList() {
-            try {
-                const response = await fetch(`/api/browser/${sessionId}/elements`);
-                const elements = await response.json();
-                
-                const elementList = document.getElementById('elementList');
-                elementList.innerHTML = '<h4>Clickable Elements</h4>';
-                
-                elements.forEach(element => {
-                    const div = document.createElement('div');
-                    div.className = 'element-item';
-                    div.textContent = `${element.tag}: ${element.text || '[no text]'}`;
-                    div.onclick = () => highlightElement(element.boundingBox);
-                    elementList.appendChild(div);
-                });
-            } catch (error) {
-                console.error('Error fetching elements:', error);
-            }
+      });
+      
+      urlInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          const url = urlInput.value;
+          if (url) {
+            socket.emit('browser-command', {
+              sessionId,
+              command: 'navigate',
+              params: { url }
+            });
+          }
         }
-
-        function highlightElement(boundingBox) {
-            const container = document.getElementById('highlightContainer');
-            container.innerHTML = '';
-            
-            const highlight = document.createElement('div');
-            highlight.className = 'highlight-overlay';
-            highlight.style.left = boundingBox.x + 'px';
-            highlight.style.top = boundingBox.y + 'px';
-            highlight.style.width = boundingBox.width + 'px';
-            highlight.style.height = boundingBox.height + 'px';
-            
-            container.appendChild(highlight);
+      });
+      
+      // AI Chat
+      sendBtn.addEventListener('click', sendMessage);
+      messageInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          sendMessage();
         }
-
-        async function executeAICommand() {
-            const command = document.getElementById('aiCommand').value;
-            const status = document.getElementById('status');
-            
-            try {
-                status.textContent = 'Executing command...';
-                
-                const response = await fetch('/api/ai/command', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ sessionId, command })
-                });
-                
-                const result = await response.json();
-                
-                if (result.success) {
-                    status.textContent = 'Command executed successfully';
-                    // Update element list after command execution
-                    await updateElementList();
-                } else {
-                    status.textContent = `Error: ${result.error}`;
-                }
-            } catch (error) {
-                status.textContent = `Error: ${error.message}`;
-            }
-        }
-
-        // Initial element list update
-        updateElementList();
+      });
+      
+      function sendMessage() {
+        const message = messageInput.value.trim();
+        if (!message) return;
         
-        // Update elements periodically
-        setInterval(updateElementList, 5000);
-    </script>
+        // Add user message to chat
+        addMessage(message, 'user');
+        messageInput.value = '';
+        
+        // Show thinking indicator
+        const thinkingId = addMessage('Thinking...', 'ai');
+        
+        // Send to AI
+        fetch('/api/ai/command', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            sessionId,
+            command: message
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          // Remove thinking message
+          document.getElementById(thinkingId).remove();
+          
+          if (data.error) {
+            addMessage(`Error: ${data.error}`, 'ai');
+          } else {
+            // Add explanation to chat
+            addMessage(data.result.explanation || 'Command executed successfully', 'ai');
+          }
+        })
+        .catch(error => {
+          // Remove thinking message
+          document.getElementById(thinkingId).remove();
+          
+          // Add error message
+          addMessage(`Error: ${error.message}`, 'ai');
+        });
+      }
+      
+      function addMessage(text, sender) {
+        const messageId = 'msg-' + Date.now();
+        const messageElement = document.createElement('div');
+        messageElement.id = messageId;
+        messageElement.className = `message ${sender}-message`;
+        messageElement.textContent = text;
+        
+        chatMessages.appendChild(messageElement);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        
+        return messageId;
+      }
+      
+      // Add welcome message
+      addMessage('Hello! I can help you control the browser. Try asking me to navigate to a website or click on elements.', 'ai');
+    }
+  </script>
 </body>
 </html>

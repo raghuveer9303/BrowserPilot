@@ -1,134 +1,129 @@
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
+const { chromium } = require('playwright');
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
-const { Browser } = require('./browser/browser');
-const { BrowserContext } = require('./browser/context');
-const { Agent } = require('./agent/service');
-const automationController = require('./controllers/automation');
+const { PlaywrightGemini } = require('./playwright-gemini');
 
+// Initialize express app
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-// Global session storage
-global.sessions = {};
+// Session storage
+const sessions = {};
+const aiAgents = {};
 
-// Middleware
-app.use(express.json());
+// Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
+// Add this to your server.js file
+app.use('/vnc', express.static('/usr/share/novnc'));
 
-// Session cleanup interval
-setInterval(() => {
-  const now = Date.now();
-  Object.entries(sessions).forEach(([id, session]) => {
-    if (now - session.lastActivity > 30 * 60 * 1000) { // 30 minutes timeout
-      session.browser.close();
-      delete sessions[id];
-    }
-  });
-}, 5 * 60 * 1000); // Check every 5 minutes
-
-// Routes
-app.use('/api/automation', automationController);
-
-// Add these routes before your API routes
-app.get('/ai-control', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'ai-control.html'));
-});
-
-app.get('/view/:sessionId', (req, res) => {
-    const { sessionId } = req.params;
-    if (!sessions[sessionId]) {
-        return res.status(404).send('Session not found');
-    }
-    res.sendFile(path.join(__dirname, 'public', 'viewer.html'));
-});
-
-// Session management routes
+// In your session creation endpoint
 app.post('/api/session/create', async (req, res) => {
   try {
     const sessionId = uuidv4();
     const { startUrl } = req.body;
     
-    const browser = new Browser({
+    console.log(`Creating session with ID: ${sessionId}, URL: ${startUrl || 'https://example.com'}`);
+    
+    // Launch browser with proper configuration for container environment
+    const browser = await chromium.launch({
+      headless: false,
+      // Don't specify executablePath, let Playwright find it
       args: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
         '--disable-dev-shm-usage',
-        '--start-maximized',
+        '--disable-gpu',
         `--display=:99`
       ]
     });
     
-    const context = await browser.new_context();
+    const context = await browser.newContext();
     const page = await context.newPage();
     
+    try {
+      // Navigate to URL with timeout
+      await page.goto(startUrl || 'https://example.com', { 
+        timeout: 30000,
+        waitUntil: 'domcontentloaded'
+      });
+      console.log(`Successfully navigated to ${startUrl || 'https://example.com'}`);
+    } catch (navigationError) {
+      console.error(`Navigation error: ${navigationError.message}`);
+      // Continue anyway - we'll still create the session
+    }
+    
+    // Store session
     sessions[sessionId] = {
       browser,
       context,
       page,
+      isUserControlled: false,
       lastActivity: Date.now()
     };
     
-    if (startUrl) {
-      await page.goto(startUrl);
-    }
+    console.log(`Session ${sessionId} created successfully`);
     
     res.json({ 
-      sessionId,
+      sessionId: sessionId,
+      viewUrl: `/view/${sessionId}`,
       status: 'created'
     });
+    
+    // Set session timeout
+    setTimeout(() => checkSessionTimeout(sessionId), 60000);
+    
   } catch (error) {
-    console.error('Session creation error:', error);
-    res.status(500).json({ error: error.message });
+    console.error('Failed to create session:', error);
+    res.status(500).json({ error: 'Failed to create browser session: ' + error.message });
   }
 });
 
-// Browser control endpoint
-app.post('/api/browser/:sessionId/action', async (req, res) => {
+
+// AI control interface route
+app.get('/ai-control', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'ai-control.html'));
+});
+
+
+// AI command endpoint
+app.post('/api/ai/command', async (req, res) => {
   try {
-    const { sessionId } = req.params;
-    const { action } = req.body;
+    const { sessionId, command } = req.body;
     
-    if (!sessions[sessionId]) {
+    if (!sessionId || !sessions[sessionId]) {
       return res.status(404).json({ error: 'Session not found' });
     }
     
-    const session = sessions[sessionId];
-    const browserContext = new BrowserContext(session.context);
-    const result = await browserContext.execute_action(action);
+    // Get or create AI agent for this session
+    if (!aiAgents[sessionId]) {
+      aiAgents[sessionId] = new PlaywrightGemini({
+        apiKey: process.env.GEMINI_API_KEY
+      });
+    }
     
-    session.lastActivity = Date.now();
-    res.json(result);
+    const agent = aiAgents[sessionId];
+    await agent.connectToPage(sessions[sessionId].page);
+    
+    // Execute the command
+    const result = await agent.executeCommand(command);
+    
+    // Update last activity timestamp
+    sessions[sessionId].lastActivity = Date.now();
+    
+    res.json({
+      result,
+      status: 'success'
+    });
+    
   } catch (error) {
+    console.error('AI command error:', error);
     res.status(500).json({ error: error.message });
   }
-});
-
-// AI control endpoint
-app.post('/api/ai/command', async (req, res) => {
-  // Existing code...
-  
-  // Add DOM analysis to context
-  const pageAnalysis = await agent.analyzePage();
-  
-  // Execute with enhanced context
-  const result = await agent.executeCommand(command, {
-    pageContext: pageAnalysis
-  });
-  
-  // Return results with DOM information
-  res.json({
-    result,
-    pageAnalysis: {
-      url: pageAnalysis.url,
-      title: pageAnalysis.title,
-      elementCount: pageAnalysis.interactiveElements.length
-    },
-    status: 'success'
-  });
 });
 
 // AI chat endpoint
@@ -136,143 +131,227 @@ app.post('/api/ai/chat', async (req, res) => {
   try {
     const { sessionId, message } = req.body;
     
-    if (!sessions[sessionId]) {
+    if (!sessionId || !sessions[sessionId]) {
       return res.status(404).json({ error: 'Session not found' });
     }
     
-    const session = sessions[sessionId];
-    const browserContext = new BrowserContext(session.context);
-    const agent = new Agent(browserContext);
+    // Get or create AI agent for this session
+    if (!aiAgents[sessionId]) {
+      aiAgents[sessionId] = new PlaywrightGemini({
+        apiKey: process.env.GEMINI_API_KEY
+      });
+    }
     
-    const result = await agent.run(command);
+    const agent = aiAgents[sessionId];
+    await agent.connectToPage(sessions[sessionId].page);
     
-    session.lastActivity = Date.now();
-    res.json(result);
+    // Chat with the AI
+    const response = await agent.chat([
+      { role: 'user', content: message }
+    ]);
+    
+    // Update last activity timestamp
+    sessions[sessionId].lastActivity = Date.now();
+    
+    res.json({
+      response,
+      status: 'success'
+    });
+    
   } catch (error) {
+    console.error('AI chat error:', error);
     res.status(500).json({ error: error.message });
   }
 });
 
-// Add this route with the other API endpoints
-app.get('/api/browser/:sessionId/elements', async (req, res) => {
-    try {
-        const { sessionId } = req.params;
-        
-        if (!sessions[sessionId]) {
-            return res.status(404).json({ error: 'Session not found' });
-        }
-        
-        const session = sessions[sessionId];
-        const browserContext = new BrowserContext(session.context);
-        const elements = await browserContext.get_clickable_elements();
-        
-        res.json(elements);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
+// Clean up AI agents when sessions are closed
+const originalCleanupSession = cleanupSession;
+cleanupSession = async function(sessionId) {
+  if (aiAgents[sessionId]) {
+    delete aiAgents[sessionId];
+  }
+  await originalCleanupSession(sessionId);
+};
+
+
+
+app.post('/api/session/:sessionId/control', async (req, res) => {
+  const { sessionId } = req.params;
+  const { enable } = req.body;
+  
+  if (!sessions[sessionId]) {
+    return res.status(404).json({ error: 'Session not found' });
+  }
+  
+  sessions[sessionId].isUserControlled = enable;
+  res.json({ status: 'success', isUserControlled: enable });
 });
 
-// Add these API endpoints
-app.post('/api/ai/analyze', async (req, res) => {
-    try {
-        const { sessionId } = req.body;
-        if (!sessions[sessionId]) {
-            return res.status(404).json({ error: 'Session not found' });
-        }
-
-        const session = sessions[sessionId];
-        const browserContext = new BrowserContext(session.context);
-        const elements = await browserContext.get_clickable_elements();
-
-        res.json({
-            success: true,
-            elements: elements,
-            url: await session.page.url(),
-            title: await session.page.title()
-        });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
+app.post('/api/session/:sessionId/execute', async (req, res) => {
+  const { sessionId } = req.params;
+  const { actions } = req.body;
+  
+  if (!sessions[sessionId]) {
+    return res.status(404).json({ error: 'Session not found' });
+  }
+  
+  if (sessions[sessionId].isUserControlled) {
+    return res.status(400).json({ error: 'Session is in user control mode' });
+  }
+  
+  try {
+    const { page } = sessions[sessionId];
+    const results = [];
+    
+    for (const action of actions) {
+      let result;
+      
+      switch (action.type) {
+        case 'click':
+          await page.click(action.selector);
+          result = { status: 'success', action: 'click' };
+          break;
+        case 'type':
+          await page.fill(action.selector, action.value);
+          result = { status: 'success', action: 'type' };
+          break;
+        case 'extract':
+          const extracted = await page.evaluate((selector) => {
+            return document.querySelector(selector)?.innerText || null;
+          }, action.selector);
+          result = { status: 'success', action: 'extract', data: extracted };
+          break;
+        default:
+          result = { status: 'error', message: 'Unknown action type' };
+      }
+      
+      results.push(result);
     }
+    
+    // Update last activity
+    sessions[sessionId].lastActivity = Date.now();
+    
+    res.json({ results });
+    
+  } catch (error) {
+    console.error('Failed to execute actions:', error);
+    res.status(500).json({ error: 'Failed to execute actions' });
+  }
 });
 
-app.post('/api/ai/highlight', async (req, res) => {
-    try {
-        const { sessionId, selector } = req.body;
-        if (!sessions[sessionId]) {
-            return res.status(404).json({ error: 'Session not found' });
-        }
-
-        const session = sessions[sessionId];
-        const browserContext = new BrowserContext(session.context);
-        await browserContext.highlightElement(selector);
-
-        res.json({ success: true });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
+app.get('/view/:sessionId', (req, res) => {
+  const { sessionId } = req.params;
+  
+  if (!sessions[sessionId]) {
+    return res.status(404).send('Session not found');
+  }
+  
+  res.sendFile(path.join(__dirname, 'public', 'viewer.html'));
 });
 
-// WebSocket connection handling
+app.delete('/api/session/:sessionId', async (req, res) => {
+  const { sessionId } = req.params;
+  
+  if (!sessions[sessionId]) {
+    return res.status(404).json({ error: 'Session not found' });
+  }
+  
+  await cleanupSession(sessionId);
+  res.json({ status: 'terminated' });
+});
+
+// Socket.io for real-time communication
 io.on('connection', (socket) => {
   console.log('Client connected');
+  let currentSessionId = null;
   
   socket.on('join-session', (sessionId) => {
+    currentSessionId = sessionId;
+    socket.join(sessionId);
+    console.log(`Client joined session: ${sessionId}`);
+    
     if (sessions[sessionId]) {
-      socket.join(sessionId);
-      socket.emit('session-joined', { status: 'connected' });
+      sessions[sessionId].lastActivity = Date.now();
     }
   });
   
   socket.on('browser-command', async (data) => {
+    const { sessionId, command, params } = data;
+    
+    if (!sessions[sessionId] || !sessions[sessionId].isUserControlled) {
+      socket.emit('error', { message: 'Session not found or not in user control mode' });
+      return;
+    }
+    
     try {
-      const { sessionId, command, params } = data;
+      const { page } = sessions[sessionId];
       
-      if (!sessions[sessionId]) {
-        socket.emit('error', { message: 'Session not found' });
-        return;
-      }
-      
-      const session = sessions[sessionId];
-      const browserContext = new BrowserContext(session.context);
-      
-      let result;
       switch (command) {
-        case 'back':
-          await browserContext.go_back();
-          result = { status: 'success' };
+        case 'click':
+          await page.click(params.selector);
           break;
-        case 'forward':
-          await session.page.goForward();
-          result = { status: 'success' };
-          break;
-        case 'refresh':
-          await browserContext.refresh_page();
-          result = { status: 'success' };
+        case 'type':
+          await page.fill(params.selector, params.text);
           break;
         case 'navigate':
-          await browserContext.navigate_to(params.url);
-          result = { status: 'success' };
+          await page.goto(params.url);
           break;
-        default:
-          throw new Error(`Unknown command: ${command}`);
+        case 'back':
+          await page.goBack();
+          break;
+        case 'forward':
+          await page.goForward();
+          break;
+        case 'refresh':
+          await page.reload();
+          break;
       }
       
-      session.lastActivity = Date.now();
-      socket.emit('command-result', result);
+      sessions[sessionId].lastActivity = Date.now();
+      socket.emit('command-result', { status: 'success' });
+      
     } catch (error) {
-      socket.emit('error', { message: error.message });
+      console.error('Browser command error:', error);
+      socket.emit('command-result', { status: 'error', message: error.message });
     }
+  });
+  
+  socket.on('disconnect', () => {
+    console.log('Client disconnected');
   });
 });
 
-// Viewer route
-app.get('/view/:sessionId', (req, res) => {
-  const { sessionId } = req.params;
-  if (!sessions[sessionId]) {
-    return res.status(404).send('Session not found');
+// Helper functions
+async function cleanupSession(sessionId) {
+  if (sessions[sessionId]) {
+    try {
+      const { browser } = sessions[sessionId];
+      await browser.close();
+    } catch (error) {
+      console.error(`Error closing browser for session ${sessionId}:`, error);
+    }
+    
+    delete sessions[sessionId];
+    console.log(`Session ${sessionId} cleaned up`);
   }
-  res.sendFile(path.join(__dirname, 'public', 'viewer.html'));
-});
+}
+
+function checkSessionTimeout(sessionId) {
+  const session = sessions[sessionId];
+  if (!session) return;
+  
+  const now = Date.now();
+  const inactiveTime = now - session.lastActivity;
+  
+  // Close sessions inactive for more than 30 minutes
+  if (inactiveTime > 30 * 60 * 1000) {
+    console.log(`Session ${sessionId} timed out after inactivity`);
+    cleanupSession(sessionId);
+  } else {
+    // Check again later
+    setTimeout(() => checkSessionTimeout(sessionId), 60000);
+  }
+}
 
 // Start server
 const PORT = process.env.PORT || 3000;
