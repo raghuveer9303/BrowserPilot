@@ -109,8 +109,32 @@ app.post('/api/browser/:sessionId/action', async (req, res) => {
 
 // AI control endpoint
 app.post('/api/ai/command', async (req, res) => {
+  // Existing code...
+  
+  // Add DOM analysis to context
+  const pageAnalysis = await agent.analyzePage();
+  
+  // Execute with enhanced context
+  const result = await agent.executeCommand(command, {
+    pageContext: pageAnalysis
+  });
+  
+  // Return results with DOM information
+  res.json({
+    result,
+    pageAnalysis: {
+      url: pageAnalysis.url,
+      title: pageAnalysis.title,
+      elementCount: pageAnalysis.interactiveElements.length
+    },
+    status: 'success'
+  });
+});
+
+// AI chat endpoint
+app.post('/api/ai/chat', async (req, res) => {
   try {
-    const { sessionId, command } = req.body;
+    const { sessionId, message } = req.body;
     
     if (!sessions[sessionId]) {
       return res.status(404).json({ error: 'Session not found' });
