@@ -5,44 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Browser Automation Platform</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    h1 {
-      color: #333;
-    }
-    .card {
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-    button {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #45a049;
-    }
-    input, select {
-      padding: 8px;
-      margin-bottom: 10px;
-      width: 100%;
-    }
-    #results {
-      background-color: #f5f5f5;
-      padding: 15px;
-      border-radius: 4px;
-      margin-top: 20px;
-      white-space: pre-wrap;
-    }
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+    h1 { color: #333; }
+    .card { border: 1px solid #ddd; border-radius: 4px; padding: 20px; margin-bottom: 20px; }
+    button { background-color: #4CAF50; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; }
+    button:hover { background-color: #45a049; }
+    input, select { padding: 8px; margin-bottom: 10px; width: 100%; }
+    #results { background-color: #f5f5f5; padding: 15px; border-radius: 4px; margin-top: 20px; white-space: pre-wrap; }
   </style>
 </head>
 <body>
@@ -88,7 +57,6 @@
     <button id="clearActionsBtn">Clear Actions</button>
   </div>
   
-  
   <div class="card">
     <h2>View & Control</h2>
     <div>
@@ -107,6 +75,7 @@
   
   <div id="results"></div>
   
+  <script src="/socket.io/socket.io.js"></script>
   <script>
     // Elements
     const startUrlInput = document.getElementById('startUrl');
@@ -127,93 +96,68 @@
     // Store actions
     let actions = [];
     
-    // Show/hide value field based on action type
-    actionTypeSelect.addEventListener('change', function() {
+    // Adjust value field based on action type
+    actionTypeSelect.addEventListener('change', () => {
       valueField.style.display = actionTypeSelect.value === 'type' ? 'block' : 'none';
     });
-    
-    // Initialize value field visibility
     valueField.style.display = actionTypeSelect.value === 'type' ? 'block' : 'none';
     
     // Create session
-    createSessionBtn.addEventListener('click', async function() {
-    try {
-    resultsDiv.textContent = "Creating session...";
-    
-    const response = await fetch('/api/session/create', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        startUrl: startUrlInput.value
-      })
-    });
-    
-    const data = await response.json();
-    console.log("Session creation response:", data);
-    
-    if (data.sessionId) {
-      sessionIdInput.value = data.sessionId;
-      viewSessionIdInput.value = data.sessionId;
-      
-      resultsDiv.textContent = `Session created!\nSession ID: ${data.sessionId}\nView URL: ${data.viewUrl}`;
-    } else {
-      resultsDiv.textContent = `Error: No session ID returned. Response: ${JSON.stringify(data)}`;
-    }
-    } catch (error) {
-    console.error("Session creation error:", error);
-    resultsDiv.textContent = `Error: ${error.message}`;
-    }
+    createSessionBtn.addEventListener('click', async () => {
+      resultsDiv.textContent = "Creating session...";
+      try {
+        const response = await fetch('/api/session/create', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ startUrl: startUrlInput.value })
+        });
+        const data = await response.json();
+        if (data.sessionId) {
+          sessionIdInput.value = data.sessionId;
+          viewSessionIdInput.value = data.sessionId;
+          resultsDiv.textContent = `Session created!\nSession ID: ${data.sessionId}\nView URL: ${data.viewUrl || '/view/' + data.sessionId}`;
+        } else {
+          resultsDiv.textContent = `Error: No session ID returned. Response: ${JSON.stringify(data)}`;
+        }
+      } catch (error) {
+        resultsDiv.textContent = `Error: ${error.message}`;
+      }
     });
     
     // Add action
-    addActionBtn.addEventListener('click', function() {
+    addActionBtn.addEventListener('click', () => {
       const action = {
         type: actionTypeSelect.value,
         selector: selectorInput.value
       };
-      
       if (action.type === 'type') {
         action.value = valueInput.value;
       }
-      
       actions.push(action);
-      
-      // Add to list
       const li = document.createElement('li');
-      if (action.type === 'click') {
-        li.textContent = `Click on "${action.selector}"`;
-      } else if (action.type === 'type') {
-        li.textContent = `Type "${action.value}" into "${action.selector}"`;
-      } else if (action.type === 'extract') {
-        li.textContent = `Extract text from "${action.selector}"`;
-      }
-      
+      if (action.type === 'click') li.textContent = `Click on "${action.selector}"`;
+      else if (action.type === 'type') li.textContent = `Type "${action.value}" into "${action.selector}"`;
+      else if (action.type === 'extract') li.textContent = `Extract text from "${action.selector}"`;
       actionsList.appendChild(li);
-      
-      // Clear inputs
-      selectorInput.value = '';
-      valueInput.value = '';
+      selectorInput.value = ''; valueInput.value = '';
     });
     
     // Run actions
-    runActionsBtn.addEventListener('click', async function() {
+    runActionsBtn.addEventListener('click', async () => {
       if (!sessionIdInput.value) {
         resultsDiv.textContent = 'Please enter a session ID';
         return;
       }
-      
       if (actions.length === 0) {
         resultsDiv.textContent = 'Please add some actions';
         return;
       }
-      
       try {
         const response = await fetch(`/api/session/${sessionIdInput.value}/execute`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ actions })
         });
-        
         const data = await response.json();
         resultsDiv.textContent = JSON.stringify(data, null, 2);
       } catch (error) {
@@ -222,33 +166,27 @@
     });
     
     // Clear actions
-    clearActionsBtn.addEventListener('click', function() {
+    clearActionsBtn.addEventListener('click', () => {
       actions = [];
       actionsList.innerHTML = '';
     });
     
     // View session
-    viewSessionBtn.addEventListener('click', function() {
+    viewSessionBtn.addEventListener('click', () => {
       if (!viewSessionIdInput.value) {
         resultsDiv.textContent = 'Please enter a session ID';
         return;
       }
-      
       window.open(`/view/${viewSessionIdInput.value}`, '_blank');
     });
-  </script>
-  <script>
-    // Add event listener for AI control button
-    document.getElementById('aiControlBtn').addEventListener('click', function() {
-      const sessionId = document.getElementById('viewSessionId').value;
-      if (sessionId) {
-        window.open(`/ai-control?sessionId=${sessionId}`, '_blank');
-      } else {
-        document.getElementById('results').textContent = 'Please enter a session ID';
-      }
+    
+    // AI control button
+    document.getElementById('aiControlBtn').addEventListener('click', () => {
+      const sessionId = viewSessionIdInput.value;
+      if (sessionId) window.open(`/ai-control?sessionId=${sessionId}`, '_blank');
+      else resultsDiv.textContent = 'Please enter a session ID';
     });
-  </script>
-  <script>
+    
     // Fetch active sessions
     async function fetchSessions() {
       const response = await fetch('/api/sessions');
@@ -271,6 +209,5 @@
     document.getElementById('refreshSessionsBtn').addEventListener('click', fetchSessions);
     fetchSessions();
   </script>
-
 </body>
 </html>
