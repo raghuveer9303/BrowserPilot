@@ -99,6 +99,12 @@
     <button id="aiControlBtn">Open AI Control</button>
   </div>
   
+  <div class="card">
+    <h2>Active Sessions</h2>
+    <ul id="activeSessionsList"></ul>
+    <button id="refreshSessionsBtn">Refresh Sessions</button>
+  </div>
+  
   <div id="results"></div>
   
   <script>
@@ -241,6 +247,29 @@
         document.getElementById('results').textContent = 'Please enter a session ID';
       }
     });
+  </script>
+  <script>
+    // Fetch active sessions
+    async function fetchSessions() {
+      const response = await fetch('/api/sessions');
+      const sessions = await response.json();
+      const list = document.getElementById('activeSessionsList');
+      list.innerHTML = '';
+      sessions.forEach(session => {
+        const li = document.createElement('li');
+        li.textContent = `Session ID: ${session.id}, URL: ${session.url}`;
+        const terminateBtn = document.createElement('button');
+        terminateBtn.textContent = 'Terminate';
+        terminateBtn.addEventListener('click', async () => {
+          await fetch(`/api/session/${session.id}`, { method: 'DELETE' });
+          fetchSessions();
+        });
+        li.appendChild(terminateBtn);
+        list.appendChild(li);
+      });
+    }
+    document.getElementById('refreshSessionsBtn').addEventListener('click', fetchSessions);
+    fetchSessions();
   </script>
 
 </body>

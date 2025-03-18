@@ -180,6 +180,17 @@
           <input type="text" id="messageInput" placeholder="Ask AI to control the browser...">
           <button id="sendBtn">Send</button>
         </div>
+        <div class="browser-state">
+          <h3>Browser State</h3>
+          <p id="browserState">URL: <span id="currentUrl"></span></p>
+          <p>Title: <span id="currentTitle"></span></p>
+          <button id="fetchStateBtn">Fetch State</button>
+        </div>
+        <div class="clickable-elements">
+          <h3>Clickable Elements</h3>
+          <button id="fetchClickableElementsBtn">Fetch Clickable Elements</button>
+          <ul id="clickableElementsList"></ul>
+        </div>
       </div>
     </div>
   </div>
@@ -341,6 +352,27 @@
       // Add welcome message
       addMessage('Hello! I can help you control the browser. Try asking me to navigate to a website or click on elements.', 'ai');
     }
+    
+    // Fetch browser state
+    document.getElementById('fetchStateBtn').addEventListener('click', async () => {
+      const response = await fetch('/api/browser/state');
+      const state = await response.json();
+      document.getElementById('currentUrl').textContent = state.url;
+      document.getElementById('currentTitle').textContent = state.title;
+    });
+
+    // Fetch clickable elements
+    document.getElementById('fetchClickableElementsBtn').addEventListener('click', async () => {
+      const response = await fetch('/api/browser/clickable-elements');
+      const elements = await response.json();
+      const list = document.getElementById('clickableElementsList');
+      list.innerHTML = '';
+      elements.forEach((el, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${el.tag} - ${el.text}`;
+        list.appendChild(li);
+      });
+    });
   </script>
 </body>
 </html>

@@ -5,6 +5,8 @@ const { chromium } = require('playwright');
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 const { PlaywrightGemini } = require('./playwright-gemini');
+const { Agent } = require('./agent/service'); // Import the Agent class
+const { BrowserContext } = require('./browser/context'); // Import BrowserContext
 
 // Initialize express app
 const app = express();
@@ -102,26 +104,43 @@ app.get('/ai-control', (req, res) => {
 
 // AI command endpoint
 app.post('/api/ai/command', async (req, res) => {
-  // Existing code...
-  
-  // Add DOM analysis to context
-  const pageAnalysis = await agent.analyzePage();
-  
-  // Execute with enhanced context
-  const result = await agent.executeCommand(command, {
-    pageContext: pageAnalysis
-  });
-  
-  // Return results with DOM information
-  res.json({
-    result,
-    pageAnalysis: {
-      url: pageAnalysis.url,
-      title: pageAnalysis.title,
-      elementCount: pageAnalysis.interactiveElements.length
-    },
-    status: 'success'
-  });
+  try {
+    const { sessionId, command } = req.body;
+
+    if (!sessionId || !sessions[sessionId]) {
+      return res.status(404).json({ error: 'Session not found' });
+    }
+
+    const session = sessions[sessionId];
+
+    // Initialize the agent if not already done
+    if (!aiAgents[sessionId]) {
+      const browserContext = new BrowserContext(session.context);
+      aiAgents[sessionId] = new Agent(browserContext);
+    }
+
+    const agent = aiAgents[sessionId];
+
+    // Add DOM analysis to context
+    const pageAnalysis = await agent.analyzePage();
+
+    // Execute with enhanced context
+    const result = await agent.run(command);
+
+    // Return results with DOM information
+    res.json({
+      result,
+      pageAnalysis: {
+        url: pageAnalysis.url,
+        title: pageAnalysis.title,
+        elementCount: pageAnalysis.interactiveElements.length,
+      },
+      status: 'success',
+    });
+  } catch (error) {
+    console.error('AI command error:', error);
+    res.status(500).json({ error: error.message });
+  }
 });
 
 // AI chat endpoint

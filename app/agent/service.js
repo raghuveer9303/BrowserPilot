@@ -69,6 +69,27 @@ class Agent {
     }
     // Add more validation as needed
   }
+
+  async analyzePage() {
+    const state = await this.browserContext.get_state(); // Get the current page state
+    const clickableElements = await this.browserContext.get_clickable_elements(); // Fetch clickable elements
+    return {
+      url: state.url,
+      title: state.title,
+      interactiveElements: clickableElements,
+    };
+  }
+
+  async executeCommand(command, context = {}) {
+    // Example: Handle a "navigate" command
+    if (command.type === 'navigate') {
+      await this.browserContext.navigate_to(command.url);
+      return { success: true, action: 'navigate', url: command.url };
+    }
+
+    // Add more command handling logic as needed
+    throw new Error(`Unknown command type: ${command.type}`);
+  }
 }
 
 module.exports = { Agent };

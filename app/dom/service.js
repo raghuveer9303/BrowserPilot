@@ -92,6 +92,24 @@ class DomService {
       });
     }, elements);
   }
+
+  async highlightElement(selector) {
+    await this.page.evaluate((selector) => {
+      const element = document.querySelector(selector);
+      if (element) {
+        const highlight = document.createElement('div');
+        highlight.style.position = 'absolute';
+        highlight.style.border = '2px solid red';
+        highlight.style.zIndex = '10000';
+        const rect = element.getBoundingClientRect();
+        highlight.style.top = `${rect.top}px`;
+        highlight.style.left = `${rect.left}px`;
+        highlight.style.width = `${rect.width}px`;
+        highlight.style.height = `${rect.height}px`;
+        document.body.appendChild(highlight);
+      }
+    }, selector);
+  }
 }
 
 module.exports = { DomService };

@@ -76,12 +76,17 @@
         <button id="backBtn" disabled>Back</button>
         <button id="forwardBtn" disabled>Forward</button>
         <button id="refreshBtn" disabled>Refresh</button>
+        <button id="screenshotBtn">Take Screenshot</button>
       </div>
       <input type="text" id="urlInput" placeholder="Enter URL" disabled>
       <button id="goBtn" disabled>Go</button>
       <div class="status" id="statusText">Loading...</div>
     </div>
     <iframe id="noVNC" class="viewer" allowfullscreen></iframe>
+    <div class="screenshot-display">
+      <h3>Screenshot</h3>
+      <img id="screenshotImage" alt="Screenshot will appear here">
+    </div>
   </div>
   
   <script src="/socket.io/socket.io.js"></script>
@@ -100,6 +105,8 @@
       const goBtn = document.getElementById('goBtn');
       const statusText = document.getElementById('statusText');
       const noVNC = document.getElementById('noVNC');
+      const screenshotBtn = document.getElementById('screenshotBtn');
+      const screenshotImage = document.getElementById('screenshotImage');
       
       // Set noVNC iframe src
       noVNC.src = `http://${window.location.hostname}:6080/vnc.html?password=password&autoconnect=true&resize=remote`;
@@ -189,6 +196,14 @@
             sendBrowserCommand('navigate', { url });
           }
         }
+      });
+      
+      // Take screenshot
+      screenshotBtn.addEventListener('click', async () => {
+        const response = await fetch('/api/browser/screenshot');
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+        screenshotImage.src = url;
       });
       
       // Socket events

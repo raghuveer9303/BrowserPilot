@@ -66,6 +66,22 @@ class BrowserContext {
     const page = await this.get_current_page();
     return await page.screenshot();
   }
+
+  async get_clickable_elements() {
+    return await this.currentPage.evaluate(() => {
+      const elements = document.querySelectorAll('a, button, [role="button"], input[type="submit"]');
+      return Array.from(elements).map((el) => ({
+        tag: el.tagName.toLowerCase(),
+        text: el.innerText || el.value || '',
+        attributes: {
+          id: el.id,
+          class: el.className,
+          href: el.href,
+          type: el.type,
+        },
+      }));
+    });
+  }
 }
 
 module.exports = { BrowserContext };
