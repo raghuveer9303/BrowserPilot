@@ -92,38 +92,26 @@ app.get('/ai-control', (req, res) => {
 
 // AI command endpoint
 app.post('/api/ai/command', async (req, res) => {
-  try {
-    const { sessionId, command } = req.body;
-    
-    if (!sessionId || !sessions[sessionId]) {
-      return res.status(404).json({ error: 'Session not found' });
-    }
-    
-    // Get or create AI agent for this session
-    if (!aiAgents[sessionId]) {
-      aiAgents[sessionId] = new PlaywrightGemini({
-        apiKey: process.env.GEMINI_API_KEY
-      });
-    }
-    
-    const agent = aiAgents[sessionId];
-    await agent.connectToPage(sessions[sessionId].page);
-    
-    // Execute the command
-    const result = await agent.executeCommand(command);
-    
-    // Update last activity timestamp
-    sessions[sessionId].lastActivity = Date.now();
-    
-    res.json({
-      result,
-      status: 'success'
-    });
-    
-  } catch (error) {
-    console.error('AI command error:', error);
-    res.status(500).json({ error: error.message });
-  }
+  // Existing code...
+  
+  // Add DOM analysis to context
+  const pageAnalysis = await agent.analyzePage();
+  
+  // Execute with enhanced context
+  const result = await agent.executeCommand(command, {
+    pageContext: pageAnalysis
+  });
+  
+  // Return results with DOM information
+  res.json({
+    result,
+    pageAnalysis: {
+      url: pageAnalysis.url,
+      title: pageAnalysis.title,
+      elementCount: pageAnalysis.interactiveElements.length
+    },
+    status: 'success'
+  });
 });
 
 // AI chat endpoint
