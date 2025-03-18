@@ -67,19 +67,52 @@ class BrowserContext {
     return await page.screenshot();
   }
 
+  async execute_action(action) {
+    const page = await this.get_current_page();
+    
+    switch(action.type) {
+      case 'click':
+        await page.click(action.selector);
+        return { success: true, action: 'click' };
+        
+      case 'input':
+        await page.fill(action.selector, action.text);
+        return { success: true, action: 'input' };
+        
+      case 'navigate':
+        await page.goto(action.url);
+        return { success: true, action: 'navigate' };
+        
+      case 'extract':
+        const content = await page.$eval(action.selector, el => el.textContent);
+        return { success: true, action: 'extract', content };
+        
+      default:
+        throw new Error(`Unknown action type: ${action.type}`);
+    }
+  }
+
   async get_clickable_elements() {
-    return await this.currentPage.evaluate(() => {
+    const page = await this.get_current_page();
+    return await page.evaluate(() => {
       const elements = document.querySelectorAll('a, button, [role="button"], input[type="submit"]');
       return Array.from(elements).map((el) => ({
         tag: el.tagName.toLowerCase(),
         text: el.innerText || el.value || '',
+        selector: generateUniqueSelector(el),
         attributes: {
           id: el.id,
           class: el.className,
           href: el.href,
           type: el.type,
-        },
+        }
       }));
+
+      function generateUniqueSelector(el) {
+        if (el.id) return `#${el.id}`;
+        if (el.className) return `.${el.className.split(' ')[0]}`;
+        return `${el.tagName.toLowerCase()}`;
+      }
     });
   }
 }

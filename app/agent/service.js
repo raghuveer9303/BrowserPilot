@@ -1,25 +1,44 @@
-// Core agent functionality
-// - Agent class with constructor, initialization logic
-// - run() method to execute tasks
-// - step() method for taking individual steps
-// - get_next_action() to query LLM
-// - multi_act() to execute actions
-// - _validate_output() for checking results
-// - Planning/reasoning functions
+const { MessageManager } = require('../message_manager/service');
+const { PlaywrightGemini } = require('../playwright-gemini');
 
 class Agent {
   constructor(browserContext) {
     this.browserContext = browserContext;
-    this.history = [];
     this.messageManager = new MessageManager();
+    this.systemPrompt = `You are a browser automation assistant. You can control the browser by returning valid JSON actions.
+    Available actions:
+    - click: { "type": "click", "selector": "CSS_SELECTOR" }
+    - input: { "type": "input", "selector": "CSS_SELECTOR", "text": "TEXT" }
+    - navigate: { "type": "navigate", "url": "URL" }
+    - extract: { "type": "extract", "selector": "CSS_SELECTOR" }`;
   }
 
   async run(task) {
     try {
-      const result = await this.step(task);
+      // Add system prompt
+      this.messageManager.add_state_message({ role: 'system', content: this.systemPrompt });
+      
+      // Get page state and add to context
+      const state = await this.browserContext.get_state();
+      this.messageManager.add_state_message({
+        url: state.url,
+        title: state.title,
+        elements: await this._getVisibleElements()
+      });
+
+      // Add user task
+      this.messageManager.add_state_message({ role: 'user', content: task });
+
+      // Get LLM action plan
+      const actions = await this._getActionPlan();
+      
+      // Execute actions
+      const results = await this._executeActions(actions);
+
       return {
         success: true,
-        result
+        actions: actions,
+        results: results
       };
     } catch (error) {
       return {
@@ -29,93 +48,41 @@ class Agent {
     }
   }
 
-  async step(task) {
-    // Get current page state
-    const state = await this.browserContext.get_state();
-    
-    // Get next action from LLM
-    const action = await this.get_next_action(state, task);
-    
-    // Execute action(s)
-    const result = await this.multi_act(action);
-    
-    // Validate result
-    this._validate_output(result);
-    
-    return result;
+  async _getVisibleElements() {
+    const elements = await this.browserContext.get_clickable_elements();
+    return elements.map((el, index) => ({
+      index,
+      selector: el.selector,
+      tag: el.tag,
+      text: el.text,
+      isClickable: true
+    }));
   }
 
-  async get_next_action(state, task) {
-    // Add context about the current page state
-    this.messageManager.add_state_message({
-      url: state.url,
-      title: state.title,
-      elements: await this.browserContext.get_clickable_elements()
-    });
-
-    // Add the user's task
-    this.messageManager.add_state_message({
-      task: task
-    });
-
-    // Get LLM response
+  async _getActionPlan() {
     const gemini = new PlaywrightGemini({
       apiKey: process.env.GEMINI_API_KEY
     });
 
     const response = await gemini.chat(this.messageManager.get_messages());
-    return this._parse_llm_response(response);
+    return this._parseActions(response);
   }
 
-  async multi_act(actions) {
+  async _executeActions(actions) {
     const results = [];
     for (const action of actions) {
       const result = await this.browserContext.execute_action(action);
       results.push(result);
-      this.history.push({
-        action,
-        result,
-        timestamp: Date.now()
-      });
     }
     return results;
   }
 
-  _validate_output(result) {
-    if (!result) {
-      throw new Error('Action produced no result');
-    }
-    // Add more validation as needed
-  }
-
-  async analyzePage() {
-    const state = await this.browserContext.get_state(); // Get the current page state
-    const clickableElements = await this.browserContext.get_clickable_elements(); // Fetch clickable elements
-    return {
-      url: state.url,
-      title: state.title,
-      interactiveElements: clickableElements,
-    };
-  }
-
-  async executeCommand(command, context = {}) {
-    // Example: Handle a "navigate" command
-    if (command.type === 'navigate') {
-      await this.browserContext.navigate_to(command.url);
-      return { success: true, action: 'navigate', url: command.url };
-    }
-
-    // Add more command handling logic as needed
-    throw new Error(`Unknown command type: ${command.type}`);
-  }
-
-  _parse_llm_response(response) {
+  _parseActions(response) {
     try {
-      // Parse the LLM response into structured actions
-      const actions = JSON.parse(response);
-      return Array.isArray(actions) ? actions : [actions];
+      const parsed = JSON.parse(response);
+      return Array.isArray(parsed) ? parsed : [parsed];
     } catch (error) {
-      throw new Error(`Invalid LLM response format: ${error.message}`);
+      throw new Error(`Invalid action format: ${error.message}`);
     }
   }
 }
