@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/playwright:v1.41.0-jammy
 ENV DEBIAN_FRONTEND=noninteractive \
     TZ=UTC
 
-# Install required packages
+# Install Python 3.11
 RUN apt-get update && apt-get install -y \
     x11vnc \
     xvfb \
@@ -12,12 +12,19 @@ RUN apt-get update && apt-get install -y \
     net-tools \
     curl \
     tzdata \
-    python3 \
-    python3-pip \
-    python3-venv \
+    software-properties-common \
+    && add-apt-repository ppa:deadsnakes/ppa \
+    && apt-get update \
+    && apt-get install -y python3.11 python3.11-venv python3.11-dev \
     && ln -fs /usr/share/zoneinfo/UTC /etc/localtime \
     && dpkg-reconfigure --frontend noninteractive tzdata \
     && rm -rf /var/lib/apt/lists/*
+    
+# Use Python 3.11 as default
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1
+
+# Install pip for Python 3.11
+RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11
 
 # Set up environment
 ENV DISPLAY=:99
@@ -41,7 +48,8 @@ COPY requirements.txt /opt/app/
 RUN pip install --no-cache-dir -r /opt/app/requirements.txt
 
 # Install browser-use package
-RUN pip install browser-use==0.1.2
+COPY browser_use/browser_use-0.1.40-py3-none-any.whl /app/
+RUN pip install --no-cache-dir /app/browser_use-0.1.40-py3-none-any.whl
 
 # Copy application files
 COPY backend/ /opt/app/backend/

@@ -48,6 +48,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Functions
     function initWebSocket() {
+        if (typeof WebSocketHandler === 'undefined') {
+            console.error('WebSocketHandler not loaded');
+            return;
+        }
+        
         websocketHandler = new WebSocketHandler(
             taskId,
             handleWebSocketMessage,

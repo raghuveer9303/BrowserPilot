@@ -5,7 +5,7 @@
 class VncViewer {
     constructor() {
         // Elements
-        this.vncFrame = document.getElementById('vncViewer');
+        this.vncFrame = document.getElementById('browserFrame');
         this.loadingOverlay = document.getElementById('loadingOverlay');
         this.loadingText = document.getElementById('loadingText');
         this.fullscreenBtn = document.getElementById('fullscreenBtn');
@@ -49,15 +49,11 @@ class VncViewer {
             // Get VNC connection info
             const response = await fetch('/api/vnc_info');
             if (!response.ok) {
-                throw new Error('Failed to get VNC info');
+                throw new Error('Failed to get VNC connection info');
             }
             
             const data = await response.json();
-            const password = encodeURIComponent(data.password || 'browserpilot');
-            const port = data.port || 6080;
-            
-            // Construct noVNC URL
-            const vncUrl = `/static/novnc/vnc.html?host=${window.location.hostname}&port=${port}&path=websockify&autoconnect=true&resize=scale&password=${password}&show_dot=true`;
+            const vncUrl = `/novnc/vnc.html?host=${window.location.hostname}&port=6080&password=${data.password}&autoconnect=true&resize=scale`;
             
             // Load VNC frame
             this.vncFrame.src = vncUrl;

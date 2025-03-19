@@ -35,14 +35,8 @@ class WebSocketHandler {
         this.connection.onmessage = (event) => {
             try {
                 const message = JSON.parse(event.data);
-                
                 if (this.onMessageCallback) {
                     this.onMessageCallback(message);
-                }
-                
-                // Handle status updates specifically
-                if (message.type === 'status' && message.data && message.data.status) {
-                    this._setStatus(message.data.status);
                 }
             } catch (error) {
                 console.error('Failed to parse WebSocket message:', error);
@@ -51,17 +45,13 @@ class WebSocketHandler {
         
         this.connection.onclose = (event) => {
             if (this.status !== 'closed') {
-                console.log(`WebSocket disconnected from task ${this.taskId}. Code: ${event.code}`);
+                console.log(`WebSocket disconnected from task ${this.taskId}`);
                 this._setStatus('disconnected');
                 
-                // Try to reconnect if not explicitly closed and under max retries
                 if (this.retryCount < this.maxRetries) {
                     this.retryCount++;
-                    console.log(`Attempting to reconnect (${this.retryCount}/${this.maxRetries})...`);
-                    
-                    // Exponential backoff
                     setTimeout(() => this.connect(), this.retryDelay);
-                    this.retryDelay = Math.min(this.retryDelay * 1.5, 30000); // Cap at 30s
+                    this.retryDelay = Math.min(this.retryDelay * 1.5, 30000);
                 }
             }
         };

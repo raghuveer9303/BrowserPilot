@@ -3,7 +3,7 @@ from fastapi import WebSocket
 from typing import Dict, List, Any, Optional
 import time
 import logging
-from browser_use import BrowserUse
+from browser_use import Agent as BrowserUse
 from .model import get_model_client
 from .config import Settings
 from .utils.browser_factory import BrowserFactory

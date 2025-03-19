@@ -4,7 +4,7 @@ import time
 import asyncio
 import logging
 from fastapi import WebSocket
-from browser_use import BrowserUse
+from browser_use import Agent as BrowserUse
 from ..config import Settings
 from ..utils.browser_factory import BrowserFactory
 from ..model import get_model_client

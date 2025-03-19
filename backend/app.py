@@ -45,6 +45,13 @@ app.mount("/static", StaticFiles(directory="frontend"), name="static")
 for router in routers:
     app.include_router(router)
 
+
+@app.websocket_route("/websockify")
+async def websockify(websocket):
+    await websocket.accept()
+    # Proxy WebSocket connection to VNC server
+    # You'll need to implement the proxy logic here
+
 # Root endpoint
 @app.get("/", response_class=HTMLResponse)
 async def root():

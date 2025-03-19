@@ -1,4 +1,5 @@
 fastapi==0.110.0
+numpy
 uvicorn==0.27.1
 pydantic==2.6.1
 pydantic-settings==2.1.0
@@ -6,7 +7,6 @@ websockets==12.0
 asyncio==3.4.3
 python-multipart==0.0.7
 aiofiles==23.2.1
-browser-use==0.1.2
 playwright==1.41.0
 requests==2.31.0
 python-dotenv==1.0.1
