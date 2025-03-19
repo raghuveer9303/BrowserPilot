@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrowserPilot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: #f9fafb;
+        }
+        
+        .container {
+            max-width: 1200px;
+        }
+        
+        .browser-view {
+            aspect-ratio: 16/9;
+            background-color: #f3f4f6;
+            border-radius: 0.5rem;
+        }
+        
+        .step-log {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+    <div class="container mx-auto px-4 py-6">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-8">
+            <div class="flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.5a1 1 0 00-.8.4l-1.5 2a1 1 0 01-1.6 0l-1.5-2a1 1 0 00-.8-.4H5a2 2 0 01-2-2V5zm11 4a1 1 0 10-2 0v1H9a1 1 0 100 2h3v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V9z" clip-rule="evenodd" />
+                </svg>
+                <h1 class="text-2xl font-bold">BrowserPilot</h1>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Left Panel - Task Form -->
+            <div class="bg-white rounded-lg shadow-sm p-4">
+                <h2 class="text-lg font-medium mb-4">Create Task</h2>
+                <form id="taskForm">
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Instructions</label>
+                            <textarea id="instructions" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" rows="3" placeholder="E.g., Search for Claude AI and summarize the first result" required></textarea>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Starting URL</label>
+                            <input type="url" id="url" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="https://example.com">
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Model</label>
+                                <select id="model" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                    <option value="default">Default</option>
+                                    <option value="claude">Claude</option>
+                                    <option value="gpt-4">GPT-4</option>
+                                    <option value="gemini">Gemini</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Max Steps</label>
+                                <input type="number" id="maxSteps" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" value="10" min="1" max="50">
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="w-full py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-md transition-colors duration-200">
+                            Run Task
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="mt-6">
+                    <h2 class="text-lg font-medium mb-3">Active Tasks</h2>
+                    <div id="taskList" class="space-y-2">
+                        <div class="text-sm text-gray-500 text-center py-4">No active tasks</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Panel - Browser View and Steps -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Browser View -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                    <div class="flex justify-between items-center p-4 border-b">
+                        <h2 id="currentTaskTitle" class="text-lg font-medium">Browser View</h2>
+                        <button id="showVncBtn" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-md transition-colors duration-200">
+                            Show Browser
+                        </button>
+                    </div>
+                    <div class="relative browser-view">
+                        <iframe id="browserView" class="absolute inset-0 w-full h-full" style="display: none;"></iframe>
+                        <div id="taskDetails" class="absolute inset-0 flex items-center justify-center p-6">
+                            <div class="text-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-indigo-300 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                <p class="text-gray-500">Submit a task to begin browser automation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Steps Log -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                    <div class="p-4 border-b">
+                        <h2 class="text-lg font-medium">Execution Steps</h2>
+                    </div>
+                    <div id="stepLog" class="step-log p-4 space-y-2">
+                        <div class="text-sm text-gray-500 text-center py-4">Task steps will appear here</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Templates -->
+    <template id="task-card-template">
+        <div class="task-card bg-gray-50 rounded-md border border-gray-200 overflow-hidden">
+            <div class="p-3">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="font-medium text-sm truncate" title="{taskId}">{taskIdShort}</span>
+                    <span class="px-2 py-0.5 text-xs font-medium rounded-full bg-blue-100 text-blue-800">{status}</span>
+                </div>
+                <div class="flex space-x-2">
+                    <button class="view-task-btn flex-1 py-1 px-2 text-xs font-medium bg-gray-200 hover:bg-gray-300 rounded transition-colors duration-200">
+                        View
+                    </button>
+                    <button class="cancel-task-btn flex-1 py-1 px-2 text-xs font-medium bg-red-100 hover:bg-red-200 text-red-800 rounded transition-colors duration-200">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="step-item-template">
+        <div class="step-item bg-gray-50 rounded-md border border-gray-200 p-3">
+            <div class="flex justify-between items-start mb-2">
+                <span class="font-medium text-sm">{action}</span>
+                <span class="text-xs text-gray-500">{time}</span>
+            </div>
+            <p class="text-xs text-gray-600 mb-2">{description}</p>
+            <div class="screenshot-container"></div>
+        </div>
+    </template>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const taskForm = document.getElementById('taskForm');
+            const taskList = document.getElementById('taskList');
+            const browserView = document.getElementById('browserView');
+            const showVncBtn = document.getElementById('showVncBtn');
+            const taskDetails = document.getElementById('taskDetails');
+            const stepLog = document.getElementById('stepLog');
+            const currentTaskTitle = document.getElementById('currentTaskTitle');
+            
+            let activeWebSocket = null;
+            let currentTaskId = null;
+            
+            // Configure VNC view
+            const setupVncView = async () => {
+                try {
+                    const response = await fetch('/api/vnc_info');
+                    const data = await response.json();
+                    
+                    // Set up VNC iframe URL
+                    const vncUrl = `/static/novnc/vnc.html?path=websockify&autoconnect=true&resize=scale&password=${encodeURIComponent(data.password)}`;
+                    browserView.src = vncUrl;
+                } catch (error) {
+                    console.error('Failed to get VNC info:', error);
+                }
+            };
+            
+            // Toggle VNC view
+            showVncBtn.addEventListener('click', function() {
+                if (browserView.style.display === 'none') {
+                    browserView.style.display = 'block';
+                    taskDetails.style.display = 'none';
+                    showVncBtn.textContent = 'Hide Browser';
+                    setupVncView();
+                } else {
+                    browserView.style.display = 'none';
+                    taskDetails.style.display = 'flex';
+                    showVncBtn.textContent = 'Show Browser';
+                }
+            });
+            
+            // Submit a new task
+            taskForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const instructions = document.getElementById('instructions').value;
+                const url = document.getElementById('url').value;
+                const model = document.getElementById('model').value;
+                const maxSteps = parseInt(document.getElementById('maxSteps').value);
+                
+                // Show loading state
+                const submitBtn = taskForm.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.textContent;
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Creating...';
+                
+                try {
+                    const response = await fetch('/api/tasks', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            instructions,
+                            url,
+                            model,
+                            max_steps: maxSteps
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (response.ok) {
+                        // Clear form
+                        taskForm.reset();
+                        
+                        // Connect to the task
+                        connectToTask(data.task_id);
+                        
+                        // Show success notification
+                        showNotification('Task created successfully', 'success');
+                    } else {
+                        showNotification(`Error: ${data.detail || 'Unknown error'}`, 'error');
+                    }
+                } catch (error) {
+                    console.error('Error creating task:', error);
+                    showNotification('Failed to create task', 'error');
+                } finally {
+                    // Reset button state
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
+                }
+            });
+            
+            // Connect to a task via WebSocket
+            function connectToTask(taskId) {
+                // Disconnect from any existing websocket
+                if (activeWebSocket) {
+                    activeWebSocket.close();
+                }
+                
+                // Clear task details
+                stepLog.innerHTML = `
+                    <div class="flex justify-center items-center py-4">
+                        <svg class="animate-spin h-5 w-5 text-indigo-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <span class="text-sm text-indigo-600">Connecting to task...</span>
+                    </div>
+                `;
+                currentTaskTitle.textContent = `Task: ${taskId.substring(0, 8)}...`;
+                currentTaskId = taskId;
+                
+                // Setup WebSocket connection
+                const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+                const wsUrl = `${protocol}//${window.location.host}/ws/tasks/${taskId}`;
+                
+                activeWebSocket = new WebSocket(wsUrl);
+                
+                activeWebSocket.onopen = function() {
+                    console.log(`Connected to task ${taskId}`);
+                    stepLog.innerHTML = `
+                        <div class="bg-blue-50 rounded-md p-3 text-sm text-blue-600">
+                            Connected to task. Waiting for updates...
+                        </div>
+                    `;
+                };
+                
+                activeWebSocket.onmessage = function(event) {
+                    const message = JSON.parse(event.data);
+                    
+                    if (message.type === 'status') {
+                        updateTaskStatus(taskId, message.data.status);
+                        
+                        // If task is complete, get final results
+                        if (['completed', 'error', 'cancelled'].includes(message.data.status)) {
+                            fetchTaskDetails(taskId);
+                        }
+                    } else if (message.type === 'step') {
+                        appendStepLog(message.data);
+                    }
+                };
+                
+                activeWebSocket.onclose = function() {
+                    console.log(`Disconnected from task ${taskId}`);
+                };
+                
+                activeWebSocket.onerror = function(error) {
+                    console.error(`WebSocket error for task ${taskId}:`, error);
+                    stepLog.innerHTML += `
+                        <div class="bg-red-50 rounded-md p-3 text-sm text-red-600 mt-2">
+                            Error connecting to task. Please try refreshing the page.
+                        </div>
+                    `;
+                };
+                
+                // Add task to list if not already there
+                addTaskToList(taskId);
+            }
+            
+            // Append step information to log
+            function appendStepLog(stepInfo) {
+                const template = document.getElementById('step-item-template').innerHTML;
+                const time = new Date().toLocaleTimeString();
+                
+                // Replace template placeholders
+                let stepHtml = template
+                    .replace('{action}', stepInfo.action || 'Step')
+                    .replace('{time}', time)
+                    .replace('{description}', stepInfo.description || 'No description');
+                
+                // Create a temporary container to hold the template
+                const tempContainer = document.createElement('div');
+                tempContainer.innerHTML = stepHtml;
+                
+                // Add screenshot if available
+                if (stepInfo.screenshot) {
+                    const screenshotContainer = tempContainer.querySelector('.screenshot-container');
+                    screenshotContainer.innerHTML = `
+                        <img src="data:image/png;base64,${stepInfo.screenshot}" class="w-full h-auto rounded border border-gray-200" alt="Screenshot">
+                    `;
+                }
+                
+                // Add the new step to the log
+                const stepItem = document.createElement('div');
+                stepItem.innerHTML = tempContainer.innerHTML;
+                stepLog.appendChild(stepItem.firstChild);
+                
+                // Scroll to bottom
+                stepLog.scrollTop = stepLog.scrollHeight;
+                
+                // Remove "waiting for updates" message if present
+                const waitingMessage = stepLog.querySelector('.bg-blue-50');
+                if (waitingMessage) {
+                    waitingMessage.remove();
+                }
+            }
+            
+            // Add task to the active tasks list
+            function addTaskToList(taskId) {
+                // Check if task is already in list
+                if (document.getElementById(`task-${taskId}`)) {
+                    return;
+                }
+                
+                // Clear empty message if present
+                const emptyMessage = taskList.querySelector('.text-center');
+                if (emptyMessage) {
+                    taskList.innerHTML = '';
+                }
+                
+                // Use template
+                const template = document.getElementById('task-card-template').innerHTML;
+                const taskHtml = template
+                    .replace(/{taskId}/g, taskId)
+                    .replace(/{taskIdShort}/g, taskId.substring(0, 8))
+                    .replace(/{status}/g, 'initializing');
+                
+                // Create task card and add to list
+                const tempContainer = document.createElement('div');
+                tempContainer.innerHTML = taskHtml;
+                
+                const taskCard = tempContainer.firstChild;
+                taskCard.id = `task-${taskId}`;
+                taskCard.setAttribute('data-task-id', taskId);
+                taskList.appendChild(taskCard);
+                
+                // Add event listeners
+                taskCard.querySelector('.view-task-btn').addEventListener('click', () => connectToTask(taskId));
+                taskCard.querySelector('.cancel-task-btn').addEventListener('click', () => cancelTask(taskId));
+            }
+            
+            // Update task status in the list
+            function updateTaskStatus(taskId, status) {
+                const taskElement = document.getElementById(`task-${taskId}`);
+                if (!taskElement) return;
+                
+                const statusBadge = taskElement.querySelector('.rounded-full');
+                if (!statusBadge) return;
+                
+                statusBadge.textContent = status;
+                
+                // Update badge color based on status
+                statusBadge.className = 'px-2 py-0.5 text-xs font-medium rounded-full';
+                switch (status) {
+                    case 'running':
+                        statusBadge.classList.add('bg-blue-100', 'text-blue-800');
+                        break;
+                    case 'completed':
+                        statusBadge.classList.add('bg-green-100', 'text-green-800');
+                        break;
+                    case 'error':
+                        statusBadge.classList.add('bg-red-100', 'text-red-800');
+                        break;
+                    case 'cancelled':
+                        statusBadge.classList.add('bg-gray-100', 'text-gray-800');
+                        break;
+                    default:
+                        statusBadge.classList.add('bg-yellow-100', 'text-yellow-800');
+                }
+            }
+            
+            // Fetch task details
+            async function fetchTaskDetails(taskId) {
+                try {
+                    const response = await fetch(`/api/tasks/${taskId}`);
+                    const data = await response.json();
+                    
+                    if (response.ok) {
+                        // Show task result
+                        if (data.result) {
+                            taskDetails.innerHTML = `
+                                <div class="w-full p-4">
+                                    <div class="bg-green-50 rounded-md p-3 mb-4">
+                                        <h3 class="font-medium text-green-800 mb-1">Task Completed</h3>
+                                        <p class="text-sm text-green-700">${data.result.summary || 'Task completed successfully'}</p>
+                                    </div>
+                                    <div class="bg-gray-50 rounded-md p-3">
+                                        <h3 class="text-sm font-medium mb-2">Result Data</h3>
+                                        <pre class="text-xs overflow-auto p-2 bg-white rounded border border-gray-200 max-h-40">${JSON.stringify(data.result, null, 2)}</pre>
+                                    </div>
+                                </div>
+                            `;
+                        } else if (data.error) {
+                            taskDetails.innerHTML = `
+                                <div class="w-full p-4">
+                                    <div class="bg-red-50 rounded-md p-3">
+                                        <h3 class="font-medium text-red-800 mb-1">Task Failed</h3>
+                                        <p class="text-sm text-red-700">${data.error}</p>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    } else {
+                        console.error('Error fetching task details:', data);
+                    }
+                } catch (error) {
+                    console.error('Error fetching task details:', error);
+                }
+            }
+            
+            // Cancel a task
+            async function cancelTask(taskId) {
+                if (!confirm(`Are you sure you want to cancel this task?`)) {
+                    return;
+                }
+                
+                try {
+                    const response = await fetch(`/api/tasks/${taskId}`, {
+                        method: 'DELETE'
+                    });
+                    
+                    if (response.ok) {
+                        showNotification('Task cancelled successfully', 'success');
+                        updateTaskStatus(taskId, 'cancelled');
+                    } else {
+                        const data = await response.json();
+                        showNotification(`Error: ${data.detail || 'Unknown error'}`, 'error');
+                    }
+                } catch (error) {
+                    console.error('Error cancelling task:', error);
+                    showNotification('Failed to cancel task', 'error');
+                }
+            }
+            
+            // Show notification
+            function showNotification(message, type = 'info') {
+                // Create notification container if it doesn't exist
+                let notifContainer = document.getElementById('notif-container');
+                if (!notifContainer) {
+                    notifContainer = document.createElement('div');
+                    notifContainer.id = 'notif-container';
+                    notifContainer.className = 'fixed bottom-4 right-4 z-50 space-y-2';
+                    document.body.appendChild(notifContainer);
+                }
+                
+                // Create notification element
+                const notif = document.createElement('div');
+                notif.className = 'px-4 py-3 rounded-md shadow-lg transform transition-all duration-300 opacity-0 translate-y-2';
+                
+                // Set color based on type
+                switch (type) {
+                    case 'success':
+                        notif.classList.add('bg-green-50', 'text-green-800', 'border', 'border-green-200');
+                        break;
+                    case 'error':
+                        notif.classList.add('bg-red-50', 'text-red-800', 'border', 'border-red-200');
+                        break;
+                    default:
+                        notif.classList.add('bg-blue-50', 'text-blue-800', 'border', 'border-blue-200');
+                }
+                
+                // Add message
+                notif.textContent = message;
+                
+                // Add to container
+                notifContainer.appendChild(notif);
+                
+                // Animate in
+                setTimeout(() => {
+                    notif.classList.remove('opacity-0', 'translate-y-2');
+                }, 10);
+                
+                // Remove after timeout
+                setTimeout(() => {
+                    notif.classList.add('opacity-0', 'translate-y-2');
+                    setTimeout(() => {
+                        notif.remove();
+                    }, 300);
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>
