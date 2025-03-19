@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrowserPilot - Browser View</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-6">
+        <header class="flex justify-between items-center mb-6">
+            <div class="flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.5a1 1 0 00-.8.4l-1.5 2a1 1 0 01-1.6 0l-1.5-2a1 1 0 00-.8-.4H5a2 2 0 01-2-2V5zm11 4a1 1 0 10-2 0v1H9a1 1 0 100 2h3v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V9z" clip-rule="evenodd" />
+                </svg>
+                <h1 class="text-2xl font-bold">BrowserPilot</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="/" class="text-indigo-600 hover:text-indigo-800">Dashboard</a>
+                <a href="/task-control.html" class="text-indigo-600 hover:text-indigo-800">Task Control</a>
+            </div>
+        </header>
+        
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-6">
+            <div class="flex justify-between items-center p-4 border-b">
+                <h2 id="taskTitle" class="text-lg font-medium">Browser View</h2>
+                <div class="flex items-center space-x-2">
+                    <span id="statusBadge" class="px-2 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800">No active task</span>
+                    <button id="fullscreenBtn" class="p-1 text-gray-500 hover:text-gray-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 01-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 110-2h4a1 1 0 011 1v4a1 1 0 11-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12zm-9 7a1 1 0 112 0v1.586l2.293-2.293a1 1 0 011.414 1.414L6.414 15H8a1 1 0 110 2H4a1 1 0 01-1-1v-4zm13-1a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 110-2h1.586l-2.293-2.293a1 1 0 011.414-1.414L15 13.586V12a1 1 0 011-1z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="browserContainer" class="w-full aspect-video relative">
+                <iframe id="browserFrame" class="absolute inset-0 w-full h-full border-none" src="about:blank"></iframe>
+                <div id="loadingOverlay" class="absolute inset-0 flex items-center justify-center bg-gray-50">
+                    <div class="text-center">
+                        <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600 mb-2"></div>
+                        <p id="loadingText" class="text-sm text-gray-600">Connecting to browser...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="md:col-span-2 bg-white rounded-lg shadow-sm overflow-hidden">
+                <div class="p-4 border-b">
+                    <h2 class="text-lg font-medium">Current Action</h2>
+                </div>
+                <div id="currentAction" class="p-4">
+                    <p class="text-gray-500 text-center py-6">No active task</p>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                <div class="p-4 border-b">
+                    <h2 class="text-lg font-medium">Task Controls</h2>
+                </div>
+                <div class="p-4">
+                    <button id="pauseBtn" class="w-full mb-3 py-2 px-4 bg-yellow-600 hover:bg-yellow-700 text-white font-medium rounded-md transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed">
+                        Pause Task
+                    </button>
+                    <button id="stopBtn" class="w-full mb-3 py-2 px-4 bg-red-600 hover:bg-red-700 text-white font-medium rounded-md transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed">
+                        Stop Task
+                    </button>
+                    <button id="backBtn" class="w-full py-2 px-4 bg-gray-600 hover:bg-gray-700 text-white font-medium rounded-md transition-colors duration-200">
+                        Back to Dashboard
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/websocket-handler.js"></script>
+    <script src="js/browser-view.js"></script>
+</body>
+</html>
