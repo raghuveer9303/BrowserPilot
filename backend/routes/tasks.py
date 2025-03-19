@@ -3,8 +3,10 @@ from pydantic import BaseModel
 from typing import List, Dict, Any, Optional
 import uuid
 import asyncio
+import time
 from ..config import Settings
 from ..agent_manager import AgentManager
+from ..dependencies import get_agent_manager  # Add this import
 
 router = APIRouter(prefix="/api/tasks", tags=["tasks"])
 
@@ -19,9 +21,9 @@ class TaskCreate(BaseModel):
 class TaskResponse(BaseModel):
     id: str
     status: str
-    instructions: str
+    instructions: str  # Ensure this field is present
     created_at: float
-    model: str
+    model: str  # Ensure this field is present
     steps: List[Dict[str, Any]] = []
     result: Optional[Dict[str, Any]] = None
     error: Optional[str] = None
@@ -29,13 +31,31 @@ class TaskResponse(BaseModel):
 @router.post("", response_model=TaskResponse, status_code=status.HTTP_201_CREATED)
 async def create_task(
     task: TaskCreate,
-    agent_manager: AgentManager = Depends(lambda: AgentManager)
+    agent_manager: AgentManager = Depends(get_agent_manager)
 ):
     """Create a new browser automation task"""
     task_id = str(uuid.uuid4())
-    await agent_manager.create_task(task_id, task.dict())
-    status = await agent_manager.get_task_status(task_id)
-    return status
+    
+    # Create task with all required fields
+    task_data = {
+        "id": task_id,
+        "status": "initializing",
+        "created_at": time.time(),
+        "instructions": task.instructions,  # Include instructions
+        "model": task.model,  # Include model
+        "steps": [],
+        "result": None,
+        "error": None,
+    }
+    
+    try:
+        await agent_manager.create_task(task_id, task_data)
+        return task_data
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=str(e)
+        )
 
 @router.get("", response_model=List[TaskResponse])
 async def list_tasks(

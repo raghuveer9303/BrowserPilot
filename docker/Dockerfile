@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/playwright:v1.41.0-jammy
+FROM mcr.microsoft.com/playwright:v1.51.0-jammy
 
 ENV DEBIAN_FRONTEND=noninteractive \
     TZ=UTC
@@ -7,21 +7,19 @@ ENV DEBIAN_FRONTEND=noninteractive \
 RUN apt-get update && apt-get install -y \
     x11vnc \
     xvfb \
-    novnc \
     supervisor \
     net-tools \
     curl \
     tzdata \
     software-properties-common \
+    novnc \
     && add-apt-repository ppa:deadsnakes/ppa \
     && apt-get update \
     && apt-get install -y python3.11 python3.11-venv python3.11-dev \
-    && ln -fs /usr/share/zoneinfo/UTC /etc/localtime \
-    && dpkg-reconfigure --frontend noninteractive tzdata \
+    && ln -s /usr/bin/python3.11 /usr/local/bin/python3 \
+    && ln -s /usr/bin/python3.11 /usr/local/bin/python \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-    
-# Use Python 3.11 as default
-RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1
 
 # Install pip for Python 3.11
 RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11
@@ -32,8 +30,8 @@ ENV RESOLUTION=1280x720x24
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
 
-# Create Python virtual environment
-RUN python3 -m venv /opt/venv
+# Create Python virtual environment with Python 3.11
+RUN python3.11 -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
 # Create directories
@@ -47,9 +45,14 @@ RUN chmod +x /opt/scripts/*.sh
 COPY requirements.txt /opt/app/
 RUN pip install --no-cache-dir -r /opt/app/requirements.txt
 
-# Install browser-use package
+# Copy the .whl file into the container
 COPY browser_use/browser_use-0.1.40-py3-none-any.whl /app/
-RUN pip install --no-cache-dir /app/browser_use-0.1.40-py3-none-any.whl
+
+# Install dependencies
+RUN pip install /app/browser_use-0.1.40-py3-none-any.whl
+
+# Create required directories
+RUN mkdir -p /opt/app/frontend/novnc /opt/logs
 
 # Copy application files
 COPY backend/ /opt/app/backend/
@@ -58,22 +61,22 @@ COPY frontend/ /opt/app/frontend/
 # Setup supervisord
 COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-# Add noVNC to frontend
+# Install noVNC properly
+RUN git clone https://github.com/novnc/noVNC.git /opt/novnc && \
+    git clone https://github.com/novnc/websockify /opt/novnc/utils/websockify && \
+    ln -s /opt/novnc/vnc.html /opt/novnc/index.html && \
+    chmod +x /opt/novnc/utils/websockify/run
+
+# Copy noVNC files to frontend
 RUN mkdir -p /opt/app/frontend/novnc && \
-    cp -r /usr/share/novnc/* /opt/app/frontend/novnc/
+    cp -r /opt/novnc/* /opt/app/frontend/novnc/ && \
+    chmod +x /opt/novnc/utils/websockify/run
 
 # Expose ports (FastAPI, VNC, noVNC)
 EXPOSE 8000 5900 6080
 
 # Set working directory
 WORKDIR /opt/app
-
-# Add app start script
-RUN echo '#!/bin/bash\ncd /opt/app && python -m backend.app' > /opt/scripts/start-app.sh && \
-    chmod +x /opt/scripts/start-app.sh
-
-# Create symlink to utils
-RUN ln -s /usr/share/novnc/utils /opt/app/frontend/novnc/utils
 
 # Start supervisor
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]

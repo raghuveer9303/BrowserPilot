@@ -1,0 +1,600 @@
+19/03/2025 18:03:08 passing arg to libvncserver: -passwd
+19/03/2025 18:03:09 x11vnc version: 0.9.16 lastmod: 2019-01-05  pid: 8
+19/03/2025 18:03:09 Using X display :99
+19/03/2025 18:03:09 rootwin: 0x50d reswin: 0x200001 dpy: 0x8979f6b0
+19/03/2025 18:03:09 
+19/03/2025 18:03:09 ------------------ USEFUL INFORMATION ------------------
+19/03/2025 18:03:09 
+19/03/2025 18:03:09 Wireframing: -wireframe mode is in effect for window moves.
+19/03/2025 18:03:09   If this yields undesired behavior (poor response, painting
+19/03/2025 18:03:09   errors, etc) it may be disabled:
+19/03/2025 18:03:09    - use '-nowf' to disable wireframing completely.
+19/03/2025 18:03:09    - use '-nowcr' to disable the Copy Rectangle after the
+19/03/2025 18:03:09      moved window is released in the new position.
+19/03/2025 18:03:09   Also see the -help entry for tuning parameters.
+19/03/2025 18:03:09   You can press 3 Alt_L's (Left "Alt" key) in a row to 
+19/03/2025 18:03:09   repaint the screen, also see the -fixscreen option for
+19/03/2025 18:03:09   periodic repaints.
+19/03/2025 18:03:09 
+19/03/2025 18:03:09 XFIXES available on display, resetting cursor mode
+19/03/2025 18:03:09   to: '-cursor most'.
+19/03/2025 18:03:09   to disable this behavior use: '-cursor arrow'
+19/03/2025 18:03:09   or '-noxfixes'.
+19/03/2025 18:03:09 using XFIXES for cursor drawing.
+19/03/2025 18:03:09 GrabServer control via XTEST.
+19/03/2025 18:03:09 
+19/03/2025 18:03:09 Scroll Detection: -scrollcopyrect mode is in effect to
+19/03/2025 18:03:09   use RECORD extension to try to detect scrolling windows
+19/03/2025 18:03:09   (induced by either user keystroke or mouse input).
+19/03/2025 18:03:09   If this yields undesired behavior (poor response, painting
+19/03/2025 18:03:09   errors, etc) it may be disabled via: '-noscr'
+19/03/2025 18:03:09   Also see the -help entry for tuning parameters.
+19/03/2025 18:03:09   You can press 3 Alt_L's (Left "Alt" key) in a row to 
+19/03/2025 18:03:09   repaint the screen, also see the -fixscreen option for
+19/03/2025 18:03:09   periodic repaints.
+19/03/2025 18:03:09 
+19/03/2025 18:03:09 XKEYBOARD: number of keysyms per keycode 7 is greater
+19/03/2025 18:03:09   than 4 and 51 keysyms are mapped above 4.
+19/03/2025 18:03:09   Automatically switching to -xkb mode.
+19/03/2025 18:03:09   If this makes the key mapping worse you can
+19/03/2025 18:03:09   disable it with the "-noxkb" option.
+19/03/2025 18:03:09   Also, remember "-remap DEAD" for accenting characters.
+19/03/2025 18:03:09 
+19/03/2025 18:03:09 X FBPM extension not supported.
+Xlib:  extension "DPMS" missing on display ":99".
+19/03/2025 18:03:09 X display is not capable of DPMS.
+19/03/2025 18:03:09 --------------------------------------------------------
+19/03/2025 18:03:09 
+19/03/2025 18:03:09 Default visual ID: 0x21
+19/03/2025 18:03:09 Read initial data from X display into framebuffer.
+19/03/2025 18:03:09 initialize_screen: fb_depth/fb_bpp/fb_Bpl 24/32/5120
+19/03/2025 18:03:09 
+19/03/2025 18:03:09 X display :99 is 32bpp depth=24 true color
+19/03/2025 18:03:09 
+19/03/2025 18:03:09 Autoprobing TCP port 
+19/03/2025 18:03:09 Autoprobing selected TCP port 5900
+19/03/2025 18:03:09 Autoprobing TCP6 port 
+19/03/2025 18:03:09 Autoprobing selected TCP6 port 5900
+19/03/2025 18:03:09 listen6: bind: Address already in use
+19/03/2025 18:03:09 Not listening on IPv6 interface.
+19/03/2025 18:03:09 
+19/03/2025 18:03:09 Xinerama is present and active (e.g. multi-head).
+19/03/2025 18:03:09 Xinerama: number of sub-screens: 1
+19/03/2025 18:03:09 Xinerama: no blackouts needed (only one sub-screen)
+19/03/2025 18:03:09 
+19/03/2025 18:03:09 fb read rate: 864 MB/sec
+19/03/2025 18:03:09 fast read: reset -wait  ms to: 10
+19/03/2025 18:03:09 fast read: reset -defer ms to: 10
+19/03/2025 18:03:09 The X server says there are 10 mouse buttons.
+19/03/2025 18:03:09 screen setup finished.
+19/03/2025 18:03:09 
+
+The VNC desktop is:      35f9a27f9bac:0
+
+******************************************************************************
+Have you tried the x11vnc '-ncache' VNC client-side pixel caching feature yet?
+
+The scheme stores pixel data offscreen on the VNC viewer side for faster
+retrieval.  It should work with any VNC viewer.  Try it by running:
+
+    x11vnc -ncache 10 ...
+
+One can also add -ncache_cr for smooth 'copyrect' window motion.
+More info: http://www.karlrunge.com/x11vnc/faq.html#faq-client-caching
+
+caught signal: 15
+19/03/2025 18:03:33 deleted 40 tile_row polling images.
+19/03/2025 18:10:03 passing arg to libvncserver: -passwd
+19/03/2025 18:10:03 x11vnc version: 0.9.16 lastmod: 2019-01-05  pid: 8
+19/03/2025 18:10:03 Using X display :99
+19/03/2025 18:10:03 rootwin: 0x50d reswin: 0x200001 dpy: 0xd898a6b0
+19/03/2025 18:10:03 
+19/03/2025 18:10:03 ------------------ USEFUL INFORMATION ------------------
+19/03/2025 18:10:03 
+19/03/2025 18:10:03 Wireframing: -wireframe mode is in effect for window moves.
+19/03/2025 18:10:03   If this yields undesired behavior (poor response, painting
+19/03/2025 18:10:03   errors, etc) it may be disabled:
+19/03/2025 18:10:03    - use '-nowf' to disable wireframing completely.
+19/03/2025 18:10:03    - use '-nowcr' to disable the Copy Rectangle after the
+19/03/2025 18:10:03      moved window is released in the new position.
+19/03/2025 18:10:03   Also see the -help entry for tuning parameters.
+19/03/2025 18:10:03   You can press 3 Alt_L's (Left "Alt" key) in a row to 
+19/03/2025 18:10:03   repaint the screen, also see the -fixscreen option for
+19/03/2025 18:10:03   periodic repaints.
+19/03/2025 18:10:03 
+19/03/2025 18:10:03 XFIXES available on display, resetting cursor mode
+19/03/2025 18:10:03   to: '-cursor most'.
+19/03/2025 18:10:03   to disable this behavior use: '-cursor arrow'
+19/03/2025 18:10:03   or '-noxfixes'.
+19/03/2025 18:10:03 using XFIXES for cursor drawing.
+19/03/2025 18:10:03 GrabServer control via XTEST.
+19/03/2025 18:10:03 
+19/03/2025 18:10:03 Scroll Detection: -scrollcopyrect mode is in effect to
+19/03/2025 18:10:03   use RECORD extension to try to detect scrolling windows
+19/03/2025 18:10:03   (induced by either user keystroke or mouse input).
+19/03/2025 18:10:03   If this yields undesired behavior (poor response, painting
+19/03/2025 18:10:03   errors, etc) it may be disabled via: '-noscr'
+19/03/2025 18:10:03   Also see the -help entry for tuning parameters.
+19/03/2025 18:10:03   You can press 3 Alt_L's (Left "Alt" key) in a row to 
+19/03/2025 18:10:03   repaint the screen, also see the -fixscreen option for
+19/03/2025 18:10:03   periodic repaints.
+19/03/2025 18:10:03 
+19/03/2025 18:10:03 XKEYBOARD: number of keysyms per keycode 7 is greater
+19/03/2025 18:10:03   than 4 and 51 keysyms are mapped above 4.
+19/03/2025 18:10:03   Automatically switching to -xkb mode.
+19/03/2025 18:10:03   If this makes the key mapping worse you can
+19/03/2025 18:10:03   disable it with the "-noxkb" option.
+19/03/2025 18:10:03   Also, remember "-remap DEAD" for accenting characters.
+19/03/2025 18:10:03 
+19/03/2025 18:10:03 X FBPM extension not supported.
+Xlib:  extension "DPMS" missing on display ":99".
+19/03/2025 18:10:03 X display is not capable of DPMS.
+19/03/2025 18:10:03 --------------------------------------------------------
+19/03/2025 18:10:03 
+19/03/2025 18:10:03 Default visual ID: 0x21
+19/03/2025 18:10:03 Read initial data from X display into framebuffer.
+19/03/2025 18:10:03 initialize_screen: fb_depth/fb_bpp/fb_Bpl 24/32/5120
+19/03/2025 18:10:03 
+19/03/2025 18:10:03 X display :99 is 32bpp depth=24 true color
+19/03/2025 18:10:03 
+19/03/2025 18:10:03 Autoprobing TCP port 
+19/03/2025 18:10:03 Autoprobing selected TCP port 5900
+19/03/2025 18:10:03 Autoprobing TCP6 port 
+19/03/2025 18:10:03 Autoprobing selected TCP6 port 5900
+19/03/2025 18:10:03 Not listening on IPv6 interface.
+19/03/2025 18:10:03 
+19/03/2025 18:10:03 Xinerama is present and active (e.g. multi-head).
+19/03/2025 18:10:03 Xinerama: number of sub-screens: 1
+19/03/2025 18:10:03 Xinerama: no blackouts needed (only one sub-screen)
+19/03/2025 18:10:03 
+19/03/2025 18:10:03 fb read rate: 1088 MB/sec
+19/03/2025 18:10:03 fast read: reset -wait  ms to: 10
+19/03/2025 18:10:03 fast read: reset -defer ms to: 10
+19/03/2025 18:10:03 The X server says there are 10 mouse buttons.
+19/03/2025 18:10:03 screen setup finished.
+19/03/2025 18:10:03 
+
+The VNC desktop is:      3f3cbbf9af3d:0
+
+******************************************************************************
+Have you tried the x11vnc '-ncache' VNC client-side pixel caching feature yet?
+
+The scheme stores pixel data offscreen on the VNC viewer side for faster
+retrieval.  It should work with any VNC viewer.  Try it by running:
+
+    x11vnc -ncache 10 ...
+
+One can also add -ncache_cr for smooth 'copyrect' window motion.
+More info: http://www.karlrunge.com/x11vnc/faq.html#faq-client-caching
+
+19/03/2025 18:10:44 Got connection from client 172.18.0.1
+19/03/2025 18:10:44   0 other clients
+19/03/2025 18:10:44 Got 'ws' WebSockets handshake
+19/03/2025 18:10:44 Hixie no longer supported
+19/03/2025 18:10:44 Client 172.18.0.1 gone
+19/03/2025 18:10:44 Statistics             events    Transmit/ RawEquiv ( saved)
+19/03/2025 18:10:44  TOTALS              :      0 |         0/        0 (  0.0%)
+19/03/2025 18:10:44 Statistics             events    Received/ RawEquiv ( saved)
+19/03/2025 18:10:44  TOTALS              :      0 |         0/        0 (  0.0%)
+19/03/2025 18:10:44 Got connection from client 172.18.0.1
+19/03/2025 18:10:44   0 other clients
+19/03/2025 18:10:45 Normal socket connection
+19/03/2025 18:10:45 Disabled X server key autorepeat.
+19/03/2025 18:10:45   to force back on run: 'xset r on' (3 times)
+19/03/2025 18:10:45 incr accepted_client=1 for 172.18.0.1:59064  sock=10
+19/03/2025 18:10:45 rfbProcessClientProtocolVersion: not a valid RFB client: GET / HTTP/1
+19/03/2025 18:10:45 client_count: 0
+19/03/2025 18:10:45 Restored X server key autorepeat to: 1
+19/03/2025 18:10:45 Client 172.18.0.1 gone
+19/03/2025 18:10:45 Statistics             events    Transmit/ RawEquiv ( saved)
+19/03/2025 18:10:45  TOTALS              :      0 |         0/        0 (  0.0%)
+19/03/2025 18:10:45 Statistics             events    Received/ RawEquiv ( saved)
+19/03/2025 18:10:45  TOTALS              :      0 |         0/        0 (  0.0%)
+19/03/2025 18:10:45 Got connection from client 172.18.0.1
+19/03/2025 18:10:45   0 other clients
+19/03/2025 18:10:46 Normal socket connection
+19/03/2025 18:10:46 Disabled X server key autorepeat.
+19/03/2025 18:10:46   to force back on run: 'xset r on' (3 times)
+19/03/2025 18:10:46 incr accepted_client=2 for 172.18.0.1:45796  sock=10
+19/03/2025 18:11:02 cutbuffer_send: no send: uninitialized clients
+19/03/2025 18:11:33 created selwin: 0x20002c
+19/03/2025 18:11:33 called initialize_xfixes()
+caught signal: 15
+19/03/2025 18:12:32 deleted 40 tile_row polling images.
+19/03/2025 18:12:32 Restored X server key autorepeat to: 1
+19/03/2025 18:18:04 passing arg to libvncserver: -passwd
+19/03/2025 18:18:04 x11vnc version: 0.9.16 lastmod: 2019-01-05  pid: 7
+19/03/2025 18:18:04 Using X display :99
+19/03/2025 18:18:04 rootwin: 0x50d reswin: 0x200001 dpy: 0x8e206b0
+19/03/2025 18:18:04 
+19/03/2025 18:18:04 ------------------ USEFUL INFORMATION ------------------
+19/03/2025 18:18:04 
+19/03/2025 18:18:04 Wireframing: -wireframe mode is in effect for window moves.
+19/03/2025 18:18:04   If this yields undesired behavior (poor response, painting
+19/03/2025 18:18:04   errors, etc) it may be disabled:
+19/03/2025 18:18:04    - use '-nowf' to disable wireframing completely.
+19/03/2025 18:18:04    - use '-nowcr' to disable the Copy Rectangle after the
+19/03/2025 18:18:04      moved window is released in the new position.
+19/03/2025 18:18:04   Also see the -help entry for tuning parameters.
+19/03/2025 18:18:04   You can press 3 Alt_L's (Left "Alt" key) in a row to 
+19/03/2025 18:18:04   repaint the screen, also see the -fixscreen option for
+19/03/2025 18:18:04   periodic repaints.
+19/03/2025 18:18:04 
+19/03/2025 18:18:04 XFIXES available on display, resetting cursor mode
+19/03/2025 18:18:04   to: '-cursor most'.
+19/03/2025 18:18:04   to disable this behavior use: '-cursor arrow'
+19/03/2025 18:18:04   or '-noxfixes'.
+19/03/2025 18:18:04 using XFIXES for cursor drawing.
+19/03/2025 18:18:04 GrabServer control via XTEST.
+19/03/2025 18:18:04 
+19/03/2025 18:18:04 Scroll Detection: -scrollcopyrect mode is in effect to
+19/03/2025 18:18:04   use RECORD extension to try to detect scrolling windows
+19/03/2025 18:18:04   (induced by either user keystroke or mouse input).
+19/03/2025 18:18:04   If this yields undesired behavior (poor response, painting
+19/03/2025 18:18:04   errors, etc) it may be disabled via: '-noscr'
+19/03/2025 18:18:04   Also see the -help entry for tuning parameters.
+19/03/2025 18:18:04   You can press 3 Alt_L's (Left "Alt" key) in a row to 
+19/03/2025 18:18:04   repaint the screen, also see the -fixscreen option for
+19/03/2025 18:18:04   periodic repaints.
+19/03/2025 18:18:04 
+19/03/2025 18:18:04 XKEYBOARD: number of keysyms per keycode 7 is greater
+19/03/2025 18:18:04   than 4 and 51 keysyms are mapped above 4.
+19/03/2025 18:18:04   Automatically switching to -xkb mode.
+19/03/2025 18:18:04   If this makes the key mapping worse you can
+19/03/2025 18:18:04   disable it with the "-noxkb" option.
+19/03/2025 18:18:04   Also, remember "-remap DEAD" for accenting characters.
+19/03/2025 18:18:04 
+19/03/2025 18:18:04 X FBPM extension not supported.
+Xlib:  extension "DPMS" missing on display ":99".
+19/03/2025 18:18:04 X display is not capable of DPMS.
+19/03/2025 18:18:04 --------------------------------------------------------
+19/03/2025 18:18:04 
+19/03/2025 18:18:04 Default visual ID: 0x21
+19/03/2025 18:18:04 Read initial data from X display into framebuffer.
+19/03/2025 18:18:04 initialize_screen: fb_depth/fb_bpp/fb_Bpl 24/32/5120
+19/03/2025 18:18:04 
+19/03/2025 18:18:04 X display :99 is 32bpp depth=24 true color
+19/03/2025 18:18:04 
+19/03/2025 18:18:04 Autoprobing TCP port 
+19/03/2025 18:18:04 Autoprobing selected TCP port 5900
+19/03/2025 18:18:04 Autoprobing TCP6 port 
+19/03/2025 18:18:04 Autoprobing selected TCP6 port 5900
+19/03/2025 18:18:04 Not listening on IPv6 interface.
+19/03/2025 18:18:04 
+19/03/2025 18:18:04 Xinerama is present and active (e.g. multi-head).
+19/03/2025 18:18:04 Xinerama: number of sub-screens: 1
+19/03/2025 18:18:04 Xinerama: no blackouts needed (only one sub-screen)
+19/03/2025 18:18:04 
+19/03/2025 18:18:04 fb read rate: 928 MB/sec
+19/03/2025 18:18:04 fast read: reset -wait  ms to: 10
+19/03/2025 18:18:04 fast read: reset -defer ms to: 10
+19/03/2025 18:18:04 The X server says there are 10 mouse buttons.
+19/03/2025 18:18:04 screen setup finished.
+19/03/2025 18:18:04 
+
+The VNC desktop is:      0e5d3955ea18:0
+
+******************************************************************************
+Have you tried the x11vnc '-ncache' VNC client-side pixel caching feature yet?
+
+The scheme stores pixel data offscreen on the VNC viewer side for faster
+retrieval.  It should work with any VNC viewer.  Try it by running:
+
+    x11vnc -ncache 10 ...
+
+One can also add -ncache_cr for smooth 'copyrect' window motion.
+More info: http://www.karlrunge.com/x11vnc/faq.html#faq-client-caching
+
+caught signal: 15
+19/03/2025 18:21:08 deleted 40 tile_row polling images.
+19/03/2025 18:22:17 passing arg to libvncserver: -passwd
+19/03/2025 18:22:17 x11vnc version: 0.9.16 lastmod: 2019-01-05  pid: 8
+19/03/2025 18:22:17 Using X display :99
+19/03/2025 18:22:17 rootwin: 0x50d reswin: 0x200001 dpy: 0xa326e6b0
+19/03/2025 18:22:17 
+19/03/2025 18:22:17 ------------------ USEFUL INFORMATION ------------------
+19/03/2025 18:22:17 
+19/03/2025 18:22:17 Wireframing: -wireframe mode is in effect for window moves.
+19/03/2025 18:22:17   If this yields undesired behavior (poor response, painting
+19/03/2025 18:22:17   errors, etc) it may be disabled:
+19/03/2025 18:22:17    - use '-nowf' to disable wireframing completely.
+19/03/2025 18:22:17    - use '-nowcr' to disable the Copy Rectangle after the
+19/03/2025 18:22:17      moved window is released in the new position.
+19/03/2025 18:22:17   Also see the -help entry for tuning parameters.
+19/03/2025 18:22:17   You can press 3 Alt_L's (Left "Alt" key) in a row to 
+19/03/2025 18:22:17   repaint the screen, also see the -fixscreen option for
+19/03/2025 18:22:17   periodic repaints.
+19/03/2025 18:22:17 
+19/03/2025 18:22:17 XFIXES available on display, resetting cursor mode
+19/03/2025 18:22:17   to: '-cursor most'.
+19/03/2025 18:22:17   to disable this behavior use: '-cursor arrow'
+19/03/2025 18:22:17   or '-noxfixes'.
+19/03/2025 18:22:17 using XFIXES for cursor drawing.
+19/03/2025 18:22:17 GrabServer control via XTEST.
+19/03/2025 18:22:17 
+19/03/2025 18:22:17 Scroll Detection: -scrollcopyrect mode is in effect to
+19/03/2025 18:22:17   use RECORD extension to try to detect scrolling windows
+19/03/2025 18:22:17   (induced by either user keystroke or mouse input).
+19/03/2025 18:22:17   If this yields undesired behavior (poor response, painting
+19/03/2025 18:22:17   errors, etc) it may be disabled via: '-noscr'
+19/03/2025 18:22:17   Also see the -help entry for tuning parameters.
+19/03/2025 18:22:17   You can press 3 Alt_L's (Left "Alt" key) in a row to 
+19/03/2025 18:22:17   repaint the screen, also see the -fixscreen option for
+19/03/2025 18:22:17   periodic repaints.
+19/03/2025 18:22:17 
+19/03/2025 18:22:17 XKEYBOARD: number of keysyms per keycode 7 is greater
+19/03/2025 18:22:17   than 4 and 51 keysyms are mapped above 4.
+19/03/2025 18:22:17   Automatically switching to -xkb mode.
+19/03/2025 18:22:17   If this makes the key mapping worse you can
+19/03/2025 18:22:17   disable it with the "-noxkb" option.
+19/03/2025 18:22:17   Also, remember "-remap DEAD" for accenting characters.
+19/03/2025 18:22:17 
+19/03/2025 18:22:17 X FBPM extension not supported.
+Xlib:  extension "DPMS" missing on display ":99".
+19/03/2025 18:22:17 X display is not capable of DPMS.
+19/03/2025 18:22:17 --------------------------------------------------------
+19/03/2025 18:22:17 
+19/03/2025 18:22:17 Default visual ID: 0x21
+19/03/2025 18:22:17 Read initial data from X display into framebuffer.
+19/03/2025 18:22:17 initialize_screen: fb_depth/fb_bpp/fb_Bpl 24/32/5120
+19/03/2025 18:22:17 
+19/03/2025 18:22:17 X display :99 is 32bpp depth=24 true color
+19/03/2025 18:22:17 
+19/03/2025 18:22:17 Autoprobing TCP port 
+19/03/2025 18:22:17 Autoprobing selected TCP port 5900
+19/03/2025 18:22:17 Autoprobing TCP6 port 
+19/03/2025 18:22:17 Autoprobing selected TCP6 port 5900
+19/03/2025 18:22:17 Not listening on IPv6 interface.
+19/03/2025 18:22:17 
+19/03/2025 18:22:17 Xinerama is present and active (e.g. multi-head).
+19/03/2025 18:22:17 Xinerama: number of sub-screens: 1
+19/03/2025 18:22:17 Xinerama: no blackouts needed (only one sub-screen)
+19/03/2025 18:22:17 
+19/03/2025 18:22:17 fb read rate: 1850 MB/sec
+19/03/2025 18:22:17 fast read: reset -wait  ms to: 10
+19/03/2025 18:22:17 fast read: reset -defer ms to: 10
+19/03/2025 18:22:17 The X server says there are 10 mouse buttons.
+19/03/2025 18:22:17 screen setup finished.
+19/03/2025 18:22:17 
+
+The VNC desktop is:      64da44a7e629:0
+
+******************************************************************************
+Have you tried the x11vnc '-ncache' VNC client-side pixel caching feature yet?
+
+The scheme stores pixel data offscreen on the VNC viewer side for faster
+retrieval.  It should work with any VNC viewer.  Try it by running:
+
+    x11vnc -ncache 10 ...
+
+One can also add -ncache_cr for smooth 'copyrect' window motion.
+More info: http://www.karlrunge.com/x11vnc/faq.html#faq-client-caching
+
+19/03/2025 18:23:19 Got connection from client 172.18.0.1
+19/03/2025 18:23:19   0 other clients
+19/03/2025 18:23:19 Got 'ws' WebSockets handshake
+19/03/2025 18:23:19 Hixie no longer supported
+19/03/2025 18:23:19 Client 172.18.0.1 gone
+19/03/2025 18:23:19 Statistics             events    Transmit/ RawEquiv ( saved)
+19/03/2025 18:23:19  TOTALS              :      0 |         0/        0 (  0.0%)
+19/03/2025 18:23:19 Statistics             events    Received/ RawEquiv ( saved)
+19/03/2025 18:23:19  TOTALS              :      0 |         0/        0 (  0.0%)
+19/03/2025 18:23:19 Got connection from client 172.18.0.1
+19/03/2025 18:23:19   0 other clients
+19/03/2025 18:23:19 Normal socket connection
+19/03/2025 18:23:19 Disabled X server key autorepeat.
+19/03/2025 18:23:19   to force back on run: 'xset r on' (3 times)
+19/03/2025 18:23:19 incr accepted_client=1 for 172.18.0.1:39634  sock=10
+19/03/2025 18:23:20 Got connection from client 172.18.0.1
+19/03/2025 18:23:20   1 other clients
+19/03/2025 18:23:20 Normal socket connection
+19/03/2025 18:23:20 incr accepted_client=2 for 172.18.0.1:39640  sock=11
+19/03/2025 18:23:20 rfbProcessClientProtocolVersion: not a valid RFB client: GET / HTTP/1
+19/03/2025 18:23:20 client_count: 1
+19/03/2025 18:23:20 Client 172.18.0.1 gone
+19/03/2025 18:23:20 Statistics             events    Transmit/ RawEquiv ( saved)
+19/03/2025 18:23:20  TOTALS              :      0 |         0/        0 (  0.0%)
+19/03/2025 18:23:20 Statistics             events    Received/ RawEquiv ( saved)
+19/03/2025 18:23:20  TOTALS              :      0 |         0/        0 (  0.0%)
+19/03/2025 18:23:21 Got connection from client 172.18.0.1
+19/03/2025 18:23:21   1 other clients
+19/03/2025 18:23:21 Normal socket connection
+19/03/2025 18:23:21 incr accepted_client=3 for 172.18.0.1:39650  sock=10
+19/03/2025 18:23:21 Got connection from client 172.18.0.1
+19/03/2025 18:23:21   2 other clients
+19/03/2025 18:23:21 Normal socket connection
+19/03/2025 18:23:21 incr accepted_client=4 for 172.18.0.1:39654  sock=12
+19/03/2025 18:23:21 rfbProcessClientProtocolVersion: not a valid RFB client: GET / HTTP/1
+19/03/2025 18:23:21 client_count: 2
+19/03/2025 18:23:21 Client 172.18.0.1 gone
+19/03/2025 18:23:21 Statistics             events    Transmit/ RawEquiv ( saved)
+19/03/2025 18:23:21  TOTALS              :      0 |         0/        0 (  0.0%)
+19/03/2025 18:23:21 Statistics             events    Received/ RawEquiv ( saved)
+19/03/2025 18:23:21  TOTALS              :      0 |         0/        0 (  0.0%)
+19/03/2025 18:23:33 rfbProcessClientProtocolVersion: client gone
+19/03/2025 18:23:33 rfbProcessClientProtocolVersion: client gone
+19/03/2025 18:23:33 client_count: 1
+19/03/2025 18:23:33 Client 172.18.0.1 gone
+19/03/2025 18:23:33 Statistics             events    Transmit/ RawEquiv ( saved)
+19/03/2025 18:23:33  TOTALS              :      0 |         0/        0 (  0.0%)
+19/03/2025 18:23:33 Statistics             events    Received/ RawEquiv ( saved)
+19/03/2025 18:23:33  TOTALS              :      0 |         0/        0 (  0.0%)
+19/03/2025 18:23:33 client_count: 0
+19/03/2025 18:23:33 Restored X server key autorepeat to: 1
+19/03/2025 18:23:33 Client 172.18.0.1 gone
+19/03/2025 18:23:33 Statistics             events    Transmit/ RawEquiv ( saved)
+19/03/2025 18:23:33  TOTALS              :      0 |         0/        0 (  0.0%)
+19/03/2025 18:23:33 Statistics             events    Received/ RawEquiv ( saved)
+19/03/2025 18:23:33  TOTALS              :      0 |         0/        0 (  0.0%)
+caught signal: 15
+19/03/2025 18:24:43 deleted 40 tile_row polling images.
+19/03/2025 18:26:54 passing arg to libvncserver: -passwd
+19/03/2025 18:26:54 x11vnc version: 0.9.16 lastmod: 2019-01-05  pid: 8
+19/03/2025 18:26:54 Using X display :99
+19/03/2025 18:26:54 rootwin: 0x50d reswin: 0x200001 dpy: 0xa31136b0
+19/03/2025 18:26:54 
+19/03/2025 18:26:54 ------------------ USEFUL INFORMATION ------------------
+19/03/2025 18:26:54 
+19/03/2025 18:26:54 Wireframing: -wireframe mode is in effect for window moves.
+19/03/2025 18:26:54   If this yields undesired behavior (poor response, painting
+19/03/2025 18:26:54   errors, etc) it may be disabled:
+19/03/2025 18:26:54    - use '-nowf' to disable wireframing completely.
+19/03/2025 18:26:54    - use '-nowcr' to disable the Copy Rectangle after the
+19/03/2025 18:26:54      moved window is released in the new position.
+19/03/2025 18:26:54   Also see the -help entry for tuning parameters.
+19/03/2025 18:26:54   You can press 3 Alt_L's (Left "Alt" key) in a row to 
+19/03/2025 18:26:54   repaint the screen, also see the -fixscreen option for
+19/03/2025 18:26:54   periodic repaints.
+19/03/2025 18:26:54 
+19/03/2025 18:26:54 XFIXES available on display, resetting cursor mode
+19/03/2025 18:26:54   to: '-cursor most'.
+19/03/2025 18:26:54   to disable this behavior use: '-cursor arrow'
+19/03/2025 18:26:54   or '-noxfixes'.
+19/03/2025 18:26:54 using XFIXES for cursor drawing.
+19/03/2025 18:26:54 GrabServer control via XTEST.
+19/03/2025 18:26:54 
+19/03/2025 18:26:54 Scroll Detection: -scrollcopyrect mode is in effect to
+19/03/2025 18:26:54   use RECORD extension to try to detect scrolling windows
+19/03/2025 18:26:54   (induced by either user keystroke or mouse input).
+19/03/2025 18:26:54   If this yields undesired behavior (poor response, painting
+19/03/2025 18:26:54   errors, etc) it may be disabled via: '-noscr'
+19/03/2025 18:26:54   Also see the -help entry for tuning parameters.
+19/03/2025 18:26:54   You can press 3 Alt_L's (Left "Alt" key) in a row to 
+19/03/2025 18:26:54   repaint the screen, also see the -fixscreen option for
+19/03/2025 18:26:54   periodic repaints.
+19/03/2025 18:26:54 
+19/03/2025 18:26:54 XKEYBOARD: number of keysyms per keycode 7 is greater
+19/03/2025 18:26:54   than 4 and 51 keysyms are mapped above 4.
+19/03/2025 18:26:54   Automatically switching to -xkb mode.
+19/03/2025 18:26:54   If this makes the key mapping worse you can
+19/03/2025 18:26:54   disable it with the "-noxkb" option.
+19/03/2025 18:26:54   Also, remember "-remap DEAD" for accenting characters.
+19/03/2025 18:26:54 
+19/03/2025 18:26:54 X FBPM extension not supported.
+Xlib:  extension "DPMS" missing on display ":99".
+19/03/2025 18:26:54 X display is not capable of DPMS.
+19/03/2025 18:26:54 --------------------------------------------------------
+19/03/2025 18:26:54 
+19/03/2025 18:26:54 Default visual ID: 0x21
+19/03/2025 18:26:54 Read initial data from X display into framebuffer.
+19/03/2025 18:26:54 initialize_screen: fb_depth/fb_bpp/fb_Bpl 24/32/5120
+19/03/2025 18:26:54 
+19/03/2025 18:26:54 X display :99 is 32bpp depth=24 true color
+19/03/2025 18:26:54 
+19/03/2025 18:26:54 Autoprobing TCP port 
+19/03/2025 18:26:54 Autoprobing selected TCP port 5900
+19/03/2025 18:26:54 Autoprobing TCP6 port 
+19/03/2025 18:26:54 Autoprobing selected TCP6 port 5900
+19/03/2025 18:26:54 Not listening on IPv6 interface.
+19/03/2025 18:26:54 
+19/03/2025 18:26:54 Xinerama is present and active (e.g. multi-head).
+19/03/2025 18:26:54 Xinerama: number of sub-screens: 1
+19/03/2025 18:26:54 Xinerama: no blackouts needed (only one sub-screen)
+19/03/2025 18:26:54 
+19/03/2025 18:26:54 fb read rate: 1464 MB/sec
+19/03/2025 18:26:54 fast read: reset -wait  ms to: 10
+19/03/2025 18:26:54 fast read: reset -defer ms to: 10
+19/03/2025 18:26:54 The X server says there are 10 mouse buttons.
+19/03/2025 18:26:54 screen setup finished.
+19/03/2025 18:26:54 
+
+The VNC desktop is:      60af13b547d3:0
+
+******************************************************************************
+Have you tried the x11vnc '-ncache' VNC client-side pixel caching feature yet?
+
+The scheme stores pixel data offscreen on the VNC viewer side for faster
+retrieval.  It should work with any VNC viewer.  Try it by running:
+
+    x11vnc -ncache 10 ...
+
+One can also add -ncache_cr for smooth 'copyrect' window motion.
+More info: http://www.karlrunge.com/x11vnc/faq.html#faq-client-caching
+
+caught signal: 15
+19/03/2025 18:28:42 deleted 40 tile_row polling images.
+19/03/2025 18:29:30 passing arg to libvncserver: -passwd
+19/03/2025 18:29:30 x11vnc version: 0.9.16 lastmod: 2019-01-05  pid: 8
+19/03/2025 18:29:30 Using X display :99
+19/03/2025 18:29:30 rootwin: 0x50d reswin: 0x200001 dpy: 0x75d416b0
+19/03/2025 18:29:30 
+19/03/2025 18:29:30 ------------------ USEFUL INFORMATION ------------------
+19/03/2025 18:29:30 
+19/03/2025 18:29:30 Wireframing: -wireframe mode is in effect for window moves.
+19/03/2025 18:29:30   If this yields undesired behavior (poor response, painting
+19/03/2025 18:29:30   errors, etc) it may be disabled:
+19/03/2025 18:29:30    - use '-nowf' to disable wireframing completely.
+19/03/2025 18:29:30    - use '-nowcr' to disable the Copy Rectangle after the
+19/03/2025 18:29:30      moved window is released in the new position.
+19/03/2025 18:29:30   Also see the -help entry for tuning parameters.
+19/03/2025 18:29:30   You can press 3 Alt_L's (Left "Alt" key) in a row to 
+19/03/2025 18:29:30   repaint the screen, also see the -fixscreen option for
+19/03/2025 18:29:30   periodic repaints.
+19/03/2025 18:29:30 
+19/03/2025 18:29:30 XFIXES available on display, resetting cursor mode
+19/03/2025 18:29:30   to: '-cursor most'.
+19/03/2025 18:29:30   to disable this behavior use: '-cursor arrow'
+19/03/2025 18:29:30   or '-noxfixes'.
+19/03/2025 18:29:30 using XFIXES for cursor drawing.
+19/03/2025 18:29:30 GrabServer control via XTEST.
+19/03/2025 18:29:30 
+19/03/2025 18:29:30 Scroll Detection: -scrollcopyrect mode is in effect to
+19/03/2025 18:29:30   use RECORD extension to try to detect scrolling windows
+19/03/2025 18:29:30   (induced by either user keystroke or mouse input).
+19/03/2025 18:29:30   If this yields undesired behavior (poor response, painting
+19/03/2025 18:29:30   errors, etc) it may be disabled via: '-noscr'
+19/03/2025 18:29:30   Also see the -help entry for tuning parameters.
+19/03/2025 18:29:30   You can press 3 Alt_L's (Left "Alt" key) in a row to 
+19/03/2025 18:29:30   repaint the screen, also see the -fixscreen option for
+19/03/2025 18:29:30   periodic repaints.
+19/03/2025 18:29:30 
+19/03/2025 18:29:30 XKEYBOARD: number of keysyms per keycode 7 is greater
+19/03/2025 18:29:30   than 4 and 51 keysyms are mapped above 4.
+19/03/2025 18:29:30   Automatically switching to -xkb mode.
+19/03/2025 18:29:30   If this makes the key mapping worse you can
+19/03/2025 18:29:30   disable it with the "-noxkb" option.
+19/03/2025 18:29:30   Also, remember "-remap DEAD" for accenting characters.
+19/03/2025 18:29:30 
+19/03/2025 18:29:30 X FBPM extension not supported.
+Xlib:  extension "DPMS" missing on display ":99".
+19/03/2025 18:29:30 X display is not capable of DPMS.
+19/03/2025 18:29:30 --------------------------------------------------------
+19/03/2025 18:29:30 
+19/03/2025 18:29:30 Default visual ID: 0x21
+19/03/2025 18:29:30 Read initial data from X display into framebuffer.
+19/03/2025 18:29:30 initialize_screen: fb_depth/fb_bpp/fb_Bpl 24/32/5120
+19/03/2025 18:29:30 
+19/03/2025 18:29:30 X display :99 is 32bpp depth=24 true color
+19/03/2025 18:29:30 
+19/03/2025 18:29:30 Autoprobing TCP port 
+19/03/2025 18:29:30 Autoprobing selected TCP port 5900
+19/03/2025 18:29:30 Autoprobing TCP6 port 
+19/03/2025 18:29:30 Autoprobing selected TCP6 port 5900
+19/03/2025 18:29:30 Not listening on IPv6 interface.
+19/03/2025 18:29:30 
+19/03/2025 18:29:30 Xinerama is present and active (e.g. multi-head).
+19/03/2025 18:29:30 Xinerama: number of sub-screens: 1
+19/03/2025 18:29:30 Xinerama: no blackouts needed (only one sub-screen)
+19/03/2025 18:29:30 
+19/03/2025 18:29:30 fb read rate: 1959 MB/sec
+19/03/2025 18:29:30 fast read: reset -wait  ms to: 10
+19/03/2025 18:29:30 fast read: reset -defer ms to: 10
+19/03/2025 18:29:30 The X server says there are 10 mouse buttons.
+19/03/2025 18:29:30 screen setup finished.
+19/03/2025 18:29:30 
+
+The VNC desktop is:      84ee4151e031:0
+
+******************************************************************************
+Have you tried the x11vnc '-ncache' VNC client-side pixel caching feature yet?
+
+The scheme stores pixel data offscreen on the VNC viewer side for faster
+retrieval.  It should work with any VNC viewer.  Try it by running:
+
+    x11vnc -ncache 10 ...
+
+One can also add -ncache_cr for smooth 'copyrect' window motion.
+More info: http://www.karlrunge.com/x11vnc/faq.html#faq-client-caching
+
+caught signal: 15
+19/03/2025 18:31:44 deleted 40 tile_row polling images.

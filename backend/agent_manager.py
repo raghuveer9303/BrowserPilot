@@ -18,26 +18,24 @@ class AgentManager:
         self.settings = settings
         self.browser_factory = browser_factory
         self.result_storage = result_storage
-        self.tasks = {}  # task_id -> task_info
-        self.websockets = {}  # task_id -> list of websockets
-        self.agents = {}  # task_id -> agent
+        self.tasks: Dict[str, Dict[str, Any]] = {}
+        self.websockets: Dict[str, List[WebSocket]] = {}
+        self.agents = {}
         self.tasks_lock = asyncio.Lock()
 
-    async def create_task(self, task_id: str, task_info: dict):
-        """Create a new task and start execution"""
-        async with self.tasks_lock:
-            self.tasks[task_id] = {
-                "id": task_id,
-                "info": task_info,
-                "status": "initializing",
-                "created_at": time.time(),
-                "steps": [],
-                "result": None
-            }
-        
-        # Start task execution in background
+    async def create_task(self, task_id: str, task_data: Dict[str, Any]) -> None:
+        """Create a new task and initialize its status."""
+        self.tasks[task_id] = {
+            "id": task_id,
+            "status": "initializing",
+            "created_at": time.time(),
+            "info": task_data,  # Add the 'info' field to store task details
+            "steps": [],
+            "result": None,
+            "error": None,
+        }
+        # Start task execution in the background
         asyncio.create_task(self._execute_task(task_id))
-        return task_id
 
     async def _execute_task(self, task_id: str):
         """Execute a browser task"""
@@ -49,7 +47,7 @@ class AgentManager:
             await self._update_task_status(task_id, "starting")
             
             # Get model client
-            model_client = get_model_client(task_info.model)
+            model_client = get_model_client(task_info["model"])  # Use key-based access for 'model'
             
             # Launch browser
             browser = await self.browser_factory.create_browser()
@@ -58,7 +56,7 @@ class AgentManager:
             agent = BrowserUse(
                 browser=browser,
                 llm_client=model_client,
-                max_steps=task_info.max_steps
+                max_steps=task_info.get("max_steps", 10) # Use key-based access for 'max_steps'
             )
             
             self.agents[task_id] = agent

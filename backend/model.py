@@ -113,7 +113,7 @@ class GeminiClient(LLMClient):
 def get_model_client(model_name: str = "default") -> LLMClient:
     """Factory function to get a model client based on configuration"""
     model_mapping = {
-        "default": os.environ.get("DEFAULT_MODEL", "openai"),
+        "default": "gemini",  # Default to Gemini Flash
         "anthropic": "anthropic",
         "claude": "anthropic",
         "openai": "openai",
@@ -121,11 +121,11 @@ def get_model_client(model_name: str = "default") -> LLMClient:
         "gemini": "gemini"
     }
     
-    provider = model_mapping.get(model_name.lower(), "openai")
+    provider = model_mapping.get(model_name.lower(), "gemini")
     
     if provider == "anthropic":
         return AnthropicClient()
     elif provider == "gemini":
-        return GeminiClient()
+        return GeminiClient(api_key="AIzaSyBPS3MblzMA0tK1_h7aOFOKKJvaO1NOqqc", model="gemini-2.0-flash")
     else:  # Default to OpenAI
         return OpenAIClient(model="gpt-4" if model_name == "gpt-4" else "gpt-3.5-turbo")

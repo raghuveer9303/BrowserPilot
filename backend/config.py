@@ -33,6 +33,7 @@ class Settings(BaseSettings):
     # Auth settings (optional for future use)
     api_key: Optional[str] = None
     
-    class Config:
-        env_file = ".env"
-        case_sensitive = False
+    model_config = {
+        'env_file': '.env',
+        'case_sensitive': False
+    }

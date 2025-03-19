@@ -1,0 +1,169 @@
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+2025-03-19 18:03:11 - browserpilot - INFO - BrowserPilot starting up
+INFO     [browserpilot] BrowserPilot starting up
+INFO     [backend.utils.browser_factory] Initializing Playwright
+2025-03-19 18:03:11 - browserpilot - INFO - BrowserPilot started on http://0.0.0.0:8000
+INFO     [browserpilot] BrowserPilot started on http://0.0.0.0:8000
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browserpilot] BrowserPilot starting up
+INFO     [backend.utils.browser_factory] Initializing Playwright
+INFO     [browserpilot] BrowserPilot started on http://0.0.0.0:8000
+INFO     [browserpilot] VNC available at port 5900
+INFO     [browserpilot] noVNC available at port 6080
+INFO:     172.18.0.1:51744 - "GET / HTTP/1.1" 307 Temporary Redirect
+INFO:     172.18.0.1:51744 - "GET /static/index.html HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51744 - "GET /js/websocket-handler.js HTTP/1.1" 404 Not Found
+INFO:     172.18.0.1:51752 - "GET /js/vnc-viewer.js HTTP/1.1" 404 Not Found
+INFO:     172.18.0.1:51756 - "GET /js/browser-view.js HTTP/1.1" 404 Not Found
+INFO:     172.18.0.1:51744 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     172.18.0.1:51744 - "GET /api/vnc_info HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51744 - "GET /static/novnc/vnc.html?path=websockify&autoconnect=true&resize=scale&password=browserpilot HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51756 - "GET /static/novnc/app/error-handler.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51744 - "GET /static/novnc/app/styles/base.css HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51752 - "GET /static/novnc/vendor/promise.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51778 - "GET /static/novnc/app/images/drag.svg HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51772 - "GET /static/novnc/app/ui.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51786 - "GET /static/novnc/app/images/mouse_none.svg HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51778 - "GET /static/novnc/app/images/mouse_right.svg HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51772 - "GET /static/novnc/app/images/mouse_middle.svg HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51786 - "GET /static/novnc/app/images/mouse_left.svg HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51752 - "GET /static/novnc/app/images/keyboard.svg HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51756 - "GET /static/novnc/app/images/ctrl.svg HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51744 - "GET /static/novnc/app/images/toggleextrakeys.svg HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51756 - "GET /static/novnc/app/images/tab.svg HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51772 - "GET /static/novnc/app/images/settings.svg HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51778 - "GET /static/novnc/app/images/clipboard.svg HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51744 - "GET /static/novnc/app/images/alt.svg HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51752 - "GET /static/novnc/app/images/esc.svg HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51786 - "GET /static/novnc/app/images/ctrlaltdel.svg HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51778 - "GET /static/novnc/app/styles/Orbitron700.woff HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51786 - "GET /static/novnc/app/images/expander.svg HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51744 - "GET /static/novnc/core/util/logging.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51756 - "GET /static/novnc/app/images/connect.svg HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51752 - "GET /static/novnc/app/localization.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51772 - "GET /static/novnc/app/images/power.svg HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51778 - "GET /static/novnc/core/util/browser.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51752 - "GET /static/novnc/core/input/keysymdef.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51786 - "GET /static/novnc/core/util/events.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51772 - "GET /static/novnc/core/input/keyboard.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51756 - "GET /static/novnc/core/input/keysym.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51778 - "GET /static/novnc/core/rfb.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51772 - "GET /static/novnc/core/display.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51756 - "GET /static/novnc/app/webutil.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51786 - "GET /static/novnc/core/input/util.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51752 - "GET /static/novnc/app/images/fullscreen.svg HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51756 - "GET /static/novnc/app/images/disconnect.svg HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51772 - "GET /static/novnc/core/base64.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51752 - "GET /static/novnc/app/sounds/bell.oga HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51778 - "GET /static/novnc/core/input/vkeys.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51786 - "GET /static/novnc/core/input/fixedkeys.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51756 - "GET /static/novnc/core/input/domkeytable.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51772 - "GET /static/novnc/core/util/strings.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51752 - "GET /static/novnc/core/util/eventtarget.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51778 - "GET /static/novnc/core/input/mouse.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51756 - "GET /static/novnc/core/websock.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51786 - "GET /static/novnc/core/des.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51786 - "GET /static/novnc/core/input/xtscancodes.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51744 - "GET /static/novnc/core/inflator.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51756 - "GET /static/novnc/core/encodings.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51778 - "GET /static/novnc/core/util/polyfill.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51756 - "GET /static/novnc/vendor/pako/lib/zlib/inflate.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51744 - "GET /static/novnc/vendor/pako/lib/zlib/zstream.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51752 - "GET /static/novnc/vendor/pako/lib/zlib/adler32.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51778 - "GET /static/novnc/vendor/pako/lib/zlib/inffast.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51786 - "GET /static/novnc/vendor/pako/lib/zlib/inftrees.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51772 - "GET /static/novnc/vendor/pako/lib/zlib/crc32.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51756 - "GET /static/novnc/vendor/pako/lib/utils/common.js HTTP/1.1" 200 OK
+INFO:     172.18.0.1:51772 - "GET /static/novnc/app/images/error.svg HTTP/1.1" 200 OK
+INFO:     172.18.0.1:37926 - "GET / HTTP/1.1" 307 Temporary Redirect
+INFO:     172.18.0.1:37938 - "GET /js/vnc-viewer.js HTTP/1.1" 404 Not Found
+INFO:     172.18.0.1:37926 - "GET /js/websocket-handler.js HTTP/1.1" 404 Not Found
+INFO:     172.18.0.1:37948 - "GET /js/browser-view.js HTTP/1.1" 404 Not Found
+INFO:     172.18.0.1:37948 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     172.18.0.1:37950 - "POST /api/tasks HTTP/1.1" 500 Internal Server Error
+INFO:     172.18.0.1:36758 - "POST /api/tasks HTTP/1.1" 500 Internal Server Error
+INFO:     172.18.0.1:36764 - "POST /api/tasks HTTP/1.1" 500 Internal Server Error
+INFO:     172.18.0.1:36778 - "POST /api/tasks HTTP/1.1" 500 Internal Server Error
+INFO:     172.18.0.1:36792 - "POST /api/tasks HTTP/1.1" 500 Internal Server Error
+INFO     [browserpilot] BrowserPilot shutting down
+INFO     [backend.utils.browser_factory] Closed all browser instances and Playwright
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+INFO     [browser_use] BrowserUse logging setup complete with level info
+INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.

@@ -1,0 +1,2083 @@
+/opt/app/backend/app.py:61: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/opt/app/backend/app.py:74: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Will watch for changes in these directories: ['/opt/app']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [10] using StatReload
+INFO:     Started server process [15]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+ModuleNotFoundError: No module named 'browser_use'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+ModuleNotFoundError: No module named 'browser_use'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+ModuleNotFoundError: No module named 'browser_use'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+ModuleNotFoundError: No module named 'browser_use'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 10, in <module>
+    from .agent_manager import AgentManager
+  File "/opt/app/backend/agent_manager.py", line 6, in <module>
+    from browser_use import Agent as BrowserUse
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/__init__.py", line 5, in <module>
+    from browser_use.agent.service import Agent as Agent
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/agent/service.py", line 30, in <module>
+    from browser_use.controller.service import Controller
+  File "/opt/venv/lib/python3.11/site-packages/browser_use/controller/service.py", line 3, in <module>
+    from main_content_extractor import MainContentExtractor
+ModuleNotFoundError: No module named 'main_content_extractor'
+/opt/app/backend/app.py:60: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/opt/app/backend/app.py:75: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Will watch for changes in these directories: ['/opt/app']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [9] using StatReload
+INFO:     Started server process [14]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     ('172.18.0.1', 51798) - "WebSocket /websockify" 403
+INFO:     connection rejected (403 Forbidden)
+INFO:     connection closed
+INFO:     ('172.18.0.1', 51806) - "WebSocket /websockify" 403
+INFO:     connection rejected (403 Forbidden)
+INFO:     connection closed
+INFO:     ('172.18.0.1', 51822) - "WebSocket /websockify" 403
+INFO:     connection rejected (403 Forbidden)
+INFO:     connection closed
+INFO:     ('172.18.0.1', 51830) - "WebSocket /websockify" 403
+INFO:     connection rejected (403 Forbidden)
+INFO:     connection closed
+INFO:     ('172.18.0.1', 49844) - "WebSocket /websockify" 403
+INFO:     connection rejected (403 Forbidden)
+INFO:     connection closed
+INFO:     ('172.18.0.1', 49852) - "WebSocket /websockify" 403
+INFO:     connection rejected (403 Forbidden)
+INFO:     connection closed
+INFO:     ('172.18.0.1', 49856) - "WebSocket /websockify" 403
+INFO:     connection rejected (403 Forbidden)
+INFO:     connection closed
+INFO:     ('172.18.0.1', 49870) - "WebSocket /websockify" 403
+INFO:     connection rejected (403 Forbidden)
+INFO:     connection closed
+INFO:     ('172.18.0.1', 49886) - "WebSocket /websockify" 403
+INFO:     connection rejected (403 Forbidden)
+INFO:     connection closed
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/venv/lib/python3.11/site-packages/uvicorn/protocols/http/h11_impl.py", line 412, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/opt/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 146, in simple_response
+    await self.app(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/opt/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/routing.py", line 299, in handle
+    await self.app(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/routing.py", line 79, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/opt/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/routing.py", line 74, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/fastapi/routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/routes/tasks.py", line 36, in create_task
+    await agent_manager.create_task(task_id, task.dict())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: AgentManager.create_task() missing 1 required positional argument: 'task_info'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/venv/lib/python3.11/site-packages/uvicorn/protocols/http/h11_impl.py", line 412, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/opt/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 146, in simple_response
+    await self.app(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/opt/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/routing.py", line 299, in handle
+    await self.app(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/routing.py", line 79, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/opt/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/routing.py", line 74, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/fastapi/routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/routes/tasks.py", line 36, in create_task
+    await agent_manager.create_task(task_id, task.dict())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: AgentManager.create_task() missing 1 required positional argument: 'task_info'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/venv/lib/python3.11/site-packages/uvicorn/protocols/http/h11_impl.py", line 412, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/opt/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 146, in simple_response
+    await self.app(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/opt/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/routing.py", line 299, in handle
+    await self.app(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/routing.py", line 79, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/opt/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/routing.py", line 74, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/fastapi/routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/routes/tasks.py", line 36, in create_task
+    await agent_manager.create_task(task_id, task.dict())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: AgentManager.create_task() missing 1 required positional argument: 'task_info'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/venv/lib/python3.11/site-packages/uvicorn/protocols/http/h11_impl.py", line 412, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/opt/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 146, in simple_response
+    await self.app(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/opt/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/routing.py", line 299, in handle
+    await self.app(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/routing.py", line 79, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/opt/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/routing.py", line 74, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/fastapi/routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/routes/tasks.py", line 36, in create_task
+    await agent_manager.create_task(task_id, task.dict())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: AgentManager.create_task() missing 1 required positional argument: 'task_info'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/venv/lib/python3.11/site-packages/uvicorn/protocols/http/h11_impl.py", line 412, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/opt/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 146, in simple_response
+    await self.app(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/opt/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/routing.py", line 299, in handle
+    await self.app(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/routing.py", line 79, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/opt/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/venv/lib/python3.11/site-packages/starlette/routing.py", line 74, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/fastapi/routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/routes/tasks.py", line 36, in create_task
+    await agent_manager.create_task(task_id, task.dict())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: AgentManager.create_task() missing 1 required positional argument: 'task_info'
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [14]
+INFO:     Stopping reloader process [9]
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 11, in <module>
+    from .routes import routers
+  File "/opt/app/backend/routes/__init__.py", line 4, in <module>
+    from .tasks import router as tasks_router
+  File "/opt/app/backend/routes/tasks.py", line 8, in <module>
+    from ..dependencies import get_agent_manager  # Add this import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/dependencies.py", line 8, in <module>
+    _result_storage = ResultStorage(_settings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/app/backend/utils/result_storage.py", line 16, in __init__
+    self._ensure_storage_dir()
+  File "/opt/app/backend/utils/result_storage.py", line 20, in _ensure_storage_dir
+    os.makedirs(self.storage_path, exist_ok=True)
+  File "<frozen os>", line 210, in makedirs
+  File "<frozen posixpath>", line 103, in split
+TypeError: expected str, bytes or os.PathLike object, not Settings
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 7, in <module>
+    from .config import Settings
+  File "/opt/app/backend/config.py", line 1, in <module>
+    from pydantic import BaseSettings
+  File "/opt/venv/lib/python3.11/site-packages/pydantic/__init__.py", line 412, in __getattr__
+    return _getattr_migration(attr_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/pydantic/_migration.py", line 296, in wrapper
+    raise PydanticImportError(
+pydantic.errors.PydanticImportError: `BaseSettings` has been moved to the `pydantic-settings` package. See https://docs.pydantic.dev/2.10/migration/#basesettings-has-moved-to-pydantic-settings for more details.
+
+For further information visit https://errors.pydantic.dev/2.10/u/import-error
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 7, in <module>
+    from .config import Settings
+  File "/opt/app/backend/config.py", line 1, in <module>
+    from pydantic import BaseSettings
+  File "/opt/venv/lib/python3.11/site-packages/pydantic/__init__.py", line 412, in __getattr__
+    return _getattr_migration(attr_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/pydantic/_migration.py", line 296, in wrapper
+    raise PydanticImportError(
+pydantic.errors.PydanticImportError: `BaseSettings` has been moved to the `pydantic-settings` package. See https://docs.pydantic.dev/2.10/migration/#basesettings-has-moved-to-pydantic-settings for more details.
+
+For further information visit https://errors.pydantic.dev/2.10/u/import-error
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 7, in <module>
+    from .config import Settings
+  File "/opt/app/backend/config.py", line 1, in <module>
+    from pydantic import BaseSettings
+  File "/opt/venv/lib/python3.11/site-packages/pydantic/__init__.py", line 412, in __getattr__
+    return _getattr_migration(attr_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/pydantic/_migration.py", line 296, in wrapper
+    raise PydanticImportError(
+pydantic.errors.PydanticImportError: `BaseSettings` has been moved to the `pydantic-settings` package. See https://docs.pydantic.dev/2.10/migration/#basesettings-has-moved-to-pydantic-settings for more details.
+
+For further information visit https://errors.pydantic.dev/2.10/u/import-error
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/app/backend/app.py", line 7, in <module>
+    from .config import Settings
+  File "/opt/app/backend/config.py", line 1, in <module>
+    from pydantic import BaseSettings
+  File "/opt/venv/lib/python3.11/site-packages/pydantic/__init__.py", line 412, in __getattr__
+    return _getattr_migration(attr_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/pydantic/_migration.py", line 296, in wrapper
+    raise PydanticImportError(
+pydantic.errors.PydanticImportError: `BaseSettings` has been moved to the `pydantic-settings` package. See https://docs.pydantic.dev/2.10/migration/#basesettings-has-moved-to-pydantic-settings for more details.
+
+For further information visit https://errors.pydantic.dev/2.10/u/import-error

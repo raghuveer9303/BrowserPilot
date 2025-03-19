@@ -46,21 +46,9 @@ class VncViewer {
         this._showLoading('Connecting to browser...');
         
         try {
-            // Get VNC connection info
-            const response = await fetch('/api/vnc_info');
-            if (!response.ok) {
-                throw new Error('Failed to get VNC connection info');
-            }
-            
-            const data = await response.json();
-            const vncUrl = `/novnc/vnc.html?host=${window.location.hostname}&port=6080&password=${data.password}&autoconnect=true&resize=scale`;
-            
-            // Load VNC frame
+            const vncUrl = `vnc.html?host=${window.location.hostname}&port=6080&path=websockify&autoconnect=true&resize=scale`;
             this.vncFrame.src = vncUrl;
             this.connected = true;
-            
-            // Log the connection
-            console.log(`Connected to VNC session: ${sessionId}`);
         } catch (error) {
             console.error('VNC connection error:', error);
             this._showError(`Failed to connect: ${error.message}`);

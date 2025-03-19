@@ -30,7 +30,10 @@ class BrowserFactory:
     async def create_browser(self, browser_type: str = "chromium", **kwargs) -> Browser:
         """Create a new browser instance"""
         await self.initialize()
-        
+
+        # Log the received kwargs for debugging
+        logger.debug(f"Received kwargs: {kwargs}")
+
         # Select browser type
         if browser_type == "firefox":
             browser_class = self.playwright.firefox
@@ -38,14 +41,26 @@ class BrowserFactory:
             browser_class = self.playwright.webkit
         else:
             browser_class = self.playwright.chromium
-            
-        # When running in Docker with Xvfb/VNC, we need to set headless=False
-        logger.info(f"Launching {browser_type} browser")
-        browser = await browser_class.launch(
-            headless=self.headless,
-            args=['--no-sandbox', '--disable-dev-shm-usage'],
-        )
-        
+
+        # Create launch options dictionary with only JSON-serializable values
+        launch_options = {
+            "headless": self.headless,
+            "args": ["--no-sandbox", "--disable-dev-shm-usage"]
+        }
+
+        # Add any additional JSON-serializable kwargs
+        for key, value in kwargs.items():
+            if isinstance(value, (str, int, float, bool, list, dict)):
+                launch_options[key] = value
+            else:
+                logger.warning(f"Ignoring non-serializable kwarg: {key}={value}")
+
+        logger.info(f"Launching {browser_type} browser with args: {launch_options['args']}")
+        logger.debug(f"Launch options: {launch_options}")
+
+        # Launch browser with JSON-serializable options
+        browser = await browser_class.launch(**launch_options)
+
         return browser
     
     async def create_browser_context(self, browser: Browser, **kwargs) -> BrowserContext:
@@ -54,6 +69,9 @@ class BrowserFactory:
         viewport = kwargs.get("viewport", {"width": 1280, "height": 720})
         user_agent = kwargs.get("user_agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
         
+        # Log the context creation details
+        logger.debug(f"Creating browser context with viewport: {viewport}, user_agent: {user_agent}")
+
         # Create a new context with the specified viewport and user agent
         context = await browser.new_context(
             viewport=viewport,
@@ -69,7 +87,7 @@ class BrowserFactory:
             return self.contexts[session_id]
         
         logger.info(f"Creating new browser context for session {session_id}")
-        browser = await self.create_browser(browser_type)
+        browser = await self.create_browser(browser_type, **kwargs)
         context = await self.create_browser_context(browser, **kwargs)
         self.contexts[session_id] = context
         return context

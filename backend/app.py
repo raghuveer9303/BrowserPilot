@@ -2,23 +2,50 @@ from fastapi import FastAPI, WebSocket, WebSocketDisconnect, Depends, HTTPExcept
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, RedirectResponse
+from contextlib import asynccontextmanager
 import os
 import logging
-from .agent_manager import AgentManager
-from .config import Settings
-from .utils.browser_factory import BrowserFactory
-from .utils.result_storage import ResultStorage
-from .utils.logger import setup_logger
-from .routes import routers
+import asyncio
+import websockets
+from backend.config import Settings
+from backend.utils.browser_factory import BrowserFactory
+from backend.utils.result_storage import ResultStorage
+from backend.agent_manager import AgentManager
+from backend.routes import routers
 
 # Setup logging
-logger = setup_logger("browserpilot", os.environ.get("LOG_LEVEL", "INFO"))
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger("browserpilot")
 
 # Initialize application
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Lifespan handler for startup and shutdown events."""
+    logger.info("BrowserPilot starting up")
+    
+    # Ensure result storage directory exists
+    os.makedirs(settings.result_storage_path, exist_ok=True)
+    
+    # Initialize browser factory
+    await browser_factory.initialize()
+    
+    logger.info(f"BrowserPilot started on http://{settings.host}:{settings.port}")
+    logger.info(f"VNC available at port {settings.vnc_port}")
+    logger.info(f"noVNC available at port {settings.novnc_port}")
+    
+    yield  # Application runs here
+    
+    logger.info("BrowserPilot shutting down")
+    await browser_factory.close()
+
 app = FastAPI(
     title="BrowserPilot",
     description="AI-powered browser automation",
-    version="0.1.0"
+    version="0.1.0",
+    lifespan=lifespan
 )
 
 # Load configuration
@@ -41,16 +68,12 @@ agent_manager = AgentManager(settings, browser_factory, result_storage)
 # Mount static files for frontend
 app.mount("/static", StaticFiles(directory="frontend"), name="static")
 
+# Mount noVNC
+app.mount("/novnc", StaticFiles(directory="/usr/share/novnc"), name="novnc")
+
 # Include all routers
 for router in routers:
     app.include_router(router)
-
-
-@app.websocket_route("/websockify")
-async def websockify(websocket):
-    await websocket.accept()
-    # Proxy WebSocket connection to VNC server
-    # You'll need to implement the proxy logic here
 
 # Root endpoint
 @app.get("/", response_class=HTMLResponse)
@@ -58,26 +81,42 @@ async def root():
     """Serve the frontend application"""
     return RedirectResponse(url="/static/index.html")
 
-@app.on_event("startup")
-async def startup_event():
-    """Application startup event hook"""
-    logger.info("BrowserPilot starting up")
+@app.websocket("/websockify")
+async def websockify(websocket: WebSocket):
+    await websocket.accept()
     
-    # Ensure result storage directory exists
-    os.makedirs(settings.result_storage_path, exist_ok=True)
-    
-    # Initialize browser factory
-    await browser_factory.initialize()
-    
-    logger.info(f"BrowserPilot started on http://{settings.host}:{settings.port}")
+    vnc_socket = None
+    try:
+        # Connect to VNC server
+        vnc_socket = await websockets.connect('ws://localhost:5900')
+        
+        # Handle bidirectional communication
+        async def forward_to_vnc():
+            try:
+                while True:
+                    data = await websocket.receive_bytes()
+                    await vnc_socket.send(data)
+            except Exception:
+                pass
 
-@app.on_event("shutdown")
-async def shutdown_event():
-    """Application shutdown event hook"""
-    logger.info("BrowserPilot shutting down")
-    
-    # Close browser instances
-    await browser_factory.close()
+        async def forward_to_client():
+            try:
+                while True:
+                    data = await vnc_socket.recv()
+                    await websocket.send_bytes(data)
+            except Exception:
+                pass
+
+        # Run both forwards concurrently
+        await asyncio.gather(
+            forward_to_vnc(),
+            forward_to_client()
+        )
+    except Exception as e:
+        print(f"WebSocket error: {e}")
+    finally:
+        if vnc_socket:
+            await vnc_socket.close()
 
 if __name__ == "__main__":
     import uvicorn

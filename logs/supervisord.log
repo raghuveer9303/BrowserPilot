@@ -1,0 +1,427 @@
+2025-03-19 18:03:07,957 INFO Set uid to user 0 succeeded
+2025-03-19 18:03:07,967 INFO supervisord started with pid 1
+2025-03-19 18:03:08,984 INFO spawned: 'xvfb' with pid 7
+2025-03-19 18:03:08,996 INFO spawned: 'x11vnc' with pid 8
+2025-03-19 18:03:08,997 INFO spawnerr: can't find command '/usr/share/novnc/utils/novnc_proxy'
+2025-03-19 18:03:09,004 INFO spawned: 'app' with pid 9
+2025-03-19 18:03:10,097 INFO success: xvfb entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:03:10,101 INFO success: x11vnc entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:03:10,102 INFO spawnerr: can't find command '/usr/share/novnc/utils/novnc_proxy'
+2025-03-19 18:03:10,102 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:03:12,678 INFO spawnerr: can't find command '/usr/share/novnc/utils/novnc_proxy'
+2025-03-19 18:03:15,683 INFO spawnerr: can't find command '/usr/share/novnc/utils/novnc_proxy'
+2025-03-19 18:03:15,684 INFO gave up: novnc entered FATAL state, too many start retries too quickly
+2025-03-19 18:03:32,708 WARN received SIGTERM indicating exit request
+2025-03-19 18:03:32,709 INFO waiting for xvfb, x11vnc, app to die
+2025-03-19 18:03:33,711 INFO stopped: app (terminated by SIGTERM)
+2025-03-19 18:03:33,715 INFO stopped: x11vnc (exit status 2)
+2025-03-19 18:03:33,743 INFO stopped: xvfb (exit status 0)
+2025-03-19 18:10:02,387 INFO Set uid to user 0 succeeded
+2025-03-19 18:10:02,390 INFO supervisord started with pid 1
+2025-03-19 18:10:03,398 INFO spawned: 'xvfb' with pid 7
+2025-03-19 18:10:03,416 INFO spawned: 'x11vnc' with pid 8
+2025-03-19 18:10:03,418 INFO spawnerr: can't find command '/usr/share/novnc/utils/novnc_proxy'
+2025-03-19 18:10:03,424 INFO spawned: 'app' with pid 9
+2025-03-19 18:10:03,991 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:10:04,995 INFO success: xvfb entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:10:04,997 INFO success: x11vnc entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:10:04,998 INFO spawnerr: can't find command '/usr/share/novnc/utils/novnc_proxy'
+2025-03-19 18:10:05,011 INFO spawned: 'app' with pid 12
+2025-03-19 18:10:05,533 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:10:07,539 INFO spawnerr: can't find command '/usr/share/novnc/utils/novnc_proxy'
+2025-03-19 18:10:07,547 INFO spawned: 'app' with pid 13
+2025-03-19 18:10:08,049 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:10:11,056 INFO spawnerr: can't find command '/usr/share/novnc/utils/novnc_proxy'
+2025-03-19 18:10:11,057 INFO gave up: novnc entered FATAL state, too many start retries too quickly
+2025-03-19 18:10:11,065 INFO spawned: 'app' with pid 14
+2025-03-19 18:10:11,536 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:10:12,539 INFO gave up: app entered FATAL state, too many start retries too quickly
+2025-03-19 18:12:30,469 WARN received SIGTERM indicating exit request
+2025-03-19 18:12:30,470 INFO waiting for xvfb, x11vnc to die
+2025-03-19 18:12:32,475 INFO stopped: x11vnc (exit status 2)
+2025-03-19 18:12:32,480 INFO stopped: xvfb (exit status 0)
+2025-03-19 18:18:03,245 INFO Set uid to user 0 succeeded
+2025-03-19 18:18:03,248 INFO supervisord started with pid 1
+2025-03-19 18:18:04,257 INFO spawned: 'xvfb' with pid 6
+2025-03-19 18:18:04,263 INFO spawned: 'x11vnc' with pid 7
+2025-03-19 18:18:04,264 INFO spawnerr: can't find command '/usr/share/novnc/utils/novnc_proxy'
+2025-03-19 18:18:04,270 INFO spawned: 'app' with pid 8
+2025-03-19 18:18:05,349 INFO success: xvfb entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:18:05,350 INFO success: x11vnc entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:18:05,351 INFO spawnerr: can't find command '/usr/share/novnc/utils/novnc_proxy'
+2025-03-19 18:18:05,352 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:18:05,868 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:18:06,882 INFO spawned: 'app' with pid 11
+2025-03-19 18:18:07,884 INFO spawnerr: can't find command '/usr/share/novnc/utils/novnc_proxy'
+2025-03-19 18:18:07,885 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:18:08,456 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:18:09,470 INFO spawned: 'app' with pid 12
+2025-03-19 18:18:10,473 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:18:11,045 INFO spawnerr: can't find command '/usr/share/novnc/utils/novnc_proxy'
+2025-03-19 18:18:11,045 INFO gave up: novnc entered FATAL state, too many start retries too quickly
+2025-03-19 18:18:11,046 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:18:12,055 INFO spawned: 'app' with pid 13
+2025-03-19 18:18:13,057 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:18:13,593 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:18:14,602 INFO spawned: 'app' with pid 14
+2025-03-19 18:18:15,604 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:18:16,081 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:18:17,096 INFO spawned: 'app' with pid 15
+2025-03-19 18:18:18,098 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:18:18,612 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:18:19,625 INFO spawned: 'app' with pid 16
+2025-03-19 18:18:20,627 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:18:21,148 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:18:22,162 INFO spawned: 'app' with pid 17
+2025-03-19 18:18:23,164 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:18:23,648 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:18:24,656 INFO spawned: 'app' with pid 18
+2025-03-19 18:18:25,658 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:18:26,283 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:18:27,295 INFO spawned: 'app' with pid 19
+2025-03-19 18:18:28,298 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:18:28,875 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:18:29,886 INFO spawned: 'app' with pid 20
+2025-03-19 18:18:30,888 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:18:31,425 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:18:32,437 INFO spawned: 'app' with pid 21
+2025-03-19 18:18:33,442 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:18:34,085 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:18:35,099 INFO spawned: 'app' with pid 22
+2025-03-19 18:18:36,102 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:18:36,674 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:18:37,687 INFO spawned: 'app' with pid 23
+2025-03-19 18:18:38,689 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:18:39,212 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:18:40,227 INFO spawned: 'app' with pid 24
+2025-03-19 18:18:41,230 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:18:41,752 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:18:42,767 INFO spawned: 'app' with pid 25
+2025-03-19 18:18:43,770 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:18:44,283 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:18:45,295 INFO spawned: 'app' with pid 26
+2025-03-19 18:18:46,297 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:18:46,758 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:18:47,768 INFO spawned: 'app' with pid 27
+2025-03-19 18:18:48,770 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:18:49,394 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:18:50,409 INFO spawned: 'app' with pid 28
+2025-03-19 18:18:51,412 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:18:52,040 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:18:53,055 INFO spawned: 'app' with pid 29
+2025-03-19 18:18:54,058 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:18:54,734 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:18:55,744 INFO spawned: 'app' with pid 30
+2025-03-19 18:18:56,747 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:18:57,394 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:18:58,403 INFO spawned: 'app' with pid 31
+2025-03-19 18:18:59,405 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:19:00,297 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:19:01,308 INFO spawned: 'app' with pid 32
+2025-03-19 18:19:02,310 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:19:03,245 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:19:04,254 INFO spawned: 'app' with pid 33
+2025-03-19 18:19:05,257 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:19:05,936 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:19:06,946 INFO spawned: 'app' with pid 34
+2025-03-19 18:19:07,948 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:19:08,752 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:19:09,770 INFO spawned: 'app' with pid 35
+2025-03-19 18:19:10,773 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:19:11,478 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:19:12,494 INFO spawned: 'app' with pid 36
+2025-03-19 18:19:13,497 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:19:14,029 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:19:15,043 INFO spawned: 'app' with pid 37
+2025-03-19 18:19:16,046 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:19:16,629 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:19:17,640 INFO spawned: 'app' with pid 38
+2025-03-19 18:19:18,642 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:19:19,319 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:19:20,339 INFO spawned: 'app' with pid 39
+2025-03-19 18:19:21,341 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:19:22,048 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:19:23,060 INFO spawned: 'app' with pid 40
+2025-03-19 18:19:24,062 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:19:24,730 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:19:25,743 INFO spawned: 'app' with pid 41
+2025-03-19 18:19:26,745 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:19:27,265 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:19:28,281 INFO spawned: 'app' with pid 42
+2025-03-19 18:19:29,284 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:19:29,845 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:19:30,856 INFO spawned: 'app' with pid 43
+2025-03-19 18:19:31,859 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:19:32,427 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:19:33,441 INFO spawned: 'app' with pid 44
+2025-03-19 18:19:34,444 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:19:34,970 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:19:35,985 INFO spawned: 'app' with pid 45
+2025-03-19 18:19:36,989 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:19:37,543 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:19:38,561 INFO spawned: 'app' with pid 46
+2025-03-19 18:19:39,564 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:19:40,098 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:19:41,107 INFO spawned: 'app' with pid 47
+2025-03-19 18:19:42,112 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:19:42,841 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:19:43,850 INFO spawned: 'app' with pid 48
+2025-03-19 18:19:44,851 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:19:45,433 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:19:46,442 INFO spawned: 'app' with pid 49
+2025-03-19 18:19:47,444 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:19:47,863 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:19:48,872 INFO spawned: 'app' with pid 50
+2025-03-19 18:19:49,872 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:19:50,432 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:19:51,447 INFO spawned: 'app' with pid 51
+2025-03-19 18:19:52,450 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:19:53,056 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:19:54,071 INFO spawned: 'app' with pid 52
+2025-03-19 18:19:55,074 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:19:55,541 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:19:56,550 INFO spawned: 'app' with pid 53
+2025-03-19 18:19:57,552 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:19:58,067 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:19:59,079 INFO spawned: 'app' with pid 54
+2025-03-19 18:20:00,081 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:20:00,848 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:20:01,859 INFO spawned: 'app' with pid 55
+2025-03-19 18:20:02,863 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:20:03,645 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:20:04,659 INFO spawned: 'app' with pid 56
+2025-03-19 18:20:05,662 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:20:06,319 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:20:07,336 INFO spawned: 'app' with pid 57
+2025-03-19 18:20:08,339 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:20:08,658 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:20:09,672 INFO spawned: 'app' with pid 58
+2025-03-19 18:20:10,675 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:20:11,252 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:20:12,267 INFO spawned: 'app' with pid 59
+2025-03-19 18:20:13,269 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:20:14,749 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:20:15,767 INFO spawned: 'app' with pid 60
+2025-03-19 18:20:16,770 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:20:17,508 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:20:18,522 INFO spawned: 'app' with pid 61
+2025-03-19 18:20:19,523 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:20:19,928 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:20:20,938 INFO spawned: 'app' with pid 62
+2025-03-19 18:20:21,940 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:20:22,882 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:20:23,893 INFO spawned: 'app' with pid 63
+2025-03-19 18:20:24,896 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:20:25,913 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:20:26,925 INFO spawned: 'app' with pid 64
+2025-03-19 18:20:27,928 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:20:29,423 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:20:30,437 INFO spawned: 'app' with pid 65
+2025-03-19 18:20:31,440 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:20:33,080 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:20:34,092 INFO spawned: 'app' with pid 66
+2025-03-19 18:20:35,095 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:20:36,350 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:20:37,359 INFO spawned: 'app' with pid 67
+2025-03-19 18:20:38,362 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:20:39,543 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:20:40,554 INFO spawned: 'app' with pid 68
+2025-03-19 18:20:41,557 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:20:42,608 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:20:43,621 INFO spawned: 'app' with pid 69
+2025-03-19 18:20:44,624 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:20:45,876 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:20:46,888 INFO spawned: 'app' with pid 70
+2025-03-19 18:20:47,890 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:20:48,796 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:20:49,802 INFO spawned: 'app' with pid 71
+2025-03-19 18:20:50,804 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:20:52,166 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:20:53,181 INFO spawned: 'app' with pid 72
+2025-03-19 18:20:54,184 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:20:55,704 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:20:56,717 INFO spawned: 'app' with pid 73
+2025-03-19 18:20:57,719 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:20:58,824 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:20:59,837 INFO spawned: 'app' with pid 74
+2025-03-19 18:21:00,840 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:21:02,279 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:21:03,291 INFO spawned: 'app' with pid 75
+2025-03-19 18:21:04,293 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:21:05,322 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:21:06,334 INFO spawned: 'app' with pid 76
+2025-03-19 18:21:07,337 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:21:07,339 WARN received SIGTERM indicating exit request
+2025-03-19 18:21:07,341 INFO waiting for xvfb, x11vnc, app to die
+2025-03-19 18:21:07,347 INFO stopped: app (terminated by SIGTERM)
+2025-03-19 18:21:08,355 INFO stopped: x11vnc (exit status 2)
+2025-03-19 18:21:08,367 INFO stopped: xvfb (exit status 0)
+2025-03-19 18:22:16,314 INFO Set uid to user 0 succeeded
+2025-03-19 18:22:16,317 INFO supervisord started with pid 1
+2025-03-19 18:22:17,330 INFO spawned: 'xvfb' with pid 7
+2025-03-19 18:22:17,338 INFO spawned: 'x11vnc' with pid 8
+2025-03-19 18:22:17,339 INFO spawnerr: can't find command '/usr/share/novnc/utils/novnc_proxy'
+2025-03-19 18:22:17,344 INFO spawned: 'app' with pid 9
+2025-03-19 18:22:18,605 INFO success: xvfb entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:22:18,606 INFO success: x11vnc entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:22:18,607 INFO spawnerr: can't find command '/usr/share/novnc/utils/novnc_proxy'
+2025-03-19 18:22:18,607 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:22:21,367 INFO spawnerr: can't find command '/usr/share/novnc/utils/novnc_proxy'
+2025-03-19 18:22:24,375 INFO spawnerr: can't find command '/usr/share/novnc/utils/novnc_proxy'
+2025-03-19 18:22:24,376 INFO gave up: novnc entered FATAL state, too many start retries too quickly
+2025-03-19 18:24:41,362 WARN received SIGTERM indicating exit request
+2025-03-19 18:24:41,363 INFO waiting for xvfb, x11vnc, app to die
+2025-03-19 18:24:42,978 INFO stopped: app (exit status 0)
+2025-03-19 18:24:42,979 INFO reaped unknown pid 13 (exit status 0)
+2025-03-19 18:24:44,010 INFO stopped: x11vnc (exit status 2)
+2025-03-19 18:24:44,018 INFO stopped: xvfb (exit status 0)
+2025-03-19 18:26:53,058 INFO Set uid to user 0 succeeded
+2025-03-19 18:26:53,061 INFO supervisord started with pid 1
+2025-03-19 18:26:54,073 INFO spawned: 'xvfb' with pid 7
+2025-03-19 18:26:54,083 INFO spawned: 'x11vnc' with pid 8
+2025-03-19 18:26:54,085 INFO spawnerr: can't find command '/usr/share/novnc/utils/novnc_proxy'
+2025-03-19 18:26:54,091 INFO spawned: 'app' with pid 9
+2025-03-19 18:26:55,166 INFO success: xvfb entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:26:55,167 INFO success: x11vnc entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:26:55,168 INFO spawnerr: can't find command '/usr/share/novnc/utils/novnc_proxy'
+2025-03-19 18:26:55,168 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:26:55,835 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:26:56,850 INFO spawned: 'app' with pid 13
+2025-03-19 18:26:57,226 INFO spawnerr: can't find command '/usr/share/novnc/utils/novnc_proxy'
+2025-03-19 18:26:57,889 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:26:58,574 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:26:59,585 INFO spawned: 'app' with pid 15
+2025-03-19 18:27:00,725 INFO spawnerr: can't find command '/usr/share/novnc/utils/novnc_proxy'
+2025-03-19 18:27:00,726 INFO gave up: novnc entered FATAL state, too many start retries too quickly
+2025-03-19 18:27:00,727 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:27:01,463 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:27:02,477 INFO spawned: 'app' with pid 17
+2025-03-19 18:27:03,677 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:27:04,376 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:27:05,386 INFO spawned: 'app' with pid 19
+2025-03-19 18:27:06,476 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:27:07,189 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:27:08,202 INFO spawned: 'app' with pid 21
+2025-03-19 18:27:09,209 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:27:09,865 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:27:10,877 INFO spawned: 'app' with pid 23
+2025-03-19 18:27:11,947 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:27:12,647 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:27:13,662 INFO spawned: 'app' with pid 25
+2025-03-19 18:27:14,935 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:27:15,666 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:27:16,684 INFO spawned: 'app' with pid 27
+2025-03-19 18:27:17,811 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:27:18,530 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:27:19,537 INFO spawned: 'app' with pid 29
+2025-03-19 18:27:20,660 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:27:21,375 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:27:22,387 INFO spawned: 'app' with pid 31
+2025-03-19 18:27:23,643 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:27:24,351 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:27:25,364 INFO spawned: 'app' with pid 33
+2025-03-19 18:27:26,548 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:27:27,272 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:27:28,282 INFO spawned: 'app' with pid 35
+2025-03-19 18:27:29,523 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:27:30,258 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:27:31,276 INFO spawned: 'app' with pid 37
+2025-03-19 18:27:32,530 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:27:33,273 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:27:34,287 INFO spawned: 'app' with pid 39
+2025-03-19 18:27:35,601 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:27:36,338 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:27:37,351 INFO spawned: 'app' with pid 41
+2025-03-19 18:27:38,653 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:27:39,383 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:27:40,391 INFO spawned: 'app' with pid 43
+2025-03-19 18:27:41,674 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:27:42,397 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:27:43,409 INFO spawned: 'app' with pid 45
+2025-03-19 18:27:44,690 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:27:45,403 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:27:46,419 INFO spawned: 'app' with pid 47
+2025-03-19 18:27:47,774 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:27:48,488 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:27:49,502 INFO spawned: 'app' with pid 49
+2025-03-19 18:27:50,765 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:27:51,503 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:27:52,517 INFO spawned: 'app' with pid 51
+2025-03-19 18:27:53,686 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:27:54,402 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:27:55,420 INFO spawned: 'app' with pid 53
+2025-03-19 18:27:56,578 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:27:57,310 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:27:58,323 INFO spawned: 'app' with pid 55
+2025-03-19 18:27:59,487 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:28:00,218 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:28:01,231 INFO spawned: 'app' with pid 57
+2025-03-19 18:28:02,450 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:28:03,197 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:28:04,206 INFO spawned: 'app' with pid 59
+2025-03-19 18:28:05,449 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:28:06,162 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:28:07,171 INFO spawned: 'app' with pid 61
+2025-03-19 18:28:08,375 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:28:09,101 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:28:10,117 INFO spawned: 'app' with pid 63
+2025-03-19 18:28:11,310 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:28:12,059 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:28:13,073 INFO spawned: 'app' with pid 65
+2025-03-19 18:28:14,295 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:28:15,016 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:28:16,030 INFO spawned: 'app' with pid 67
+2025-03-19 18:28:17,185 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:28:17,915 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:28:18,931 INFO spawned: 'app' with pid 69
+2025-03-19 18:28:20,154 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:28:20,868 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:28:21,881 INFO spawned: 'app' with pid 71
+2025-03-19 18:28:23,025 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:28:23,753 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:28:24,768 INFO spawned: 'app' with pid 73
+2025-03-19 18:28:26,013 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:28:26,729 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:28:27,743 INFO spawned: 'app' with pid 75
+2025-03-19 18:28:28,991 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:28:29,714 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:28:30,725 INFO spawned: 'app' with pid 77
+2025-03-19 18:28:31,953 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:28:32,671 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:28:33,687 INFO spawned: 'app' with pid 79
+2025-03-19 18:28:34,816 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:28:35,525 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:28:36,534 INFO spawned: 'app' with pid 81
+2025-03-19 18:28:37,765 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:28:38,518 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:28:39,528 INFO spawned: 'app' with pid 83
+2025-03-19 18:28:39,528 WARN received SIGTERM indicating exit request
+2025-03-19 18:28:39,530 INFO waiting for xvfb, x11vnc, app to die
+2025-03-19 18:28:41,643 INFO stopped: app (exit status 1)
+2025-03-19 18:28:42,649 INFO waiting for xvfb, x11vnc to die
+2025-03-19 18:28:42,650 INFO stopped: x11vnc (exit status 2)
+2025-03-19 18:28:42,677 INFO stopped: xvfb (exit status 0)
+2025-03-19 18:29:29,895 INFO Set uid to user 0 succeeded
+2025-03-19 18:29:29,898 INFO supervisord started with pid 1
+2025-03-19 18:29:30,907 INFO spawned: 'xvfb' with pid 7
+2025-03-19 18:29:30,913 INFO spawned: 'x11vnc' with pid 8
+2025-03-19 18:29:30,915 INFO spawnerr: can't find command '/usr/share/novnc/utils/novnc_proxy'
+2025-03-19 18:29:30,921 INFO spawned: 'app' with pid 9
+2025-03-19 18:29:31,266 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:29:32,269 INFO success: xvfb entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:29:32,271 INFO success: x11vnc entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-19 18:29:32,272 INFO spawnerr: can't find command '/usr/share/novnc/utils/novnc_proxy'
+2025-03-19 18:29:32,283 INFO spawned: 'app' with pid 12
+2025-03-19 18:29:32,666 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:29:34,672 INFO spawnerr: can't find command '/usr/share/novnc/utils/novnc_proxy'
+2025-03-19 18:29:34,681 INFO spawned: 'app' with pid 13
+2025-03-19 18:29:35,023 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:29:38,030 INFO spawnerr: can't find command '/usr/share/novnc/utils/novnc_proxy'
+2025-03-19 18:29:38,031 INFO gave up: novnc entered FATAL state, too many start retries too quickly
+2025-03-19 18:29:38,039 INFO spawned: 'app' with pid 14
+2025-03-19 18:29:38,397 INFO exited: app (exit status 1; not expected)
+2025-03-19 18:29:39,401 INFO gave up: app entered FATAL state, too many start retries too quickly
+2025-03-19 18:31:42,571 WARN received SIGTERM indicating exit request
+2025-03-19 18:31:42,573 INFO waiting for xvfb, x11vnc to die
+2025-03-19 18:31:44,577 INFO stopped: x11vnc (exit status 2)
+2025-03-19 18:31:44,583 INFO stopped: xvfb (exit status 0)

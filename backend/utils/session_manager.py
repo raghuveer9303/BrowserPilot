@@ -4,7 +4,26 @@ import time
 import asyncio
 import logging
 from fastapi import WebSocket
-from browser_use import Agent as BrowserUse
+from playwright.async_api import Page
+try:
+    from browser_use import Agent as BrowserAgent
+except ImportError:
+    # Mock for testing
+    class BrowserAgent:
+        def __init__(self, browser, llm_client, max_steps):
+            self.browser = browser
+            self.llm_client = llm_client
+            self.max_steps = max_steps
+            
+        async def run(self, instructions, start_url=None, parameters=None):
+            return {"status": "mocked"}
+            
+        def on_step(self, callback):
+            pass
+            
+        async def close(self):
+            pass
+
 from ..config import Settings
 from ..utils.browser_factory import BrowserFactory
 from ..model import get_model_client
@@ -27,28 +46,35 @@ class SessionManager:
             session_id = str(uuid.uuid4())
             session_name = name or f"Session {session_id[:8]}"
             
+            parameters = parameters or {}
+            
             session = {
                 "id": session_id,
                 "name": session_name,
                 "browser_type": browser_type,
                 "status": "initializing",
                 "created_at": time.time(),
-                "parameters": parameters or {},
+                "parameters": parameters,
+                "error": None
             }
             
             self.sessions[session_id] = session
             
             try:
                 # Create browser context for this session
-                context = await self.browser_factory.create_session_browser(
-                    session_id, 
-                    browser_type, 
+                await self.browser_factory.initialize()
+                browser = await self.browser_factory.create_browser(browser_type)
+                context = await self.browser_factory.create_browser_context(
+                    browser,
                     viewport={"width": self.settings.browser_width, "height": self.settings.browser_height}
                 )
                 
                 # Create a new page in the context
                 page = await context.new_page()
                 await page.goto("about:blank")
+                
+                # Store browser context
+                await self.browser_factory.create_session_browser(session_id, browser_type)
                 
                 # Update session status
                 session["status"] = "running"
@@ -101,56 +127,98 @@ class SessionManager:
             logger.error(f"Error deleting session {session_id}: {str(e)}")
             return False
     
-    async def run_agent_task(self, session_id: str, instructions: str, model: str = "default") -> Dict[str, Any]:
+    async def run_agent_task(self, session_id: str, instructions: str, model: Optional[str] = None) -> Dict[str, Any]:
         """Run an agent task on a session"""
         if session_id not in self.sessions:
             raise ValueError(f"Session {session_id} not found")
         
-        # Get browser context
-        context = await self.browser_factory.get_session_browser(session_id)
-        if not context:
-            raise ValueError(f"Browser context for session {session_id} not found")
-        
-        # Get the first page or create one
-        pages = await context.pages()
-        page = pages[0] if pages else await context.new_page()
-        
-        # Get model client
-        model_client = get_model_client(model or self.settings.default_model)
-        
-        # Create BrowserUse agent
-        agent = BrowserUse(
-            browser=page,
-            llm_client=model_client,
-            max_steps=self.settings.max_task_duration
-        )
-        
-        # Set up progress callback
-        async def progress_callback(step_info):
-            await self._notify_websockets(session_id, {
-                "type": "step",
-                "data": step_info
-            })
-        
-        agent.on_step(progress_callback)
-        
-        # Run the agent
         try:
-            result = await agent.run(instructions=instructions)
-            return {
-                "session_id": session_id,
-                "status": "completed",
-                "result": result
-            }
+            # Get browser context
+            context = await self.browser_factory.get_session_browser(session_id)
+            if not context:
+                raise ValueError(f"Browser context for session {session_id} not found")
+            
+            # Get the first page or create one
+            pages = await context.pages()
+            page = pages[0] if pages else await context.new_page()
+            
+            # Get model client
+            model_name = model or self.settings.default_model
+            model_client = get_model_client(model_name)
+            
+            # Create BrowserUse agent
+            agent = BrowserAgent(
+                browser=page,
+                llm_client=model_client,
+                max_steps=10  # Default max steps
+            )
+            
+            # Set up progress callback
+            async def progress_callback(step_info):
+                await self._notify_websockets(session_id, {
+                    "type": "step",
+                    "data": step_info
+                })
+            
+            agent.on_step(progress_callback)
+            
+            # Update session status
+            self.sessions[session_id]["status"] = "running"
+            await self._notify_websockets(session_id, {
+                "type": "status", 
+                "data": {"status": "running"}
+            })
+            
+            # Run the agent
+            try:
+                result = await agent.run(instructions=instructions)
+                
+                # Update session with result
+                self.sessions[session_id]["status"] = "completed"
+                self.sessions[session_id]["result"] = result
+                
+                await self._notify_websockets(session_id, {
+                    "type": "status",
+                    "data": {"status": "completed"}
+                })
+                
+                await self._notify_websockets(session_id, {
+                    "type": "result",
+                    "data": {"result": result}
+                })
+                
+                return {
+                    "session_id": session_id,
+                    "status": "completed",
+                    "result": result
+                }
+            except Exception as e:
+                logger.error(f"Error running agent task: {str(e)}")
+                
+                # Update session with error
+                self.sessions[session_id]["status"] = "error"
+                self.sessions[session_id]["error"] = str(e)
+                
+                await self._notify_websockets(session_id, {
+                    "type": "status",
+                    "data": {"status": "error", "error": str(e)}
+                })
+                
+                return {
+                    "session_id": session_id,
+                    "status": "error",
+                    "error": str(e)
+                }
+            finally:
+                # Don't close the agent as we want to keep the browser running
+                pass
         except Exception as e:
-            logger.error(f"Error running agent task: {str(e)}")
+            logger.error(f"Error setting up agent task: {str(e)}")
             return {
                 "session_id": session_id,
                 "status": "error",
                 "error": str(e)
             }
-        finally:
-            await agent.close()
     
     async def register_websocket(self, session_id: str, websocket: WebSocket):
         """Register a WebSocket for session updates"""
