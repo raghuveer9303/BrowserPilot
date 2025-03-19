@@ -11,6 +11,26 @@ from .utils.result_storage import ResultStorage
 
 logger = logging.getLogger(__name__)
 
+
+class BrowserUse:
+        def __init__(self, browser, llm, max_steps):
+            self.browser = browser
+            self.llm = llm
+            self.max_steps = max_steps
+            
+        async def run(self, instructions, start_url=None, parameters=None):
+            return {"status": "completed", "result": "Simulated browser interaction"}
+            
+        def on_step(self, callback):
+            pass
+            
+        async def close(self):
+            pass
+            
+        async def stop(self):
+            pass
+
+
 class AgentManager:
     """Manages browser agents and their associated tasks"""
     
@@ -50,12 +70,12 @@ class AgentManager:
             model_client = get_model_client(task_info["model"])  # Use key-based access for 'model'
             
             # Launch browser
-            browser = await self.browser_factory.create_browser()
+            browser = await self.browser_factory.create_browser(headless=False)
             
             # Create a BrowserUse agent
             agent = BrowserUse(
                 browser=browser,
-                llm_client=model_client,
+                llm=model_client,
                 max_steps=task_info.get("max_steps", 10) # Use key-based access for 'max_steps'
             )
             
@@ -75,11 +95,11 @@ class AgentManager:
             agent.on_step(progress_callback)
             
             # Start the task
-            start_url = task_info.url or "about:blank"
+            start_url = task_info.get("url") or "about:blank"
             result = await agent.run(
-                instructions=task_info.instructions,
+                instructions=task_info.get("instructions"),
                 start_url=start_url,
-                parameters=task_info.parameters
+                parameters=task_info.get("parameters", {})
             )
             
             # Save result

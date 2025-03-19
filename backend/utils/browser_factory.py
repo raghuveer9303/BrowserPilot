@@ -74,8 +74,7 @@ class BrowserFactory:
 
         # Create a new context with the specified viewport and user agent
         context = await browser.new_context(
-            viewport=viewport,
-            user_agent=user_agent
+            viewport={"width": 1280, "height": 720}
         )
         
         return context

@@ -20,7 +20,8 @@ class WebSocketHandler {
         }
 
         const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-        const wsUrl = `${protocol}//${window.location.host}/ws/tasks/${this.taskId}`;
+        // Fix: Change from '/ws/tasks/' to '/api/tasks/ws/'
+        const wsUrl = `${protocol}//${window.location.host}/api/tasks/ws/${this.taskId}`;
         
         this.connection = new WebSocket(wsUrl);
         this._setStatus('connecting');

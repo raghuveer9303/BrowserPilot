@@ -85,37 +85,42 @@ async def root():
 async def websockify(websocket: WebSocket):
     await websocket.accept()
     
-    vnc_socket = None
     try:
-        # Connect to VNC server
-        vnc_socket = await websockets.connect('ws://localhost:5900')
+        # Connect to VNC server using websockets
+        vnc_uri = f"ws://localhost:5900"
+        vnc_socket = await websockets.connect(vnc_uri)
         
-        # Handle bidirectional communication
+        # Create tasks for bidirectional forwarding
         async def forward_to_vnc():
-            try:
-                while True:
+            while True:
+                try:
                     data = await websocket.receive_bytes()
                     await vnc_socket.send(data)
-            except Exception:
-                pass
-
-        async def forward_to_client():
-            try:
-                while True:
+                except Exception:
+                    break
+                    
+        async def forward_from_vnc():
+            while True:
+                try:
                     data = await vnc_socket.recv()
                     await websocket.send_bytes(data)
-            except Exception:
-                pass
-
+                except Exception:
+                    break
+                    
         # Run both forwards concurrently
-        await asyncio.gather(
-            forward_to_vnc(),
-            forward_to_client()
+        done, pending = await asyncio.wait(
+            [forward_to_vnc(), forward_from_vnc()],
+            return_when=asyncio.FIRST_COMPLETED
         )
+        
+        # Cancel pending tasks
+        for task in pending:
+            task.cancel()
+            
     except Exception as e:
         print(f"WebSocket error: {e}")
     finally:
-        if vnc_socket:
+        if 'vnc_socket' in locals():
             await vnc_socket.close()
 
 if __name__ == "__main__":

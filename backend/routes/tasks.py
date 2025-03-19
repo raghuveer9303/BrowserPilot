@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException, Depends, WebSocket, WebSocketDisconnect, status
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import List, Dict, Any, Optional
 import uuid
 import asyncio
@@ -19,14 +19,18 @@ class TaskCreate(BaseModel):
     session_id: Optional[str] = None
 
 class TaskResponse(BaseModel):
-    id: str
+    id: str = Field(..., alias="task_id")
     status: str
-    instructions: str  # Ensure this field is present
+    instructions: str
     created_at: float
-    model: str  # Ensure this field is present
-    steps: List[Dict[str, Any]] = []
-    result: Optional[Dict[str, Any]] = None
+    model: str
+    steps: list[dict[str, any]] = []  # 'any' remains unchanged
+    result: Optional[dict[str, any]] = None
     error: Optional[str] = None
+
+    class Config:
+        populate_by_name = True
+        arbitrary_types_allowed = True
 
 @router.post("", response_model=TaskResponse, status_code=status.HTTP_201_CREATED)
 async def create_task(
@@ -36,21 +40,21 @@ async def create_task(
     """Create a new browser automation task"""
     task_id = str(uuid.uuid4())
     
-    # Create task with all required fields
-    task_data = {
-        "id": task_id,
-        "status": "initializing",
-        "created_at": time.time(),
-        "instructions": task.instructions,  # Include instructions
-        "model": task.model,  # Include model
-        "steps": [],
-        "result": None,
-        "error": None,
-    }
+    # Create task data
+    task_data = task.dict()
     
     try:
         await agent_manager.create_task(task_id, task_data)
-        return task_data
+        return {
+            "task_id": task_id,  # Changed key from "id" to "task_id"
+            "status": "initializing",
+            "instructions": task.instructions,
+            "created_at": time.time(),
+            "model": task.model,
+            "steps": [],
+            "result": None,
+            "error": None,
+        }
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
@@ -89,18 +93,16 @@ async def cancel_task(
         raise HTTPException(status_code=404, detail="Task not found")
     return None
 
-@router.websocket("/ws/{task_id}")
+@router.websocket("/ws/{task_id}")  # This combines with the router prefix to become /api/tasks/ws/{task_id}
 async def websocket_task_updates(
     websocket: WebSocket,
     task_id: str,
-    agent_manager: AgentManager = Depends(lambda: AgentManager)
+    agent_manager: AgentManager = Depends(get_agent_manager)
 ):
-    """WebSocket for real-time task updates"""
     await websocket.accept()
     try:
         await agent_manager.register_websocket(task_id, websocket)
         while True:
-            # Keep the connection alive with periodic pings
             await asyncio.sleep(30)
             await websocket.send_text('{"type":"ping"}')
     except WebSocketDisconnect:
