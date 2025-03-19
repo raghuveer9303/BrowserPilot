@@ -5,6 +5,7 @@ from .tasks import router as tasks_router
 from .websockets import router as websockets_router
 from .health import router as health_router
 from .browser import router as browser_router
+from .vnc import router as vnc_router
 
 # List all routers to be included in the app
 routers = [
@@ -12,5 +13,6 @@ routers = [
     tasks_router,
     websockets_router,
     health_router,
-    browser_router
+    browser_router,
+    vnc_router
 ]
