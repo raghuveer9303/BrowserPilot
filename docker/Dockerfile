@@ -40,12 +40,19 @@ RUN chmod +x /opt/scripts/*.sh
 COPY requirements.txt /opt/app/
 RUN pip install --no-cache-dir -r /opt/app/requirements.txt
 
+# Install browser-use package
+RUN pip install browser-use==0.1.2
+
 # Copy application files
 COPY backend/ /opt/app/backend/
 COPY frontend/ /opt/app/frontend/
 
 # Setup supervisord
 COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Add noVNC to frontend
+RUN mkdir -p /opt/app/frontend/novnc && \
+    cp -r /usr/share/novnc/* /opt/app/frontend/novnc/
 
 # Expose ports (FastAPI, VNC, noVNC)
 EXPOSE 8000 5900 6080
@@ -56,6 +63,9 @@ WORKDIR /opt/app
 # Add app start script
 RUN echo '#!/bin/bash\ncd /opt/app && python -m backend.app' > /opt/scripts/start-app.sh && \
     chmod +x /opt/scripts/start-app.sh
+
+# Create symlink to utils
+RUN ln -s /usr/share/novnc/utils /opt/app/frontend/novnc/utils
 
 # Start supervisor
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]

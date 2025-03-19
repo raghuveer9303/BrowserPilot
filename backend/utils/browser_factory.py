@@ -27,7 +27,7 @@ class BrowserFactory:
                 self.playwright = await async_playwright().start()
                 self._initialized = True
     
-    async def create_browser(self, browser_type: str = "chromium", **kwargs) -> BrowserContext:
+    async def create_browser(self, browser_type: str = "chromium", **kwargs) -> Browser:
         """Create a new browser instance"""
         await self.initialize()
         
@@ -39,17 +39,20 @@ class BrowserFactory:
         else:
             browser_class = self.playwright.chromium
             
-        # Set default viewport and user agent
-        viewport = kwargs.get("viewport", {"width": 1280, "height": 720})
-        user_agent = kwargs.get("user_agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
-        
         # When running in Docker with Xvfb/VNC, we need to set headless=False
-        # but it will still work because it's running inside Xvfb
         logger.info(f"Launching {browser_type} browser")
         browser = await browser_class.launch(
             headless=self.headless,
             args=['--no-sandbox', '--disable-dev-shm-usage'],
         )
+        
+        return browser
+    
+    async def create_browser_context(self, browser: Browser, **kwargs) -> BrowserContext:
+        """Create a new browser context with proper settings"""
+        # Set default viewport and user agent
+        viewport = kwargs.get("viewport", {"width": 1280, "height": 720})
+        user_agent = kwargs.get("user_agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
         
         # Create a new context with the specified viewport and user agent
         context = await browser.new_context(
@@ -66,9 +69,14 @@ class BrowserFactory:
             return self.contexts[session_id]
         
         logger.info(f"Creating new browser context for session {session_id}")
-        context = await self.create_browser(browser_type, **kwargs)
+        browser = await self.create_browser(browser_type)
+        context = await self.create_browser_context(browser, **kwargs)
         self.contexts[session_id] = context
         return context
+    
+    async def get_session_browser(self, session_id: str) -> Optional[BrowserContext]:
+        """Get browser context for a specific session"""
+        return self.contexts.get(session_id)
     
     async def close_session(self, session_id: str) -> bool:
         """Close a specific session's browser context"""
