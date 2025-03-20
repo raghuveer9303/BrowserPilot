@@ -87,7 +87,7 @@ async def websockify(websocket: WebSocket):
     
     try:
         # Connect to VNC server using websockets
-        vnc_uri = f"ws://localhost:5900"
+        vnc_uri = f"ws://localhost:5901"  # Use port 5901 consistently
         vnc_socket = await websockets.connect(vnc_uri)
         
         # Create tasks for bidirectional forwarding
