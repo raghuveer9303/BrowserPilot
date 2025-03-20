@@ -441,7 +441,7 @@ function setupVncViewer() {
     const password = encodeURIComponent(vncInfo.password || 'browserpilot');
     
     // Create VNC URL
-    const vncUrl = `/novnc/vnc.html?host=${host}&port=${port}&password=${password}&autoconnect=true&resize=scale`;
+    const vncUrl = `/novnc/vnc.html?host=${host}&port=5901&password=${password}&autoconnect=true&resize=scale`;
     
     // Set iframe source
     browserView.src = vncUrl;

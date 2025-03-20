@@ -31,14 +31,13 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     
     # Check if x11vnc is running
     if ! pgrep x11vnc > /dev/null; then
-        echo "Starting x11vnc..."
-        x11vnc -display :99 -forever -shared -nopw -quiet &
+    echo "Starting x11vnc..."
+    x11vnc -display :99 -forever -shared -rfbport 5901 -nopw -quiet &
     fi
-    
-    # Check if noVNC is running
+
     if ! pgrep websockify > /dev/null; then
         echo "Starting noVNC..."
-        /usr/share/novnc/utils/launch.sh --vnc localhost:5900 --listen 6080 &
+        /usr/share/novnc/utils/launch.sh --vnc localhost:5901 --listen 6080 &
     fi
 fi
 

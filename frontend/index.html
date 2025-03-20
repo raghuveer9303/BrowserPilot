@@ -174,7 +174,7 @@
                     const data = await response.json();
                     
                     // Set up VNC iframe URL
-                    const vncUrl = `/static/novnc/vnc.html?path=websockify&autoconnect=true&resize=scale&password=${encodeURIComponent(data.password)}`;
+                    const vncUrl = `/static/novnc/vnc.html?path=websockify&autoconnect=true&resize=scale&password=${encodeURIComponent(data.password)}&port=5901`;
                     browserView.src = vncUrl;
                 } catch (error) {
                     console.error('Failed to get VNC info:', error);

@@ -18,7 +18,7 @@ async def get_vnc_info(settings: Settings = Depends(lambda: Settings())):
     """Get VNC connection information"""
     return {
         "host": os.environ.get("HOST", "localhost"),
-        "port": settings.novnc_port,
+        "port": 5901,  # Changed from 5900 to 5901
         "password": settings.vnc_password,
         "width": settings.browser_width,
         "height": settings.browser_height
